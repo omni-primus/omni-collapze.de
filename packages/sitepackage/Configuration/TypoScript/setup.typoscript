@@ -1,0 +1,69 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
+
+
+##############
+#### PAGE ####
+##############
+page {
+    includeCSS {
+        theme = EXT:sitepackage/Resources/Public/Scss/Theme/theme.scss
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        sitepackage_scripts = EXT:sitepackage/Resources/Public/JavaScript/Dist/scripts.js
+    }
+}
+
+lib.contentElement {
+    templateRootPaths.200 = EXT:sitepackage/Resources/Private/Templates/
+}
+
+tt_content {
+    newsblock =< lib.contentElement
+    newsblock {
+        templateName = newsblock
+        dataProcessing {
+            210 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            210 {
+                as = images
+                references.fieldName = image
+                references.table = tt_content
+                sorting = title
+                sorting.direction = descending
+            }
+
+            220 = TYPO3\CMS\Frontend\DataProcessing\GalleryProcessor
+            220 {
+                filesProcessedDataKey = images
+                mediaOrientation.field = imageorient
+                numberOfColumns.field = imagecols
+                equalMediaHeight.field = imageheight
+                equalMediaWidth.field = imagewidth
+                maxGalleryWidth = 1000
+                maxGalleryWidthInText = 1000
+                columnSpacing = 0
+                borderEnabled.field = imageborder
+                borderWidth = 5
+                borderPadding = 3
+                as = gallery
+            }
+        }
+    }
+}
+
+config.contentObjectExceptionHandler = 0

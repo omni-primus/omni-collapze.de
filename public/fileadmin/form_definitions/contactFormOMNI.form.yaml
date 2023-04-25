@@ -1,0 +1,27 @@
+
+renderingOptions:
+  submitButtonLabel: Submit
+type: Form
+identifier: contactFormOMNI
+label: 'Contact Form OMNI'
+prototypeName: standard
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-1
+    label: Step
+    renderables:
+      -
+        properties:
+          options:
+            Herr: Herr
+            Frau: Frau
+            Diverse: Diverse
+          elementDescription: ''
+          prependOptionLabel: '--Please select'
+        type: SingleSelect
+        identifier: singleselect-1
+        label: Title

@@ -1,0 +1,14 @@
+group: common
+fields:
+    -
+        identifier: twitch_code
+        type: Textarea
+        properties:
+            max: ''
+            rows: ''
+            cols: ''
+            default: ''
+            placeholder: ''
+            required: true
+            trim: false
+            enableRichtext: false

@@ -1,0 +1,16 @@
+.text-muted {
+  color: #cfc7c7 !important;
+}
+
+.footer-sociallinks {
+  .sociallinks-link {
+    background-color: unset;
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  .sociallinks-link-icon:before {
+    color: #fff;
+  }
+}

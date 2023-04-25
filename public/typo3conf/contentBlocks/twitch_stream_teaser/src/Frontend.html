@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:layout name="Default" />
+
+    <f:section name="Main">
+
+        <f:asset.css identifier="content-block-twitch_stream_teaser-be" href="CB:twitch_stream_teaser/dist/EditorPreview.css"/>
+        <f:asset.css identifier="content-block-twitch_stream_teaser" href="CB:twitch_stream_teaser/dist/Frontend.css"/>
+        <f:asset.script identifier="content-block-twitch_stream_teaser" src="CB:twitch_stream_teaser/dist/Frontend.js"/>
+
+        <div id="c{data.uid}" class="twitch_stream_teaser">
+            <div class="twitch_stream_inner frame-container-default frame-container">
+                <h2 class="twitch_stream_headline">{data.header}<span class="live_label">LIVE</span></h2>
+                <div class="twitch_stream_include">
+                    <f:format.raw>{twitch_code}</f:format.raw>
+                </div>
+            </div>
+        </div>
+
+    </f:section>
+</html>

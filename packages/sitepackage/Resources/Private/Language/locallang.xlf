@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-04-06UTC16:15:460">
+        <header>
+            <authorName>Paul Krampe</authorName>
+            <authorEmail>paul.krampe@webneo.de</authorEmail>
+        </header>
+        <body>
+
+            <trans-unit id="newsblock_title">
+                <source>News Block</source>
+            </trans-unit>
+
+            <trans-unit id="newsblock_description">
+                <source>This displays a text with an image which can be used for news</source>
+            </trans-unit>
+
+            <trans-unit id="newsblock_image_banner">
+                <source>Image Banner</source>
+            </trans-unit>
+
+            <trans-unit id="newsblock_text_title">
+                <source>News Teaser Text</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

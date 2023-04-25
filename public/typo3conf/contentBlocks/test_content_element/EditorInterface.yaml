@@ -1,0 +1,20 @@
+group: common
+fields:
+    -
+        identifier: fieldtext
+        type: Textarea
+        properties:
+            max: ''
+            rows: ''
+            cols: ''
+            default: ''
+            placeholder: ''
+            required: false
+            trim: true
+            enableRichtext: false
+    -
+        identifier: image
+        type: Image
+        properties:
+            minItems: ''
+            maxItems: ''

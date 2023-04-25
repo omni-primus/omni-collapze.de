@@ -1,0 +1,16 @@
+mod.wizards.newContentElement.wizardItems {
+    // add the content element to the tab "common"
+    plugins {
+        elements {
+            newsblock {
+                iconIdentifier = content-beside-text-img-above-center
+                title = LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:newsblock_title
+                description = LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:newsblock_description
+                tt_content_defValues {
+                    CType = newsblock
+                }
+            }
+        }
+        show := addToList(newsblock)
+    }
+}

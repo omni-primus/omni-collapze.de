@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <div class="ce-textpic ce-{gallery.position.horizontal} ce-{gallery.position.vertical}{f:if(condition: gallery.position.noWrap, then: ' ce-nowrap')}">
+        <f:if condition="{images}">
+
+            <f:variable name="imagecols">{data.imagecols as integer}</f:variable>
+            <f:variable name="columnConfig">{settings.gallery.columns.{imagecols}}</f:variable>
+            <bk2k:data.imageVariants as="variants" variants="{variants}" multiplier="{columnConfig.multiplier}" gutters="{columnConfig.gutters}" corrections="{columnConfig.corrections}" />
+
+            <div class="gallery-row">
+                <f:for each="{images}" as="image" iteration="fileIteration">
+                    <div class="gallery-item {columnConfig.class}">
+                        <f:image image="{image}" />
+                    </div>
+                </f:for>
+            </div>
+
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <f:then>
+                <div class="ce-bodytext">
+                    <h2>
+                        <f:format.html>{data.bodytext}</f:format.html>
+                    </h2>
+                </div>
+            </f:then>
+        </f:if>
+    </div>
+
+</f:section>
+</html>

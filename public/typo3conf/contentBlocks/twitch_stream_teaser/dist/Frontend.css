@@ -1,0 +1,50 @@
+/* Created by Content Block Wizard */
+
+.twitch_stream_teaser {
+    background: #000;
+}
+
+.twitch_stream_headline {
+    color: #fff;
+    width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.twitch_stream_include {
+    display: flex;
+    justify-content: center;
+}
+
+.twitch_stream_inner {
+    padding-top: 45px;
+    padding-bottom: 55px;
+}
+
+.twitch_stream_teaser .live_label {
+    position: relative;
+    font-size: 12px;
+    line-height: 14px;
+    background-color: #dd1c21;
+    color: #fff;
+    padding: 4px 5px 4px 18px;
+    box-shadow: 0 0 6px 2px rgba(221,28,33,.44);
+    letter-spacing: 1px;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.twitch_stream_teaser .live_label:before {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+

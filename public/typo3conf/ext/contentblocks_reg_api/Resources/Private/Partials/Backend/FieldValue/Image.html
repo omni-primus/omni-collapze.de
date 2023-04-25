@@ -1,0 +1,10 @@
+<f:if condition="{values.{field.identifier}.originalFile.name}">
+    <f:then>
+        <f:image image="{values.{field.identifier}}" maxHeight="64" maxWidth="64"/>
+    </f:then>
+    <f:else if="{values.{field.identifier}.0}">
+        <f:for each='{values.{field.identifier}}' as='image' iteration='iter'>
+            <f:image image="{image}" maxHeight="64" maxWidth="64"/>
+        </f:for>
+    </f:else>
+</f:if>
