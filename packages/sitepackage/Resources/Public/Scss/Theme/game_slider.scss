@@ -1,0 +1,41 @@
+// 0px
+@include media-breakpoint-up(xs) {
+  .game-slider {
+    .mySwiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 348px;
+        height: 424px;
+        img {
+          display: block;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+// 576px
+@include media-breakpoint-up(sm) {
+
+}
+
+// 768px
+@include media-breakpoint-up(md) {
+
+}
+
+//992px
+@include media-breakpoint-up(lg) {
+
+}
+
+//1200px
+@include media-breakpoint-up(xl) {
+
+}

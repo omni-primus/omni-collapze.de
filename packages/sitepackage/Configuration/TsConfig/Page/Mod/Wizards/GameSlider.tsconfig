@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+    plugins {
+        elements {
+            game_slider {
+                iconIdentifier = content-bootstrappackage-carousel
+                title = LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:game_slider_title
+                description = LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:game_slider_description
+                tt_content_defValues {
+                    CType = game_slider
+                }
+            }
+        }
+        show := addToList(game_slider)
+    }
+}

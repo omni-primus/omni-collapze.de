@@ -23,6 +23,12 @@
                 <source>News Teaser Text</source>
             </trans-unit>
 
+            <trans-unit id="game_slider_title">
+                <source>Game Slider</source>
+            </trans-unit>
+            <trans-unit id="game_slider_description">
+                <source>Displays a Slider with an image and a text</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

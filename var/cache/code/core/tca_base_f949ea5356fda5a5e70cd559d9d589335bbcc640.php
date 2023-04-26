@@ -5467,7 +5467,7 @@ return array (
             'type' => 'input',
             'renderType' => 'inputDateTime',
             'eval' => 'date,int',
-            'default' => 1682443123,
+            'default' => 1682535266,
           ),
         ),
         'content_modification_date' => 
@@ -5481,7 +5481,7 @@ return array (
             'type' => 'input',
             'renderType' => 'inputDateTime',
             'eval' => 'date,int',
-            'default' => 1682443123,
+            'default' => 1682535266,
           ),
         ),
         'note' => 
@@ -9852,375 +9852,382 @@ return array (
               ),
               9 => 
               array (
+                0 => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:game_slider_title',
+                1 => 'game_slider',
+                2 => 'content-bootstrappackage-carousel',
+                3 => 'Primus',
+              ),
+              10 => 
+              array (
                 0 => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang.xlf:newsblock_title',
                 1 => 'newsblock',
                 2 => 'content-beside-text-img-above-center',
               ),
-              10 => 
+              11 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.div.lists',
                 1 => '--div--',
                 2 => NULL,
                 3 => 'lists',
               ),
-              11 => 
+              12 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.4',
                 1 => 'bullets',
                 2 => 'content-bullets',
                 3 => 'lists',
               ),
-              12 => 
+              13 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.5',
                 1 => 'table',
                 2 => 'content-table',
                 3 => 'lists',
               ),
-              13 => 
+              14 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.6',
                 1 => 'uploads',
                 2 => 'content-special-uploads',
                 3 => 'lists',
               ),
-              14 => 
+              15 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.div.menu',
                 1 => '--div--',
                 2 => NULL,
                 3 => 'menu',
               ),
-              15 => 
+              16 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_abstract',
                 1 => 'menu_abstract',
                 2 => 'content-menu-abstract',
                 3 => 'menu',
               ),
-              16 => 
+              17 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_categorized_content',
                 1 => 'menu_categorized_content',
                 2 => 'content-menu-categorized',
                 3 => 'menu',
               ),
-              17 => 
+              18 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_categorized_pages',
                 1 => 'menu_categorized_pages',
                 2 => 'content-menu-categorized',
                 3 => 'menu',
               ),
-              18 => 
+              19 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_pages',
                 1 => 'menu_pages',
                 2 => 'content-menu-pages',
                 3 => 'menu',
               ),
-              19 => 
+              20 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_subpages',
                 1 => 'menu_subpages',
                 2 => 'content-menu-pages',
                 3 => 'menu',
               ),
-              20 => 
+              21 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_recently_updated',
                 1 => 'menu_recently_updated',
                 2 => 'content-menu-recently-updated',
                 3 => 'menu',
               ),
-              21 => 
+              22 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_related_pages',
                 1 => 'menu_related_pages',
                 2 => 'content-menu-related',
                 3 => 'menu',
               ),
-              22 => 
+              23 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_section',
                 1 => 'menu_section',
                 2 => 'content-menu-section',
                 3 => 'menu',
               ),
-              23 => 
+              24 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_section_pages',
                 1 => 'menu_section_pages',
                 2 => 'content-menu-section',
                 3 => 'menu',
               ),
-              24 => 
+              25 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_sitemap',
                 1 => 'menu_sitemap',
                 2 => 'content-menu-sitemap',
                 3 => 'menu',
               ),
-              25 => 
+              26 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.menu_sitemap_pages',
                 1 => 'menu_sitemap_pages',
                 2 => 'content-menu-sitemap-pages',
                 3 => 'menu',
               ),
-              26 => 
+              27 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.div.special',
                 1 => '--div--',
                 2 => NULL,
                 3 => 'special',
               ),
-              27 => 
+              28 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.13',
                 1 => 'shortcut',
                 2 => 'content-special-shortcut',
                 3 => 'special',
               ),
-              28 => 
+              29 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.14',
                 1 => 'list',
                 2 => 'content-plugin',
                 3 => 'special',
               ),
-              29 => 
+              30 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.16',
                 1 => 'div',
                 2 => 'content-special-div',
                 3 => 'special',
               ),
-              30 => 
+              31 => 
               array (
                 0 => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:CType.I.17',
                 1 => 'html',
                 2 => 'content-special-html',
                 3 => 'special',
               ),
-              31 => 
+              32 => 
               array (
                 0 => 'Form',
                 1 => 'form_formframework',
                 2 => 'content-form',
                 3 => 'forms',
               ),
-              32 => 
+              33 => 
               array (
                 0 => 'Login Form',
                 1 => 'felogin_login',
                 2 => 'EXT:felogin/Resources/Public/Icons/Extension.png',
                 3 => 'forms',
               ),
-              33 => 
+              34 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.accordion',
                 1 => 'accordion',
                 2 => 'content-bootstrappackage-accordion',
                 3 => 'bootstrap_package',
               ),
-              34 => 
+              35 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.audio',
                 1 => 'audio',
                 2 => 'content-audio',
                 3 => 'bootstrap_package',
               ),
-              35 => 
+              36 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.card_group',
                 1 => 'card_group',
                 2 => 'content-bootstrappackage-card-group',
                 3 => 'bootstrap_package',
               ),
-              36 => 
+              37 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.carousel',
                 1 => 'carousel',
                 2 => 'content-bootstrappackage-carousel',
                 3 => 'bootstrap_package',
               ),
-              37 => 
+              38 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.carousel_small',
                 1 => 'carousel_small',
                 2 => 'content-bootstrappackage-carousel',
                 3 => 'bootstrap_package',
               ),
-              38 => 
+              39 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.carousel_fullscreen',
                 1 => 'carousel_fullscreen',
                 2 => 'content-bootstrappackage-carousel',
                 3 => 'bootstrap_package',
               ),
-              39 => 
+              40 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.csv',
                 1 => 'csv',
                 2 => 'content-bootstrappackage-csv',
                 3 => 'bootstrap_package',
               ),
-              40 => 
+              41 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.external_media',
                 1 => 'external_media',
                 2 => 'content-bootstrappackage-externalmedia',
                 3 => 'bootstrap_package',
               ),
-              41 => 
+              42 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.gallery',
                 1 => 'gallery',
                 2 => 'content-bootstrappackage-gallery',
                 3 => 'bootstrap_package',
               ),
-              42 => 
+              43 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.icon_group',
                 1 => 'icon_group',
                 2 => 'content-bootstrappackage-icon-group',
                 3 => 'bootstrap_package',
               ),
-              43 => 
+              44 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.listgroup',
                 1 => 'listgroup',
                 2 => 'content-bootstrappackage-listgroup',
                 3 => 'bootstrap_package',
               ),
-              44 => 
+              45 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.media',
                 1 => 'media',
                 2 => 'mimetypes-x-content-multimedia',
                 3 => 'bootstrap_package',
               ),
-              45 => 
+              46 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:menu.card_list',
                 1 => 'menu_card_list',
                 2 => 'content-bootstrappackage-menu-card',
                 3 => 'bootstrap_package',
               ),
-              46 => 
+              47 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:menu.card_dir',
                 1 => 'menu_card_dir',
                 2 => 'content-bootstrappackage-menu-card',
                 3 => 'bootstrap_package',
               ),
-              47 => 
+              48 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:menu.thumbnail_list',
                 1 => 'menu_thumbnail_list',
                 2 => 'content-menu-thumbnail',
                 3 => 'bootstrap_package',
               ),
-              48 => 
+              49 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:menu.thumbnail_dir',
                 1 => 'menu_thumbnail_dir',
                 2 => 'content-menu-thumbnail',
                 3 => 'bootstrap_package',
               ),
-              49 => 
+              50 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.panel',
                 1 => 'panel',
                 2 => 'content-panel',
                 3 => 'bootstrap_package',
               ),
-              50 => 
+              51 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.quote',
                 1 => 'quote',
                 2 => 'content-quote',
                 3 => 'bootstrap_package',
               ),
-              51 => 
+              52 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.social_links',
                 1 => 'social_links',
                 2 => 'content-bootstrappackage-social-links',
                 3 => 'bootstrap_package',
               ),
-              52 => 
+              53 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.tab',
                 1 => 'tab',
                 2 => 'content-bootstrappackage-tab',
                 3 => 'bootstrap_package',
               ),
-              53 => 
+              54 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.textcolumn',
                 1 => 'textcolumn',
                 2 => 'content-text-columns',
                 3 => 'bootstrap_package',
               ),
-              54 => 
+              55 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.texticon',
                 1 => 'texticon',
                 2 => 'content-bootstrappackage-texticon',
                 3 => 'bootstrap_package',
               ),
-              55 => 
+              56 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.textteaser',
                 1 => 'textteaser',
                 2 => 'content-text-teaser',
                 3 => 'bootstrap_package',
               ),
-              56 => 
+              57 => 
               array (
                 0 => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:content_element.timeline',
                 1 => 'timeline',
                 2 => 'content-bootstrappackage-timeline',
                 3 => 'bootstrap_package',
               ),
-              57 => 
+              58 => 
               array (
                 0 => '1 Column',
                 1 => 'container_1_columns',
                 2 => 'container_1_columns',
                 3 => 'container',
               ),
-              58 => 
+              59 => 
               array (
                 0 => '2 Columns 50%/50%',
                 1 => 'container_2_columns',
                 2 => 'container_2_columns',
                 3 => 'container',
               ),
-              59 => 
+              60 => 
               array (
                 0 => '2 Columns 25%/75%',
                 1 => 'container_2_columns_right',
                 2 => 'container_2_columns_right',
                 3 => 'container',
               ),
-              60 => 
+              61 => 
               array (
                 0 => '2 Columns 75%/25%',
                 1 => 'container_2_columns_left',
                 2 => 'container_2_columns_left',
                 3 => 'container',
               ),
-              61 => 
+              62 => 
               array (
                 0 => '3 Columns',
                 1 => 'container_3_columns',
                 2 => 'container_3_columns',
                 3 => 'container',
               ),
-              62 => 
+              63 => 
               array (
                 0 => '4 Columns',
                 1 => 'container_4_columns',
@@ -15658,6 +15665,30 @@ return array (
               ),
             ),
           ),
+        ),
+        'game_slider' => 
+        array (
+          'showitem' => '
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.headers;headers,
+            tx_bootstrappackage_carousel_item,
+        --div--;LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:carousel.options,
+            pi_flexform;LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:advanced,
+        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+            --palette--;;language,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+            --palette--;;hidden,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+            categories,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            rowDescription,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
+    ',
         ),
         'typo3-contentblocks_test_content_element' => 
         array (

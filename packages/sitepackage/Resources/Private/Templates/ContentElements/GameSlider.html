@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <div class="game-slider">
+        <swiper-container class="mySwiper" rewind="true" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true" slide-offset="1"
+                          slides-per-view="auto" coverflow-effect-rotate="10" coverflow-effect-stretch="0" coverflow-effect-depth="300"
+                          coverflow-effect-modifier="1" initialSlide="1" coverflow-effect-slide-shadows="false">
+            <f:for each="{records}" as="item">
+                <swiper-slide>
+                    <h3>{item.data.header}</h3>
+                    <f:if condition="{item.backgroundImage.0}">
+                        <f:then>
+                            <f:image image="{item.backgroundImage.0}"/>
+                        </f:then>
+                        <f:else>
+                            <img src="https://via.placeholder.com/350x400"/>
+                        </f:else>
+                    </f:if>
+
+                </swiper-slide>
+            </f:for>
+        </swiper-container>
+    </div>
+    <script>
+        setTimeout(function() {
+            const swiperEl = document.querySelector('swiper-container');
+            const swiper = swiperEl.swiper;
+            var slideCount = swiperEl.swiper.slides.length - 0.01;
+            swiper.slideTo(Math.round(slideCount/2));
+        }, 100);
+    </script>
+</f:section>
+</html>
