@@ -23,12 +23,15 @@
         </swiper-container>
     </div>
     <script>
-        setTimeout(function() {
-            const swiperEl = document.querySelector('swiper-container');
-            const swiper = swiperEl.swiper;
-            var slideCount = swiperEl.swiper.slides.length - 0.01;
-            swiper.slideTo(Math.round(slideCount/2));
-        }, 100);
+        document.onreadystatechange = function () {
+            if (document.readyState === "interactive") {
+                console.log("ready");
+                const swiperEl = document.querySelector('swiper-container');
+                const swiper = swiperEl.swiper;
+                var slideCount = swiperEl.swiper.slides.length - 0.01;
+                swiper.slideTo(Math.round(slideCount/2));
+            }
+        }
     </script>
 </f:section>
 </html>
