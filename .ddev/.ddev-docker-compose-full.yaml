@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: ddev-typo3test-db
     environment:
-      COLUMNS: "232"
+      COLUMNS: "117"
       DDEV_HOSTNAME: typo3test.ddev.site
       DDEV_PHP_VERSION: "8.0"
       DDEV_PRIMARY_URL: http://typo3test.ddev.site
@@ -30,7 +30,7 @@ services:
       DOCKER_IP: 127.0.0.1
       HOST_DOCKER_INTERNAL_IP: ""
       IS_DDEV_PROJECT: "true"
-      LINES: "14"
+      LINES: "65"
       MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-db/mysql_history
       MYSQL_PWD: db
       PGDATABASE: db
@@ -60,6 +60,7 @@ services:
     - host_ip: 127.0.0.1
       mode: ingress
       protocol: tcp
+      published: "49168"
       target: 3306
     restart: "no"
     stop_grace_period: 1m0s
@@ -126,7 +127,7 @@ services:
     - SYS_PTRACE
     container_name: ddev-typo3test-web
     environment:
-      COLUMNS: "232"
+      COLUMNS: "117"
       DDEV_DOCROOT: public
       DDEV_FILES_DIR: /var/www/html/public/fileadmin
       DDEV_HOSTNAME: typo3test.ddev.site
@@ -149,7 +150,7 @@ services:
       HTTP_EXPOSE: 80:80,8025:8025
       HTTPS_EXPOSE: 443:80,8026:8025
       IS_DDEV_PROJECT: "true"
-      LINES: "14"
+      LINES: "65"
       MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-web/mysql_history
       MYSQL_PWD: db
       PGDATABASE: db
