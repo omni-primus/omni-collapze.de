@@ -18,6 +18,15 @@
       }
     }
   }
+  .game-slider-description {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    p[class^='subheader'] {
+      display: none;
+    }
+  }
 }
 
 // 576px

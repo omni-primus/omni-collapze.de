@@ -8190,7 +8190,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/sitepackage",
-                "reference": "a5f39ca70cab9222cae29ff4adb467fb388943f0"
+                "reference": "f279b2aff466b191741dcdd4ea3b8b4afd5fb3c1"
             },
             "require": {
                 "bk2k/bootstrap-package": "^12.0"
