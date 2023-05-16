@@ -6,254 +6,231 @@ networks:
     default:
         name: ddev-typo3test_default
 services:
-    db:
-        build:
-            args:
-                BASE_IMAGE: drud/ddev-dbserver-mariadb-10.3:v1.21.5
-                gid: "1000"
-                uid: "1000"
-                username: primus
-            context: C:\Users\Primus\Documents\OMNISite\omni-collapze.de\.ddev\.dbimageBuild
-            dockerfile: Dockerfile
-        cap_add:
-            - SYS_NICE
-        command: []
-        container_name: ddev-typo3test-db
-        environment:
-            COLUMNS: "120"
-            DDEV_DATABASE: mariadb:10.3
-            DDEV_HOSTNAME: typo3test.ddev.site
-            DDEV_PHP_VERSION: "8.0"
-            DDEV_PRIMARY_URL: http://typo3test.ddev.site
-            DDEV_PROJECT: typo3test
-            DDEV_PROJECT_TYPE: typo3
-            DDEV_ROUTER_HTTP_PORT: "80"
-            DDEV_ROUTER_HTTPS_PORT: "443"
-            DDEV_SITENAME: typo3test
-            DDEV_TLD: ddev.site
-            DOCKER_IP: 127.0.0.1
-            GOARCH: amd64
-            GOOS: windows
-            HOST_DOCKER_INTERNAL_IP: ""
-            IS_DDEV_PROJECT: "true"
-            LINES: "50"
-            MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-db/mysql_history
-            MYSQL_PWD: db
-            PGDATABASE: db
-            PGHOST: 127.0.0.1
-            PGPASSWORD: db
-            PGUSER: db
-            POSTGRES_DB: db
-            POSTGRES_PASSWORD: db
-            POSTGRES_USER: db
-            TZ: ""
-            USER: primus
-        healthcheck:
-            interval: 1s
-            retries: 120
-            start_period: 2m0s
-            timeout: 2m0s
-        hostname: typo3test-db
-        image: drud/ddev-dbserver-mariadb-10.3:v1.21.5-typo3test-built
-        labels:
-            com.ddev.app-type: typo3
-            com.ddev.approot: C:\Users\Primus\Documents\OMNISite\omni-collapze.de
-            com.ddev.platform: ddev
-            com.ddev.site-name: typo3test
-        networks:
-            ddev_default: null
-            default: null
-        ports:
-            - host_ip: 127.0.0.1
-              mode: ingress
-              protocol: tcp
-              published: "0"
-              target: 3306
-        restart: "no"
-        stop_grace_period: 1m0s
-        user: 1000:1000
-        volumes:
-            - source: database
-              target: /var/lib/mysql
-              type: volume
-              volume:
-                nocopy: true
-            - bind:
-                create_host_path: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/.ddev
-              target: /mnt/ddev_config
-              type: bind
-            - bind:
-                create_host_path: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/.ddev/db_snapshots
-              target: /mnt/snapshots
-              type: bind
-            - source: ddev-global-cache
-              target: /mnt/ddev-global-cache
-              type: volume
-              volume: {}
-        working_dir: /home/primus
-    dba:
-        container_name: ddev-typo3test-dba
-        environment:
-            HTTP_EXPOSE: 8036:80
-            HTTPS_EXPOSE: 8037:80
-            PMA_PASSWORD: root
-            PMA_USER: root
-            TZ: ""
-            UPLOAD_LIMIT: 1024M
-            VIRTUAL_HOST: typo3test.ddev.site
-        expose:
-            - "80"
-        healthcheck:
-            interval: 2m0s
-            retries: 1
-            timeout: 2s
-        hostname: typo3test-dba
-        image: phpmyadmin:5
-        labels:
-            com.ddev.app-type: typo3
-            com.ddev.approot: C:\Users\Primus\Documents\OMNISite\omni-collapze.de
-            com.ddev.platform: ddev
-            com.ddev.site-name: typo3test
-        networks:
-            ddev_default: null
-            default: null
-        restart: "no"
-        working_dir: /root
-    web:
-        build:
-            args:
-                BASE_IMAGE: drud/ddev-webserver:v1.21.5
-                DDEV_PHP_VERSION: "8.0"
-                gid: "1000"
-                uid: "1000"
-                username: primus
-            context: C:\Users\Primus\Documents\OMNISite\omni-collapze.de\.ddev\.webimageBuild
-            dockerfile: Dockerfile
-        cap_add:
-            - SYS_PTRACE
-        container_name: ddev-typo3test-web
-        environment:
-            COLUMNS: "120"
-            DDEV_COMPOSER_ROOT: /var/www/html
-            DDEV_DATABASE: mariadb:10.3
-            DDEV_DOCROOT: public
-            DDEV_FILES_DIR: /var/www/html/public/fileadmin
-            DDEV_HOSTNAME: typo3test.ddev.site
-            DDEV_MUTAGEN_ENABLED: "true"
-            DDEV_PHP_VERSION: "8.0"
-            DDEV_PRIMARY_URL: http://typo3test.ddev.site
-            DDEV_PROJECT: typo3test
-            DDEV_PROJECT_TYPE: typo3
-            DDEV_ROUTER_HTTP_PORT: "80"
-            DDEV_ROUTER_HTTPS_PORT: "443"
-            DDEV_SITENAME: typo3test
-            DDEV_TLD: ddev.site
-            DDEV_VERSION: v1.21.6
-            DDEV_WEBSERVER_TYPE: apache-fpm
-            DDEV_XDEBUG_ENABLED: "false"
-            DEPLOY_NAME: local
-            DOCKER_IP: 127.0.0.1
-            DOCROOT: public
-            DRUSH_ALLOW_XDEBUG: "1"
-            DRUSH_OPTIONS_URI: http://typo3test.ddev.site
-            GOARCH: amd64
-            GOOS: windows
-            HOST_DOCKER_INTERNAL_IP: ""
-            HTTP_EXPOSE: 80:80,8025:8025
-            HTTPS_EXPOSE: 443:80,8026:8025
-            IS_DDEV_PROJECT: "true"
-            LINES: "50"
-            MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-web/mysql_history
-            MYSQL_PWD: db
-            NODE_EXTRA_CA_CERTS: /mnt/ddev-global-cache/mkcert/rootCA.pem
-            PGDATABASE: db
-            PGHOST: db
-            PGPASSWORD: db
-            PGUSER: db
-            PHP_IDE_CONFIG: serverName=typo3test.ddev.site
-            SSH_AUTH_SOCK: /home/.ssh-agent/socket
-            TZ: ""
-            USER: primus
-            VIRTUAL_HOST: typo3test.ddev.site
-            npm_config_cache: /mnt/ddev-global-cache/npm
-        external_links:
-            - ddev-router:typo3test.ddev.site
-        healthcheck:
-            interval: 1s
-            retries: 120
-            start_period: 2m0s
-            timeout: 2m0s
-        hostname: typo3test-web
-        image: drud/ddev-webserver:v1.21.5-typo3test-built
-        labels:
-            com.ddev.app-type: typo3
-            com.ddev.approot: C:\Users\Primus\Documents\OMNISite\omni-collapze.de
-            com.ddev.platform: ddev
-            com.ddev.site-name: typo3test
-        networks:
-            ddev_default: null
-            default: null
-        ports:
-            - host_ip: 127.0.0.1
-              mode: ingress
-              protocol: tcp
-              target: 80
-            - host_ip: 127.0.0.1
-              mode: ingress
-              protocol: tcp
-              target: 443
-        restart: "no"
-        user: 1000:1000
-        volumes:
-            - source: project_mutagen
-              target: /var/www
-              type: volume
-              volume:
-                nocopy: true
-            - bind:
-                create_host_path: true
-              read_only: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de
-              target: /var/tmp/html
-              type: bind
-            - source: project_mutagen
-              target: /tmp/project_mutagen
-              type: volume
-              volume:
-                nocopy: true
-            - bind:
-                create_host_path: true
-              read_only: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/.ddev
-              target: /mnt/ddev_config
-              type: bind
-            - bind:
-                create_host_path: true
-              read_only: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/.ddev/xhprof
-              target: /usr/local/bin/xhprof
-              type: bind
-            - bind:
-                create_host_path: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/public/fileadmin
-              target: /var/www/html/public/fileadmin
-              type: bind
-            - bind:
-                create_host_path: true
-              source: /c/Users/Primus/Documents/OMNISite/omni-collapze.de/.git
-              target: /var/www/html/.git
-              type: bind
-            - source: ddev-global-cache
-              target: /mnt/ddev-global-cache
-              type: volume
-              volume: {}
-            - source: ddev-ssh-agent_socket_dir
-              target: /home/.ssh-agent
-              type: volume
-              volume: {}
-        working_dir: /var/www/html/
+  db:
+    build:
+      args:
+        BASE_IMAGE: drud/ddev-dbserver-mariadb-10.3:v1.19.0
+        gid: "1000"
+        uid: "1000"
+        username: pkrampe
+      context: C:\Users\pkrampe\Documents\typo3_ddev\.ddev\.dbimageBuild
+      dockerfile: Dockerfile
+    container_name: ddev-typo3test-db
+    environment:
+      COLUMNS: "117"
+      DDEV_HOSTNAME: typo3test.ddev.site
+      DDEV_PHP_VERSION: "8.0"
+      DDEV_PRIMARY_URL: http://typo3test.ddev.site
+      DDEV_PROJECT: typo3test
+      DDEV_PROJECT_TYPE: typo3
+      DDEV_ROUTER_HTTP_PORT: "80"
+      DDEV_ROUTER_HTTPS_PORT: "443"
+      DDEV_SITENAME: typo3test
+      DDEV_TLD: ddev.site
+      DOCKER_IP: 127.0.0.1
+      HOST_DOCKER_INTERNAL_IP: ""
+      IS_DDEV_PROJECT: "true"
+      LINES: "65"
+      MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-db/mysql_history
+      MYSQL_PWD: db
+      PGDATABASE: db
+      PGHOST: localhost
+      PGPASSWORD: db
+      PGUSER: db
+      POSTGRES_DB: db
+      POSTGRES_PASSWORD: db
+      POSTGRES_USER: db
+      TZ: ""
+    healthcheck:
+      interval: 1s
+      retries: 120
+      start_period: 2m0s
+      timeout: 2m0s
+    hostname: typo3test-db
+    image: drud/ddev-dbserver-mariadb-10.3:v1.19.0-typo3test-built
+    labels:
+      com.ddev.app-type: typo3
+      com.ddev.approot: C:\Users\pkrampe\Documents\typo3_ddev
+      com.ddev.platform: ddev
+      com.ddev.site-name: typo3test
+    networks:
+      ddev_default: null
+      default: null
+    ports:
+    - host_ip: 127.0.0.1
+      mode: ingress
+      protocol: tcp
+      published: "49168"
+      target: 3306
+    restart: "no"
+    stop_grace_period: 1m0s
+    user: 1000:1000
+    volumes:
+    - source: database
+      target: /var/lib/mysql
+      type: volume
+      volume:
+        nocopy: true
+    - bind:
+        create_host_path: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev\.ddev
+      target: /mnt/ddev_config
+      type: bind
+    - bind:
+        create_host_path: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev\.ddev\db_snapshots
+      target: /mnt/snapshots
+      type: bind
+    - source: ddev-global-cache
+      target: /mnt/ddev-global-cache
+      type: volume
+      volume: {}
+    working_dir: /home/pkrampe
+  dba:
+    container_name: ddev-typo3test-dba
+    environment:
+      HTTP_EXPOSE: 8036:8036
+      HTTPS_EXPOSE: 8037:8036
+      PMA_PASSWORD: root
+      PMA_USER: root
+      TZ: ""
+      UPLOAD_LIMIT: 1024M
+      VIRTUAL_HOST: typo3test.ddev.site
+    expose:
+    - "80"
+    healthcheck:
+      interval: 2m0s
+      retries: 1
+      timeout: 2s
+    hostname: typo3test-dba
+    image: phpmyadmin:5
+    labels:
+      com.ddev.app-type: typo3
+      com.ddev.approot: C:\Users\pkrampe\Documents\typo3_ddev
+      com.ddev.platform: ddev
+      com.ddev.site-name: typo3test
+    networks:
+      ddev_default: null
+      default: null
+    restart: "no"
+    working_dir: /root
+  web:
+    build:
+      args:
+        BASE_IMAGE: drud/ddev-webserver:v1.19.0-1
+        gid: "1000"
+        uid: "1000"
+        username: pkrampe
+      context: C:\Users\pkrampe\Documents\typo3_ddev\.ddev\.webimageBuild
+      dockerfile: Dockerfile
+    cap_add:
+    - SYS_PTRACE
+    container_name: ddev-typo3test-web
+    environment:
+      COLUMNS: "117"
+      DDEV_DOCROOT: public
+      DDEV_FILES_DIR: /var/www/html/public/fileadmin
+      DDEV_HOSTNAME: typo3test.ddev.site
+      DDEV_PHP_VERSION: "8.0"
+      DDEV_PRIMARY_URL: http://typo3test.ddev.site
+      DDEV_PROJECT: typo3test
+      DDEV_PROJECT_TYPE: typo3
+      DDEV_ROUTER_HTTP_PORT: "80"
+      DDEV_ROUTER_HTTPS_PORT: "443"
+      DDEV_SITENAME: typo3test
+      DDEV_TLD: ddev.site
+      DDEV_WEBSERVER_TYPE: apache-fpm
+      DDEV_XDEBUG_ENABLED: "false"
+      DEPLOY_NAME: local
+      DOCKER_IP: 127.0.0.1
+      DOCROOT: public
+      DRUSH_ALLOW_XDEBUG: "1"
+      DRUSH_OPTIONS_URI: http://typo3test.ddev.site
+      HOST_DOCKER_INTERNAL_IP: ""
+      HTTP_EXPOSE: 80:80,8025:8025
+      HTTPS_EXPOSE: 443:80,8026:8025
+      IS_DDEV_PROJECT: "true"
+      LINES: "65"
+      MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/typo3test-web/mysql_history
+      MYSQL_PWD: db
+      PGDATABASE: db
+      PGHOST: db
+      PGPASSWORD: db
+      PGUSER: db
+      PHP_IDE_CONFIG: serverName=typo3test.ddev.site
+      SSH_AUTH_SOCK: /home/.ssh-agent/socket
+      TZ: ""
+      VIRTUAL_HOST: typo3test.ddev.site
+    external_links:
+    - ddev-router:typo3test.ddev.site
+    healthcheck:
+      interval: 1s
+      retries: 120
+      start_period: 2m0s
+      timeout: 2m0s
+    hostname: typo3test-web
+    image: drud/ddev-webserver:v1.19.0-1-typo3test-built
+    labels:
+      com.ddev.app-type: typo3
+      com.ddev.approot: C:\Users\pkrampe\Documents\typo3_ddev
+      com.ddev.platform: ddev
+      com.ddev.site-name: typo3test
+    networks:
+      ddev_default: null
+      default: null
+    ports:
+    - host_ip: 127.0.0.1
+      mode: ingress
+      protocol: tcp
+      target: 80
+    - host_ip: 127.0.0.1
+      mode: ingress
+      protocol: tcp
+      target: 443
+    restart: "no"
+    user: 1000:1000
+    volumes:
+    - source: project_mutagen
+      target: /var/www
+      type: volume
+      volume:
+        nocopy: true
+    - source: project_mutagen
+      target: /tmp/project_mutagen
+      type: volume
+      volume:
+        nocopy: true
+    - bind:
+        create_host_path: true
+      read_only: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev\.ddev
+      target: /mnt/ddev_config
+      type: bind
+    - bind:
+        create_host_path: true
+      read_only: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev\.ddev\xhprof
+      target: /usr/local/bin/xhprof
+      type: bind
+    - bind:
+        create_host_path: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev/public/fileadmin
+      target: /var/www/html/public/fileadmin
+      type: bind
+    - bind:
+        create_host_path: true
+      source: C:\Users\pkrampe\Documents\typo3_ddev\.git
+      target: /var/www/html/.git
+      type: bind
+    - source: ddev-global-cache
+      target: /mnt/ddev-global-cache
+      type: volume
+      volume: {}
+    - source: ddev-ssh-agent_socket_dir
+      target: /home/.ssh-agent
+      type: volume
+      volume: {}
+    working_dir: /var/www/html/
 volumes:
     database:
         external: true
