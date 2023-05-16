@@ -8,7 +8,7 @@
                           coverflow-effect-modifier="1" initialSlide="1" coverflow-effect-slide-shadows="false">
             <f:for each="{records}" as="item" iteration="iterator">
                 <swiper-slide>
-                    <h3>{item.data.header}</h3>
+                    <h3 class="slide-headline">{item.data.header}</h3>
                     <f:if condition="{item.backgroundImage.0}">
                         <f:then>
                             <f:image image="{item.backgroundImage.0}"/>
@@ -33,14 +33,24 @@
                 const swiperEl = document.querySelector('swiper-container');
                 const swiper = swiperEl.swiper;
                 var slideCount = swiperEl.swiper.slides.length - 0.01;
+
+                //change headline style and subheader text on slide
+                swiper.on('transitionStart', function () {
+                    let subheaders = document.querySelectorAll("[class^=subheader]");
+                    let slides = document.querySelectorAll("swiper-slide");
+                    for (let i = 0;i < subheaders.length;i++) {
+                        subheaders[i].style.display = "none";
+                        slides[i].querySelector(".slide-headline").classList.remove('active');
+                        if(subheaders[i].classList.contains('subheader'+swiper.realIndex)) {
+                            slides[i].querySelector('.slide-headline').classList.add('active');
+                            subheaders[i].style.display = "block";
+                        }
+                    }
+                });
+
+                //slide to middle element
                 swiper.slideTo(Math.round(slideCount/2));
                 document.querySelector('.subheader'+swiper.activeIndex).style.display = "block";
-                swiper.on('transitionEnd', function() {
-                    console.log('*** mySwiper.realIndex', swiper.realIndex);
-                    document.querySelector('.subheader'+swiper.previousIndex).style.display = "none";
-                    document.querySelector('.subheader'+swiper.realIndex).style.display = "block";
-                });
-                
             }
         }
     </script>

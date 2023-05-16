@@ -8,8 +8,24 @@
       swiper-slide {
         background-position: center;
         background-size: cover;
-        width: 348px;
         height: 424px;
+        .slide-headline {
+          text-align: center;
+          color: #000;
+          height: 0;
+          border-bottom: 32px solid #fff;
+          border-left: 25px solid transparent;
+          border-right: 25px solid transparent;
+          width: 285px;
+          margin-left: auto;
+          margin-right: auto;
+          &.active {
+            border-bottom: 32px solid #8422d8;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            color: #fff;
+          }
+        }
         img {
           display: block;
           width: 100%;
@@ -31,7 +47,14 @@
 
 // 576px
 @include media-breakpoint-up(sm) {
-
+  .game-slider {
+    .mySwiper {
+      swiper-slide {
+        width: 348px;
+        height: 424px;
+      }
+    }
+  }
 }
 
 // 768px
