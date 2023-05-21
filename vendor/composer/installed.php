@@ -151,6 +151,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'friendsoftypo3/fontawesome-provider' => array(
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
+            'reference' => '4b269a4c719d4d18e80340e5317c4959a83c7abc',
+            'type' => 'typo3-cms-extension',
+            'install_path' => __DIR__ . '/../../public/typo3conf/ext/fontawesome_provider',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => '7.4.2',
             'version' => '7.4.2.0',
@@ -198,6 +207,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'mask/mask' => array(
+            'pretty_version' => 'v8.1.3',
+            'version' => '8.1.3.0',
+            'reference' => 'fb656084b48f0dd916f82363dbb007f7314994f3',
+            'type' => 'typo3-cms-extension',
+            'install_path' => __DIR__ . '/../../public/typo3conf/ext/mask',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'masterminds/html5' => array(
             'pretty_version' => '2.7.5',
@@ -754,6 +772,12 @@
                 0 => '2.2.1',
             ),
         ),
+        'typo3-ter/mask' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v8.1.3',
+            ),
+        ),
         'typo3/class-alias-loader' => array(
             'pretty_version' => 'v1.1.3',
             'version' => '1.1.3.0',
@@ -1210,7 +1234,7 @@
         'webneo-gmbh/sitepackage' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f279b2aff466b191741dcdd4ea3b8b4afd5fb3c1',
+            'reference' => 'e0b683c2fe07e778155b06b958955b4a4a3e9397',
             'type' => 'typo3-cms-extension',
             'install_path' => __DIR__ . '/../../public/typo3conf/ext/sitepackage',
             'aliases' => array(),

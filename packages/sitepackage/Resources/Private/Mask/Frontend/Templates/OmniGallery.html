@@ -1,0 +1,32 @@
+<div id="c{data.uid}" class="highlight-gallery frame frame-size-default">
+    <div class="frame-group-container">
+        <div class="frame-group-inner">
+            <div class="frame-container frame-container-default">
+                <f:if condition="{data.tx_mask_gallery_element}">
+                    <div class="highlight-gallery-container gallery-row">
+                        <f:for each="{data.tx_mask_gallery_element}" as="data_item">
+                            <div class="highlight-gallery-detail gallery-item gallery-item-size-6">
+                                <div class="highlight-detail-upper">
+                                    <f:if condition="{data_item.tx_mask_event_name}">
+                                        <span class="hightlight-event-name">{data_item.tx_mask_event_name}</span>
+                                    </f:if>
+                                    <f:if condition="{data_item.tx_mask_player_name}">
+                                        <span class="highlight-player-name">{data_item.tx_mask_player_name}</span>
+                                    </f:if>
+                                    <f:for each="{data_item.tx_mask_card_image}" as="file">
+                                        <f:media file="{file}" width="200" />
+                                    </f:for>
+                                </div>
+                                <div class="highlight-detail-lower">
+                                    <f:if condition="{data_item.tx_mask_placement}">
+                                        <span class="hightlight-placement">{data_item.tx_mask_placement}</span>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </f:for>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</div>

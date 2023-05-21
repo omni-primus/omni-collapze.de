@@ -43,7 +43,8 @@
         "typo3/cms-workspaces": "^11.5",
         "webneo-gmbh/sitepackage": "@dev",
         "typo3-contentblocks/contentblocks-reg-api": "^3.0",
-        "b13/container": "^2.2"
+        "b13/container": "^2.2",
+        "mask/mask": "^8.1"
     },
     "config": {
         "allow-plugins": {

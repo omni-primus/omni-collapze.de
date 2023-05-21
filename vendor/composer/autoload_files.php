@@ -23,5 +23,6 @@ return array(
     '6a47392539ca2329373e0d33e1dba053' => $vendorDir . '/symfony/polyfill-intl-icu/bootstrap.php',
     '8a197a13b1f213f3a2178168511a1b5d' => $baseDir . '/public/typo3/sysext/core/Resources/PHP/GlobalDebugFunctions.php',
     '667aeda72477189d0494fecd327c3641' => $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
+    '5b605db66a033b182db922f98a2a7f95' => $vendorDir . '/typo3/alias-loader-include.php',
     '2c273be442ca0325e9f786d50b1e2e6b' => $vendorDir . '/typo3/autoload-include.php',
 );

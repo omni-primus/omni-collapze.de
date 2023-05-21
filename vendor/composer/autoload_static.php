@@ -24,6 +24,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '8a197a13b1f213f3a2178168511a1b5d' => __DIR__ . '/../..' . '/public/typo3/sysext/core/Resources/PHP/GlobalDebugFunctions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '5b605db66a033b182db922f98a2a7f95' => __DIR__ . '/..' . '/typo3/alias-loader-include.php',
         '2c273be442ca0325e9f786d50b1e2e6b' => __DIR__ . '/..' . '/typo3/autoload-include.php',
     );
 
@@ -142,12 +143,17 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'M' => 
         array (
             'Masterminds\\' => 12,
+            'MASK\\Mask\\' => 10,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'F' => 
+        array (
+            'FriendsOfTYPO3\\FontawesomeProvider\\' => 35,
         ),
         'E' => 
         array (
@@ -542,6 +548,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'MASK\\Mask\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/mask/Classes',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -553,6 +563,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'FriendsOfTYPO3\\FontawesomeProvider\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/fontawesome_provider/Classes',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
