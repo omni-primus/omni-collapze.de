@@ -1,0 +1,15 @@
+
+module.tx_tournamentapi_tournament {
+    view {
+        # cat=module.tx_tournamentapi_tournament/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:tournament_api/Resources/Private/Backend/Templates/
+        # cat=module.tx_tournamentapi_tournament/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:tournament_api/Resources/Private/Backend/Partials/
+        # cat=module.tx_tournamentapi_tournament/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:tournament_api/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+        # cat=module.tx_tournamentapi_tournament//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

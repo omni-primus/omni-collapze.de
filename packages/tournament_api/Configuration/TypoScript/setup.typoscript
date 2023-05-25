@@ -1,0 +1,15 @@
+
+# Module configuration
+module.tx_tournamentapi_web_tournamentapitournament {
+    persistence {
+        storagePid = {$module.tx_tournamentapi_tournament.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:tournament_api/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_tournamentapi_tournament.view.templateRootPath}
+        partialRootPaths.0 = EXT:tournament_api/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_tournamentapi_tournament.view.partialRootPath}
+        layoutRootPaths.0 = EXT:tournament_api/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_tournamentapi_tournament.view.layoutRootPath}
+    }
+}
