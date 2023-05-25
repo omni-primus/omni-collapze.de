@@ -5,16 +5,19 @@ defined('TYPO3') || die();
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'Tournament',
         'web',
-        'tournamentmodul',
+        'tournamentmodule',
         '',
         [
-            
+            \Primus\Tournament\Controller\TournamentController::class => 'show'
         ],
         [
             'access' => 'user,group',
-            'icon'   => 'EXT:tournament/Resources/Public/Icons/user_mod_tournamentmodul.svg',
-            'labels' => 'LLL:EXT:tournament/Resources/Private/Language/locallang_tournamentmodul.xlf',
+            'icon'   => 'EXT:tournament/Resources/Public/Icons/OMNI-Icon.png',
+            'labels' => 'LLL:EXT:tournament/Resources/Private/Language/locallang_tournamentmodule.xlf',
         ]
     );
 
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_tournament_domain_model_tournamenttree', 'EXT:tournament/Resources/Private/Language/locallang_csh_tx_tournament_domain_model_tournamenttree.xlf');
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_tournament_domain_model_tournamenttree');
 })();

@@ -2000,7 +2000,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/tournament",
-                "reference": "1990e04e9b7b09bcb20c292bff90c90f3b533ac5"
+                "reference": "db865f7073ba80b40166f601ca7a7ab4d7132e55"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -2036,6 +2036,12 @@
             },
             "license": [
                 "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Primus",
+                    "role": "Developer"
+                }
             ],
             "transport-options": {
                 "relative": true

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:tournament/Resources/Private/Language/locallang.xlf" date="2023-05-25T13:16:50Z" product-name="tournament">
+		<header/>
+		<body>
+			<trans-unit id="tx_tournament_domain_model_tournamenttree" resname="tx_tournament_domain_model_tournamenttree">
+				<source>Tournament Tree</source>
+			</trans-unit>
+			<trans-unit id="tx_tournament_domain_model_tournamenttree.description" resname="tx_tournament_domain_model_tournamenttree.description">
+				<source>Tournament Tree</source>
+			</trans-unit>
+			<trans-unit id="tx_tournament_domain_model_tournamentapi" resname="tx_tournament_domain_model_tournamentapi">
+				<source>Tournament A P I</source>
+			</trans-unit>
+			<trans-unit id="tx_tournament_domain_model_tournamentapi.description" resname="tx_tournament_domain_model_tournamentapi.description">
+				<source>Tournament A P I</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

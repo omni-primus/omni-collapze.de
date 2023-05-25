@@ -21,6 +21,8 @@ plugin.tx_tournament_tournamenttree {
     }
 }
 
+
+
 # these classes are only used in auto-generated templates
 plugin.tx_tournament._CSS_DEFAULT_STYLE (
     textarea.f3-form-error {
@@ -55,17 +57,19 @@ plugin.tx_tournament._CSS_DEFAULT_STYLE (
     }
 )
 
+
+
 # Module configuration
-module.tx_tournament_web_tournamenttournamentmodul {
+module.tx_tournament_web_tournamenttournamentmodule {
     persistence {
-        storagePid = {$module.tx_tournament_tournamentmodul.persistence.storagePid}
+        storagePid = {$module.tx_tournament_tournamentmodule.persistence.storagePid}
     }
     view {
         templateRootPaths.0 = EXT:tournament/Resources/Private/Backend/Templates/
-        templateRootPaths.1 = {$module.tx_tournament_tournamentmodul.view.templateRootPath}
+        templateRootPaths.1 = {$module.tx_tournament_tournamentmodule.view.templateRootPath}
         partialRootPaths.0 = EXT:tournament/Resources/Private/Backend/Partials/
-        partialRootPaths.1 = {$module.tx_tournament_tournamentmodul.view.partialRootPath}
+        partialRootPaths.1 = {$module.tx_tournament_tournamentmodule.view.partialRootPath}
         layoutRootPaths.0 = EXT:tournament/Resources/Private/Backend/Layouts/
-        layoutRootPaths.1 = {$module.tx_tournament_tournamentmodul.view.layoutRootPath}
+        layoutRootPaths.1 = {$module.tx_tournament_tournamentmodule.view.layoutRootPath}
     }
 }

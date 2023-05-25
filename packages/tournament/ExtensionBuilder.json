@@ -1,16 +1,99 @@
 {
-    "modules": [],
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    242,
+                    156
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": true,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
+                    "customActions": [
+                        ""
+                    ]
+                },
+                "name": "TournamentTree",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "50752818834"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    629,
+                    103
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": true,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": true,
+                    "_default4_edit_update": true,
+                    "_default5_delete": true,
+                    "customActions": []
+                },
+                "name": "TournamentAPI",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "791711613025"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
     "properties": {
         "backendModules": [
             {
                 "actions": {
-                    "controllerActionCombinations": ""
+                    "controllerActionCombinations": "Tournament => show"
                 },
-                "description": "",
-                "key": "tournamentmodul",
+                "description": "Test Tournament API",
+                "key": "tournamentmodule",
                 "mainModule": "web",
-                "name": "Tournament",
-                "tabLabel": ""
+                "name": "Tournament API",
+                "tabLabel": "Tournament API"
             }
         ],
         "description": "",
@@ -32,7 +115,14 @@
         "name": "Tournament",
         "originalExtensionKey": "",
         "originalVendorName": "",
-        "persons": [],
+        "persons": [
+            {
+                "company": "OMNI CollapZe",
+                "email": "primus@omni-collapze.de",
+                "name": "Primus",
+                "role": "Developer"
+            }
+        ],
         "plugins": [
             {
                 "actions": {
@@ -49,7 +139,7 @@
     "wires": [],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2023-05-25 12:57",
+        "last_modified": "2023-05-25 01:16",
         "extension_builder_version": "v11.0.10",
         "be_user": "Paul Krampe (4)"
     }

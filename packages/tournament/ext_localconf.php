@@ -1,18 +1,17 @@
 <?php
 defined('TYPO3') || die();
 
-use Primus\Tournament\Controller\TournamentController;
-
 (static function() {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Tournament',
         'Tournamenttree',
         [
-            TournamentController::class => 'show'
+            \Primus\Tournament\Controller\TournamentTreeController::class => 'index, list, show, new, create, edit, update, delete, ',
+            \Primus\Tournament\Controller\TournamentController::class => 'show',
         ],
         // non-cacheable actions
         [
-            
+            \Primus\Tournament\Controller\TournamentTreeController::class => 'create, update, delete, ',
         ]
     );
 
