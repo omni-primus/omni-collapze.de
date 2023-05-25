@@ -44,7 +44,9 @@
         "webneo-gmbh/sitepackage": "@dev",
         "typo3-contentblocks/contentblocks-reg-api": "^3.0",
         "b13/container": "^2.2",
-        "mask/mask": "^8.1"
+        "mask/mask": "^8.1",
+        "friendsoftypo3/extension-builder": "^11.0",
+        "primus/tournament": "@dev"
     },
     "config": {
         "allow-plugins": {

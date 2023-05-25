@@ -151,6 +151,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'friendsoftypo3/extension-builder' => array(
+            'pretty_version' => 'v11.0.10',
+            'version' => '11.0.10.0',
+            'reference' => 'b9b7bc4a62edb580990f11695d405e09281daede',
+            'type' => 'typo3-cms-extension',
+            'install_path' => __DIR__ . '/../../public/typo3conf/ext/extension_builder',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'friendsoftypo3/fontawesome-provider' => array(
             'pretty_version' => 'v1.0.3',
             'version' => '1.0.3.0',
@@ -265,6 +274,15 @@
             'reference' => '77a32518733312af16a44300404e945338981de3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpdocumentor/type-resolver',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'primus/tournament' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '1990e04e9b7b09bcb20c292bff90c90f3b533ac5',
+            'type' => 'typo3-cms-extension',
+            'install_path' => __DIR__ . '/../../public/typo3conf/ext/tournament',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -772,10 +790,22 @@
                 0 => '2.2.1',
             ),
         ),
+        'typo3-ter/extension-builder' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v11.0.10',
+            ),
+        ),
         'typo3-ter/mask' => array(
             'dev_requirement' => false,
             'replaced' => array(
                 0 => 'v8.1.3',
+            ),
+        ),
+        'typo3-ter/tournament' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'dev-main',
             ),
         ),
         'typo3/class-alias-loader' => array(

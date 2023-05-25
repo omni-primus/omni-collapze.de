@@ -1,7 +1,7 @@
 <?php
 return [
     'BE' => [
-        'debug' => false,
+        'debug' => true,
         'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$NDVnRGtGWUpCNXRMTGJieA$LutVspdGZL0SAiwHSKD6vo5uIK8P5KAOBjiJj5v+0sU',
         'passwordHashing' => [
@@ -41,6 +41,11 @@ return [
             'contentBlockDefinition' => '0',
             'enableLayoutOptions' => '0',
             'showBackendModule' => '1',
+        ],
+        'extension_builder' => [
+            'backupDir' => 'var/tx_extensionbuilder/backups',
+            'backupExtension' => '1',
+            'enableRoundtrip' => '1',
         ],
         'extensionmanager' => [
             'automaticInstallation' => '1',

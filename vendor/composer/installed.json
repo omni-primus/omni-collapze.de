@@ -1051,6 +1051,84 @@
             "install-path": "../enshrined/svg-sanitize"
         },
         {
+            "name": "friendsoftypo3/extension-builder",
+            "version": "v11.0.10",
+            "version_normalized": "11.0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfTYPO3/extension_builder.git",
+                "reference": "b9b7bc4a62edb580990f11695d405e09281daede"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfTYPO3/extension_builder/zipball/b9b7bc4a62edb580990f11695d405e09281daede",
+                "reference": "b9b7bc4a62edb580990f11695d405e09281daede",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "nikic/php-parser": "^4.10.4",
+                "php": "^7.4 || ^8.0",
+                "typo3/cms-backend": "^11.4",
+                "typo3/cms-core": "^11.4"
+            },
+            "replace": {
+                "typo3-ter/extension-builder": "self.version"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "roave/security-advisories": "dev-latest",
+                "sebastian/diff": "^3.0",
+                "typo3/cms-frontend": "^11.4",
+                "typo3/cms-install": "^11.4",
+                "typo3/coding-standards": "^0.3.0",
+                "typo3/testing-framework": "^6.11"
+            },
+            "time": "2023-03-14T18:32:33+00:00",
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "extension_builder",
+                    "app-dir": ".Build",
+                    "ignore-as-root": false,
+                    "web-dir": ".Build/public"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "EBT\\ExtensionBuilder\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nico de Haen",
+                    "role": "Developer"
+                },
+                {
+                    "name": "extension_builder Development Team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tool to kickstart and maintain TYPO3 extensions",
+            "homepage": "https://extensions.typo3.org/extension/extension_builder",
+            "keywords": [
+                "extension",
+                "extension_builder",
+                "typo3"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/friendsoftypo3/extension-builder/main/en-us/",
+                "issues": "https://github.com/FriendsOfTYPO3/extension_builder/issues",
+                "source": "https://github.com/FriendsOfTYPO3/extension_builder"
+            },
+            "install-path": "../../public/typo3conf/ext/extension_builder"
+        },
+        {
             "name": "friendsoftypo3/fontawesome-provider",
             "version": "v1.0.3",
             "version_normalized": "1.0.3.0",
@@ -1914,6 +1992,55 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.1"
             },
             "install-path": "../phpdocumentor/type-resolver"
+        },
+        {
+            "name": "primus/tournament",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/tournament",
+                "reference": "1990e04e9b7b09bcb20c292bff90c90f3b533ac5"
+            },
+            "require": {
+                "typo3/cms-core": "^11.5"
+            },
+            "replace": {
+                "typo3-ter/tournament": "self.version"
+            },
+            "require-dev": {
+                "typo3/testing-framework": "^6.9.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "web-dir": ".Build/public",
+                    "extension-key": "tournament"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Primus\\Tournament\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Primus\\Tournament\\Tests\\": "Tests"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "transport-options": {
+                "relative": true
+            },
+            "install-path": "../../public/typo3conf/ext/tournament"
         },
         {
             "name": "psr/cache",

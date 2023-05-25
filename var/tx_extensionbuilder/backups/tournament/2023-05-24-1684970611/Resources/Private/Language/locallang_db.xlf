@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:tournament/Resources/Private/Language/locallang_db.xlf" date="2023-05-24T23:21:47Z" product-name="tournament">
+		<header/>
+		<body>
+			<trans-unit id="tx_tournament_tournament.name" resname="tx_tournament_tournament.name">
+				<source>Tournament</source>
+			</trans-unit>
+			<trans-unit id="tx_tournament_tournament.description" resname="tx_tournament_tournament.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

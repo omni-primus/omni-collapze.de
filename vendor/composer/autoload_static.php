@@ -138,6 +138,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
+            'Primus\\Tournament\\' => 18,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -158,6 +159,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
+            'EBT\\ExtensionBuilder\\' => 21,
         ),
         'D' => 
         array (
@@ -540,6 +542,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Primus\\Tournament\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/tournament/Classes',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -571,6 +577,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'EBT\\ExtensionBuilder\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/extension_builder/Classes',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

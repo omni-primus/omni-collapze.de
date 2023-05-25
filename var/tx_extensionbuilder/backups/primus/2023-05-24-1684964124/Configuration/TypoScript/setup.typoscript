@@ -1,0 +1,15 @@
+
+# Module configuration
+module.tx_primus_web_primustournament {
+    persistence {
+        storagePid = {$module.tx_primus_tournament.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:primus/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_primus_tournament.view.templateRootPath}
+        partialRootPaths.0 = EXT:primus/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_primus_tournament.view.partialRootPath}
+        layoutRootPaths.0 = EXT:primus/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_primus_tournament.view.layoutRootPath}
+    }
+}
