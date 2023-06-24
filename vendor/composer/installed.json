@@ -2000,7 +2000,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/tournament",
-                "reference": "db865f7073ba80b40166f601ca7a7ab4d7132e55"
+                "reference": "0138bac206425730f73011c06e4e33eb3cd3771d"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
