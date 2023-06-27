@@ -10,8 +10,6 @@
 page {
     includeCSS {
         theme = EXT:sitepackage/Resources/Public/Scss/Theme/theme.scss
-        tournament = EXT:tournament/Resources/Public/Scss/tournament.scss
-        tournament.outputfile = EXT:tournament/Resources/Public/Css/tournament.css
     }
 
     includeJSLibs {

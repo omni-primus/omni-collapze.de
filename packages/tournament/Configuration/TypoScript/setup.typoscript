@@ -1,3 +1,9 @@
+page {
+    includeCSS {
+        tournament = EXT:tournament/Resources/Public/Scss/tournament.scss
+    }
+}
+
 plugin.tx_tournament_tournamenttree {
     view {
         templateRootPaths.0 = EXT:tournament/Resources/Private/Templates/

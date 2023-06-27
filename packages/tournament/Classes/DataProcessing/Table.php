@@ -13,8 +13,6 @@ class Table {
     private $tournamentUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament.json';
     private $matchesUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament/matches.json';
 
-    //private $url = 'https://' . $username . ':' . $apiKey . '@api.challonge.com/v1/tournaments/eaZy_tournament.json';
-
     public function getTournament():array {
 
         $apiUrl = 'https://' . $this->username . ":" . $this->apiKey . $this->tournamentUrl;
@@ -41,6 +39,15 @@ class Table {
         }
 
         $arr = \GuzzleHttp\json_decode($json, true);
+
+        //split score so we can read in template
+        for($i=0; $i < sizeof($arr); $i++) {
+            $score = $arr[$i]["match"]["scores_csv"];
+            $scores = preg_split("[-]", $score);
+            $arr[$i]["match"]["scorePlayer1"] = $scores[0];
+            $arr[$i]["match"]["scorePlayer2"] = $scores[1];
+        }
+
         return $arr;
     }
 }
