@@ -11,6 +11,7 @@ return array(
     'cogpowered\\FineDiff\\' => array($vendorDir . '/lolli42/finediff/src'),
     'WebneoGmbh\\Sitepackage\\' => array($baseDir . '/public/typo3conf/ext/sitepackage/Classes'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
+    'WapplerSystems\\WsScss\\' => array($baseDir . '/public/typo3conf/ext/ws_scss/Classes'),
     'Typo3Contentblocks\\ContentblocksRegApi\\' => array($baseDir . '/public/typo3conf/ext/contentblocks_reg_api/Classes'),
     'Typo3Contentblocks\\ComposerPlugin\\' => array($vendorDir . '/typo3-contentblocks/composer-plugin/src'),
     'TYPO3\\SymfonyPsrEventDispatcherAdapter\\' => array($vendorDir . '/typo3/symfony-psr-event-dispatcher-adapter/src'),

@@ -1252,6 +1252,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'wapplersystems/ws-scss' => array(
+            'pretty_version' => '11.0.2',
+            'version' => '11.0.2.0',
+            'reference' => 'b7746b98a61ac83da20484d8dee160fad034f465',
+            'type' => 'typo3-cms-extension',
+            'install_path' => __DIR__ . '/../../public/typo3conf/ext/ws_scss',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'webmozart/assert' => array(
             'pretty_version' => '1.10.0',
             'version' => '1.10.0.0',
