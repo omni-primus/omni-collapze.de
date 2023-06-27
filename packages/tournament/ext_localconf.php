@@ -6,12 +6,8 @@ defined('TYPO3') || die();
         'Tournament',
         'Tournamenttree',
         [
-            \Primus\Tournament\Controller\TournamentTreeController::class => 'index, list, show, new, create, edit, update, delete, ',
+            \Primus\Tournament\Controller\TournamentTreeController::class => 'show',
             \Primus\Tournament\Controller\TournamentController::class => 'show',
-        ],
-        // non-cacheable actions
-        [
-            \Primus\Tournament\Controller\TournamentTreeController::class => 'create, update, delete, ',
         ]
     );
 

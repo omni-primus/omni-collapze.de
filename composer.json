@@ -46,7 +46,8 @@
         "b13/container": "^2.2",
         "mask/mask": "^8.1",
         "friendsoftypo3/extension-builder": "^11.0",
-        "primus/tournament": "@dev"
+        "primus/tournament": "@dev",
+        "wapplersystems/ws-scss": "^11.0"
     },
     "config": {
         "allow-plugins": {

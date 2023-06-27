@@ -46,7 +46,7 @@ class TournamentTreeControllerTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $tournamentTreeRepository = $this->getMockBuilder(\::class)
+        $tournamentTreeRepository = $this->getMockBuilder(ViewInterface::class)
             ->onlyMethods(['findAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -81,7 +81,7 @@ class TournamentTreeControllerTest extends UnitTestCase
     {
         $tournamentTree = new \Primus\Tournament\Domain\Model\TournamentTree();
 
-        $tournamentTreeRepository = $this->getMockBuilder(\::class)
+        $tournamentTreeRepository = $this->getMockBuilder(ViewInterface::class)
             ->onlyMethods(['add'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -114,7 +114,7 @@ class TournamentTreeControllerTest extends UnitTestCase
     {
         $tournamentTree = new \Primus\Tournament\Domain\Model\TournamentTree();
 
-        $tournamentTreeRepository = $this->getMockBuilder(\::class)
+        $tournamentTreeRepository = $this->getMockBuilder(ViewInterface::class)
             ->onlyMethods(['update'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -132,7 +132,7 @@ class TournamentTreeControllerTest extends UnitTestCase
     {
         $tournamentTree = new \Primus\Tournament\Domain\Model\TournamentTree();
 
-        $tournamentTreeRepository = $this->getMockBuilder(\::class)
+        $tournamentTreeRepository = $this->getMockBuilder(ViewInterface::class)
             ->onlyMethods(['remove'])
             ->disableOriginalConstructor()
             ->getMock();

@@ -45,6 +45,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         array (
             'WebneoGmbh\\Sitepackage\\' => 23,
             'Webmozart\\Assert\\' => 17,
+            'WapplerSystems\\WsScss\\' => 22,
         ),
         'T' => 
         array (
@@ -203,6 +204,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'WapplerSystems\\WsScss\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/ws_scss/Classes',
         ),
         'Typo3Contentblocks\\ContentblocksRegApi\\' => 
         array (

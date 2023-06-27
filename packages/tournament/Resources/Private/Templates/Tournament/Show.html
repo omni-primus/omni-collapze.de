@@ -5,6 +5,15 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1 class="">Tournament API powered by OMNI CollapZe</h1>
+    <h1>OMNI Tournament Overview</h1>
+    <f:for each="{tournamentArray}" as="tournament">
+        <h2>{tournament.name}</h2>
+    </f:for>
+    <f:debug>{matchesArray}</f:debug>
+    <f:for each="{matchesArray}" as="matches">
+        <f:for each="{matches}" as="match">
+            {match.id}
+        </f:for>
+    </f:for>
 </f:section>
 </html>

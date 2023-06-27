@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5d140bbd52cff890c37b7d686532965",
+    "content-hash": "c2d19e8d84b92f6448ca39e23394bc76",
     "packages": [
         {
             "name": "b13/container",
@@ -1927,7 +1927,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/tournament",
-                "reference": "db865f7073ba80b40166f601ca7a7ab4d7132e55"
+                "reference": "0138bac206425730f73011c06e4e33eb3cd3771d"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -8074,6 +8074,61 @@
                 "source": "https://github.com/TYPO3/Fluid/tree/2.7.1"
             },
             "time": "2021-11-12T10:06:45+00:00"
+        },
+        {
+            "name": "wapplersystems/ws-scss",
+            "version": "11.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WapplerSystems/ws_scss.git",
+                "reference": "b7746b98a61ac83da20484d8dee160fad034f465"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WapplerSystems/ws_scss/zipball/b7746b98a61ac83da20484d8dee160fad034f465",
+                "reference": "b7746b98a61ac83da20484d8dee160fad034f465",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0 || ^8.1",
+                "scssphp/scssphp": "^1",
+                "typo3/cms-core": "^11"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ws_scss"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WapplerSystems\\WsScss\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Sven Wappler",
+                    "homepage": "https://wappler.systems",
+                    "role": "Developer"
+                }
+            ],
+            "description": "SASS compiler for TYPO3",
+            "homepage": "https://wappler.systems",
+            "keywords": [
+                "extension",
+                "sass",
+                "scss",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/WapplerSystems/ws_scss/issues",
+                "source": "https://github.com/WapplerSystems/ws_scss/tree/11.0.2"
+            },
+            "time": "2022-12-18T11:11:40+00:00"
         },
         {
             "name": "webmozart/assert",
