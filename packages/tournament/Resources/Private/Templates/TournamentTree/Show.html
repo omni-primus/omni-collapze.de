@@ -12,35 +12,97 @@
             </f:if>
         </f:for>
         <li>Rounds: {rounds}</li>
-        <f:debug>{matchesArray}</f:debug>
     </ul>
 
-    <div class="container">
-        <div class="tournament-bracket tournament-bracket--rounded">
-            <div class="tournament-bracket__round tournament-bracket__round--quarterfinals">
-                <h3 class="tournament-bracket__round-title">Quarterfinals</h3>
-                <ul class="tournament-bracket__list">
-                    <f:render section="bracket_match" arguments="{match: matchesArray.0.match}"/>
-                    <f:render section="bracket_match" arguments="{match: matchesArray.1.match}"/>
-                    <f:render section="bracket_match" arguments="{match: matchesArray.2.match}"/>
-                    <f:render section="bracket_match" arguments="{match: matchesArray.3.match}"/>
-                </ul>
-            </div>
-            <div class="tournament-bracket__round tournament-bracket__round--semifinals">
-                <h3 class="tournament-bracket__round-title">Semifinals</h3>
-                <ul class="tournament-bracket__list">
-                    <f:render section="bracket_match" arguments="{match: matchesArray.4.match}"/>
-                    <f:render section="bracket_match" arguments="{match: matchesArray.5.match}"/>
-                </ul>
-            </div>
-            <div class="tournament-bracket__round tournament-bracket__round--gold">
-                <h3 class="tournament-bracket__round-title">Final</h3>
-                <ul class="tournament-bracket__list">
-                    <f:render section="bracket_match" arguments="{match: matchesArray.6.match}"/>
-                </ul>
+    <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
+        <div class="container">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:if condition="{round.0.match.round} > 0">
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                <f:if condition="{iterator.isLast}">
+                                    <f:then>Final</f:then>
+                                    <f:else>
+                                        <f:if condition="{iterator.cycle} == {iterator.total - 1}">
+                                            <f:then>Semifinals</f:then>
+                                            <f:else>Round {iterator.cycle}</f:else>
+                                         </f:if>
+                                    </f:else>
+                                </f:if>
+                                
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch" iteration="counter">
+                                    <f:if condition="{iterator.cycle} == {iterator.total}">
+                                        <f:then>
+                                            <f:if condition="{counter.cycle} == {counter.total}">
+                                                <f:then></f:then>
+                                                <f:else>
+                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+                                            <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                </f:for>
             </div>
         </div>
-    </div>
+        <div class="container loser-bracket">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:if condition="{round.0.match.round} < 0">
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                Loser Bracket Round {iterator.cycle}
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch" iteration="counter">
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="{tournamentArray.tournament.tournament_type} == 'single elimination'">
+        <div class="container">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:if condition="{round.0.match.round} > 0">
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                <f:if condition="{iterator.isLast}">
+                                    <f:then>Final</f:then>
+                                    <f:else>
+                                        <f:if condition="{iterator.cycle} == {iterator.total - 1}">
+                                            <f:then>Semifinals</f:then>
+                                            <f:else>Round {iterator.cycle}</f:else>
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+                                
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch">
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
 
     <f:flashMessages />
 

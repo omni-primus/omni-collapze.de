@@ -50,4 +50,20 @@ class Table {
 
         return $arr;
     }
+    public function getRoundCount(array $matches):int {
+        return sizeof($matches);
+    }
+
+    public function getRoundArray(array $matches):array {
+        $roundArray = [];
+        for($i = 0; $i < count($matches); $i++) {
+            if($roundArray[$matches[$i]["match"]["round"]]) {
+                array_push($roundArray[$matches[$i]["match"]["round"]], $matches[$i]);
+            }
+            else {
+                $roundArray[$matches[$i]["match"]["round"]] = array($matches[$i]);
+            }
+        }
+        return $roundArray;
+    }
 }
