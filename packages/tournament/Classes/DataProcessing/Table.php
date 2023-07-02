@@ -10,8 +10,9 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 class Table {
     private $apiKey = '5K4yWSHxlDVGIzqmOIpoDLCIDLoYzwQaFmyF55zk';
     private $username = 'omni_primus';
-    private $tournamentUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament.json';
-    private $matchesUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament/matches.json';
+    private $tournamentUrl = '@api.challonge.com/v1/tournaments/tl1on1cup6.json';
+    private $matchesUrl = '@api.challonge.com/v1/tournaments/tl1on1cup6/matches.json';
+    private $playerUrl = '@api.challonge.com/v1/tournaments/tl1on1cup6/participants.json';
 
     public function getTournament():array {
 
@@ -47,7 +48,6 @@ class Table {
             $arr[$i]["match"]["scorePlayer1"] = $scores[0];
             $arr[$i]["match"]["scorePlayer2"] = $scores[1];
         }
-
         return $arr;
     }
     public function getRoundCount(array $matches):int {
@@ -65,5 +65,19 @@ class Table {
             }
         }
         return $roundArray;
+    }
+
+    public function getPlayerNames():array {
+
+        $apiUrl = 'https://' . $this->username . ":" . $this->apiKey . $this->playerUrl;
+        $json = file_get_contents($apiUrl);
+        $playerArr = \GuzzleHttp\json_decode($json, true);
+        $newPlayerArr = [];
+
+        for($i = 0;$i < count($playerArr);$i++) {
+            $newPlayerArr[$playerArr[$i]["participant"]["id"]] = $playerArr[$i]["participant"]["name"];
+        }
+
+        return $newPlayerArr;
     }
 }

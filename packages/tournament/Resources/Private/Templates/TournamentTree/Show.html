@@ -15,7 +15,7 @@
     </ul>
 
     <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
-        <div class="container">
+        <div class="container upper-bracket">
             <div class="tournament-bracket tournament-bracket--rounded">
                 <f:for each="{roundArray}" as="round" iteration="iterator">
                     <f:if condition="{round.0.match.round} > 0">
@@ -39,12 +39,12 @@
                                             <f:if condition="{counter.cycle} == {counter.total}">
                                                 <f:then></f:then>
                                                 <f:else>
-                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, players:playerArray}"/>
                                                 </f:else>
                                             </f:if>
                                         </f:then>
                                         <f:else>
-                                            <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                            <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
                                         </f:else>
                                     </f:if>
                                 </f:for>
@@ -56,15 +56,17 @@
         </div>
         <div class="container loser-bracket">
             <div class="tournament-bracket tournament-bracket--rounded">
+                <f:variable name="roundCount">0</f:variable>
                 <f:for each="{roundArray}" as="round" iteration="iterator">
                     <f:if condition="{round.0.match.round} < 0">
+                        <f:variable name="roundCount">{roundCount + 1}</f:variable>
                         <div class="tournament-bracket__round">
                             <h3 class="tournament-bracket__round-title">
-                                Loser Bracket Round {iterator.cycle}
+                                Loser Bracket Round {roundCount}
                             </h3>
                             <ul class="tournament-bracket__list">
                                 <f:for each="{round}" as="roundMatch" iteration="counter">
-                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
                                 </f:for>
                             </ul>
                         </div>
@@ -75,7 +77,7 @@
     </f:if>
 
     <f:if condition="{tournamentArray.tournament.tournament_type} == 'single elimination'">
-        <div class="container">
+        <div class="container upper-bracket">
             <div class="tournament-bracket tournament-bracket--rounded">
                 <f:for each="{roundArray}" as="round" iteration="iterator">
                     <f:if condition="{round.0.match.round} > 0">
@@ -94,7 +96,7 @@
                             </h3>
                             <ul class="tournament-bracket__list">
                                 <f:for each="{round}" as="roundMatch">
-                                    <f:render section="bracket_match" arguments="{match: roundMatch.match}"/>
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
                                 </f:for>
                             </ul>
                         </div>
@@ -132,7 +134,7 @@
                 </f:if>
                 <tr class="tournament-bracket__team {f:if(condition: winner1, then: 'tournament-bracket__team--winner')}">
                     <td class="tournament-bracket__country">
-                        <span class="tournament-bracket__code">{match.player1_id}</span>
+                        <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
                     </td>
                     <td class="tournament-bracket__score">
                         <span class="tournament-bracket__number">{match.scorePlayer1}</span>
@@ -140,7 +142,7 @@
                 </tr>
                 <tr class="tournament-bracket__team {f:if(condition: winner2, then: 'tournament-bracket__team--winner')}">
                     <td class="tournament-bracket__country">
-                        <span class="tournament-bracket__code">{match.player2_id}</span>
+                        <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
                     </td>
                     <td class="tournament-bracket__score">
                         <span class="tournament-bracket__number">{match.scorePlayer2}</span>

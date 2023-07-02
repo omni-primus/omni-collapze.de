@@ -41,6 +41,7 @@ class TournamentTreeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('matchesArray', $matchArray);
         $this->view->assign('roundCount', $table->getRoundCount($matchArray));
         $this->view->assign('roundArray', $table->getRoundArray($matchArray));
+        $this->view->assign('playerArray', $table->getPlayerNames());
         return $this->htmlResponse();
     }
 }

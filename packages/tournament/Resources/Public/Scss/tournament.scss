@@ -355,7 +355,7 @@ $breakpoint-lg: 1200px;
     &::before,
     &::after {
       position: absolute;
-      left: 0;
+      left: -32px;
       z-index: 1;
       content: '';
       display: block;
@@ -394,6 +394,13 @@ $breakpoint-lg: 1200px;
   }
   .tournament-bracket__team {
     flex-direction: column-reverse;
+  }
+  .loser-bracket, .upper-bracket {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .loser-bracket {
+    margin-top: 20px;
   }
 }
 
@@ -439,7 +446,7 @@ $breakpoint-lg: 1200px;
   .tournament-bracket__match {
     &::before,
     &::after {
-      width: 1.5em;
+      width: 2.5em;
     }
 
     &::before {
