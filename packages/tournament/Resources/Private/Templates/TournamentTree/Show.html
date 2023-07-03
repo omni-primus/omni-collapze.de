@@ -12,6 +12,7 @@
             </f:if>
         </f:for>
         <li>Rounds: {rounds}</li>
+        <f:debug>{playerArray}</f:debug>
     </ul>
 
     <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
@@ -105,15 +106,7 @@
             </div>
         </div>
     </f:if>
-
     <f:flashMessages />
-
-    <table class="tx_tournament">
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </table>
 </f:section>
 <f:section name="bracket_match">
     <li class="tournament-bracket__item">

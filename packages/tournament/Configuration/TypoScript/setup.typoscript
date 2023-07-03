@@ -2,6 +2,9 @@ page {
     includeCSS {
         tournament = EXT:tournament/Resources/Public/Scss/tournament.scss
     }
+    includeJSFooter {
+        dragScroll = EXT:tournament/Resources/Public/Js/tournament.js
+    }
 }
 
 plugin.tx_tournament_tournamenttree {

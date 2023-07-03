@@ -396,16 +396,25 @@ $breakpoint-lg: 1200px;
     flex-direction: column-reverse;
   }
   .loser-bracket, .upper-bracket {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto;
   }
   .loser-bracket {
     margin-top: 20px;
+  }
+  .tx-tournament .container{
+    cursor: grab;
+    overflow: hidden;
   }
 }
 
 //sm-md: 786px - 992px
 @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  .tournament-bracket.tournament-bracket--rounded {
+    position: relative;
+    padding-right: 2200px;
+    overflow: visible;
+    transform: translate3d(0px, 0px, 0px);
+  }
   .tournament-bracket__content {
     & .tournament-bracket__team:first-child {
       align-items: flex-end;
