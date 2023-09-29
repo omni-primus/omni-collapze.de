@@ -12,7 +12,6 @@
             </f:if>
         </f:for>
         <li>Rounds: {rounds}</li>
-        <f:debug>{playerArray}</f:debug>
     </ul>
 
     <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
@@ -25,8 +24,8 @@
                                 <f:if condition="{iterator.isLast}">
                                     <f:then>Final</f:then>
                                     <f:else>
-                                        <f:if condition="{iterator.cycle} == {iterator.total - 1}">
-                                            <f:then>Semifinals</f:then>
+                                        <f:if condition="{iterator.cycle} == {rounds - 1}">
+                                            <f:then>Semifinal</f:then>
                                             <f:else>Round {iterator.cycle}</f:else>
                                          </f:if>
                                     </f:else>
@@ -38,9 +37,10 @@
                                     <f:if condition="{iterator.cycle} == {iterator.total}">
                                         <f:then>
                                             <f:if condition="{counter.cycle} == {counter.total}">
-                                                <f:then></f:then>
+                                                <f:then>
+                                                </f:then>
                                                 <f:else>
-                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, players:playerArray}"/>
+                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
                                                 </f:else>
                                             </f:if>
                                         </f:then>
@@ -51,6 +51,23 @@
                                 </f:for>
                             </ul>
                         </div>
+                    </f:if>
+                    <f:if condition="{iterator.isLast}">
+                        <f:variable name="lastRoundCount"><f:count subject="{round}"></f:count></f:variable>
+                        <f:if condition="{lastRoundCount} == 2">
+                            <div class="tournament-bracket__round">
+                                <h3 class="tournament-bracket__round-title">Grand Final</h3>
+                                <ul class="tournament-bracket__list">
+                                    <f:for each="{round}" as="roundMatch" iteration="counter">
+                                        <f:if condition="{counter.cycle} == {counter.total}">
+                                            <f:if condition="{roundMatch.match.state} != 'pending'">
+                                                <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                </ul>
+                            </div>
+                        </f:if>
                     </f:if>
                 </f:for>
             </div>

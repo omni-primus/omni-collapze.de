@@ -10,9 +10,9 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 class Table {
     private $apiKey = '5K4yWSHxlDVGIzqmOIpoDLCIDLoYzwQaFmyF55zk';
     private $username = 'omni_primus';
-    private $tournamentUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament.json';
-    private $matchesUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament/matches.json';
-    private $playerUrl = '@api.challonge.com/v1/tournaments/eaZy_tournament/participants.json';
+    private $tournamentUrl = '@api.challonge.com/v1/tournaments/5gq3x4it.json';
+    private $matchesUrl = '@api.challonge.com/v1/tournaments/5gq3x4it/matches.json';
+    private $playerUrl = '@api.challonge.com/v1/tournaments/5gq3x4it/participants.json';
 
     public function getTournament():array {
 
