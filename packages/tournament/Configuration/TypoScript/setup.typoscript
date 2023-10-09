@@ -46,7 +46,6 @@ plugin.tx_tournament._CSS_DEFAULT_STYLE (
 
     .tx-tournament table {
         border-collapse: separate;
-        border-spacing: 10px;
     }
 
     .tx-tournament table th {

@@ -36,7 +36,7 @@ class TournamentTreeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     }
     public function showAction() : \Psr\Http\Message\ResponseInterface {
         $table = new Table;
-        $matchArray = $table->getMatches();
+        $matchArray = $table->getMatches();        
         $this->view->assign('tournamentArray', $table->getTournament());
         $this->view->assign('matchesArray', $matchArray);
         $this->view->assign('roundCount', $table->getRoundCount($matchArray));

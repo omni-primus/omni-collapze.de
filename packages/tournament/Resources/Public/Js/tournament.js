@@ -1,21 +1,21 @@
-const ele = document.querySelector('.tx-tournament .container');
+const eles = document.querySelectorAll('.tx-tournament .container');
 
 let pos = { top: 0, left: 0, x: 0, y: 0 };
 
 const mouseDownHandler = function (e) {
-    ele.style.cursor = 'grabbing';
-    ele.style.userSelect = 'none';
+    this.style.cursor = 'grabbing';
+    this.style.userSelect = 'none';
     pos = {
         // The current scroll
-        left: ele.scrollLeft,
-        top: ele.scrollTop,
+        left: this.scrollLeft,
+        top: this.scrollTop,
         // Get the current mouse position
         x: e.clientX,
         y: e.clientY,
     };
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
+    this.addEventListener('mousemove', mouseMoveHandler);
+    this.addEventListener('mouseup', mouseUpHandler);
 };
 
 const mouseMoveHandler = function (e) {
@@ -24,16 +24,19 @@ const mouseMoveHandler = function (e) {
     const dy = e.clientY - pos.y;
 
     // Scroll the element
-    ele.scrollTop = pos.top - dy;
-    ele.scrollLeft = pos.left - dx;
+    this.scrollTop = pos.top - dy;
+    this.scrollLeft = pos.left - dx;
 };
 
 const mouseUpHandler = function () {
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
+    this.removeEventListener('mousemove', mouseMoveHandler);
+    this.removeEventListener('mouseup', mouseUpHandler);
 
-    ele.style.cursor = 'grab';
-    ele.style.removeProperty('user-select');
+    this.style.cursor = 'grab';
+    this.style.removeProperty('user-select');
 };
 
-ele.addEventListener('mousedown', mouseDownHandler);
+for(let i = 0;i<eles.length;i++) {
+    console.log(eles[i]);
+    eles[i].addEventListener('mousedown', mouseDownHandler);
+}
