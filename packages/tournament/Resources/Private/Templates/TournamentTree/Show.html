@@ -18,6 +18,9 @@
         <div class="container upper-bracket">
             <div class="tournament-bracket tournament-bracket--rounded">
                 <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:variable name="currentRoundCount"><f:count subject="{round}"></f:count></f:variable>
+                    <f:variable name="hund">{iterator.cycle - 1}</f:variable>
+                    <f:variable name="lastRoundCount"><f:count subject="{roundArray.{hund}}"></f:count></f:variable>
                     <f:if condition="{round.0.match.round} > 0">
                         <div class="tournament-bracket__round">
                             <h3 class="tournament-bracket__round-title">
@@ -40,12 +43,12 @@
                                                 <f:then>
                                                 </f:then>
                                                 <f:else>
-                                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                                    <f:render section="bracket_match" arguments="{match:roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
                                                 </f:else>
                                             </f:if>
                                         </f:then>
                                         <f:else>
-                                            <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                            <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
                                         </f:else>
                                     </f:if>
                                 </f:for>
@@ -53,15 +56,14 @@
                         </div>
                     </f:if>
                     <f:if condition="{iterator.isLast}">
-                        <f:variable name="lastRoundCount"><f:count subject="{round}"></f:count></f:variable>
-                        <f:if condition="{lastRoundCount} == 2">
+                        <f:if condition="!{tournamentArray.tournament.grand_finals_modifier}">
                             <div class="tournament-bracket__round">
                                 <h3 class="tournament-bracket__round-title">Grand Final</h3>
                                 <ul class="tournament-bracket__list">
                                     <f:for each="{round}" as="roundMatch" iteration="counter">
                                         <f:if condition="{counter.cycle} == {counter.total}">
                                             <f:if condition="{roundMatch.match.state} != 'pending'">
-                                                <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                                <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
                                             </f:if>
                                         </f:if>
                                     </f:for>
@@ -77,6 +79,9 @@
                 <f:variable name="roundCount">0</f:variable>
                 <f:for each="{roundArray}" as="round" iteration="iterator">
                     <f:if condition="{round.0.match.round} < 0">
+                        <f:variable name="currentLoserRoundCount"><f:count subject="{round}"></f:count></f:variable>
+                        <f:variable name="hundLoser">{iterator.cycle - 1}</f:variable>
+                        <f:variable name="lastLoserRoundCount"><f:count subject="{roundArray.{hundLoser}}"></f:count></f:variable>
                         <f:variable name="roundCount">{roundCount + 1}</f:variable>
                         <div class="tournament-bracket__round">
                             <h3 class="tournament-bracket__round-title">
@@ -84,7 +89,9 @@
                             </h3>
                             <ul class="tournament-bracket__list">
                                 <f:for each="{round}" as="roundMatch" iteration="counter">
-                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                    <f:debug>{currentLoserRoundCount}</f:debug>
+                                    <f:debug>{lastLoserRoundCount}</f:debug>
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastLoserRoundCount, currentRound:currentLoserRoundCount}"/>
                                 </f:for>
                             </ul>
                         </div>
@@ -126,7 +133,14 @@
     <f:flashMessages />
 </f:section>
 <f:section name="bracket_match">
-    <li class="tournament-bracket__item">
+    <f:if condition="{lastRound}">
+        <f:if condition="{currentRound}">
+            <f:if condition="{currentRound} == {lastRound}">
+                <f:variable name="straight"></f:variable>
+            </f:if>
+        </f:if>
+    </f:if>
+    <li class="tournament-bracket__item {f:if(condition: straight, then: 'straight-line')}">
         <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
                 <thead class="sr-only">
