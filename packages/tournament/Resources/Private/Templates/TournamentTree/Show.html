@@ -2,17 +2,13 @@
 <f:layout name="Default" />
 <f:section name="content">
     <h1>OMNI Oktagon</h1>
-    <ul>
-        <li>{tournamentArray.tournament.tournament_type}</li>
-        <f:variable name="matchesCount"><f:count subject="{matchesArray}"></f:count></f:variable>
-        <li>Matches: {matchesCount}</li>
-        <f:for each="{matchesArray}" as="match" iteration="i">
-            <f:if condition="{i.cycle} == {matchesCount}">
-                <f:variable name="rounds">{match.match.round}</f:variable>
-            </f:if>
-        </f:for>
-        <li>Rounds: {rounds}</li>
-    </ul>
+
+    <f:variable name="matchesCount"><f:count subject="{matchesArray}"></f:count></f:variable>
+    <f:for each="{matchesArray}" as="match" iteration="i">
+        <f:if condition="{i.cycle} == {matchesCount}">
+            <f:variable name="rounds">{match.match.round}</f:variable>
+        </f:if>
+    </f:for>
 
     <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
         <div class="container upper-bracket">
@@ -143,12 +139,6 @@
     <li class="tournament-bracket__item {f:if(condition: straight, then: 'straight-line')}">
         <div class="tournament-bracket__match" tabindex="0">
             <table class="tournament-bracket__table">
-                <thead class="sr-only">
-                <tr>
-                    <th>Player</th>
-                    <th>Score</th>
-                </tr>
-                </thead>
                 <tbody class="tournament-bracket__content">
                 <f:if condition="{match.player1_id} == {match.winner_id}">
                     <f:variable name="winner1">winner1</f:variable>
@@ -158,23 +148,52 @@
                 </f:if>
                 <tr class="tournament-bracket__team {f:if(condition: winner1, then: 'tournament-bracket__team--winner')}">
                     <td class="tournament-bracket__country">
-                        <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
+                        <f:if condition="!{players.{match.player1_id}}">
+                        <f:then>
+                            <span class="tournament-bracket__code">TBD</span>
+                        </f:then>    
+                        <f:else>
+                            <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
+                        </f:else>
+                        </f:if>
                     </td>
                     <td class="tournament-bracket__score">
-                        <span class="tournament-bracket__number">{match.scorePlayer1}</span>
+                        <f:if condition="{match.scorePlayer1} == ''">
+                            <f:then>
+                                <span class="tournament-bracket__number">0</span>
+                            </f:then>
+                            <f:else>
+                                <span class="tournament-bracket__number">{match.scorePlayer1}</span>
+                            </f:else>
+                        </f:if>
                     </td>
                 </tr>
                 <tr class="tournament-bracket__team {f:if(condition: winner2, then: 'tournament-bracket__team--winner')}">
                     <td class="tournament-bracket__country">
-                        <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
+                        <f:if condition="!{players.{match.player2_id}}">
+                        <f:then>
+                            <span class="tournament-bracket__code">TBD</span>
+                        </f:then>    
+                        <f:else>
+                            <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
+                        </f:else>
+                        </f:if>
                     </td>
                     <td class="tournament-bracket__score">
-                        <span class="tournament-bracket__number">{match.scorePlayer2}</span>
+                        <f:if condition="{match.scorePlayer2} == ''">
+                            <f:then>
+                                <span class="tournament-bracket__number">0</span>
+                            </f:then>
+                            <f:else>
+                                <span class="tournament-bracket__number">{match.scorePlayer2}</span>
+                            </f:else>
+                        </f:if>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </li>
+    
 </f:section>
 </html>
