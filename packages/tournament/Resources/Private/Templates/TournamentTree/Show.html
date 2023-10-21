@@ -148,50 +148,59 @@
                             <f:variable name="loser1">loser1</f:variable>
                         </f:if>
                     </f:if>
-                <tr class="tournament-bracket__team {f:if(condition: winner1, then: 'tournament-bracket__team--winner')} {f:if(condition: loser1, then: 'tournament-bracket__team--loser')}">
-                    <td class="tournament-bracket__country">
-                        <f:if condition="!{players.{match.player1_id}}">
-                        <f:then>
-                            <span class="tournament-bracket__code">TBD</span>
-                        </f:then>    
-                        <f:else>
-                            <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
-                        </f:else>
-                        </f:if>
-                    </td>
-                    <td class="tournament-bracket__score">
-                        <f:if condition="{match.scorePlayer1} == ''">
-                            <f:then>
-                                <span class="tournament-bracket__number">0</span>
-                            </f:then>
-                            <f:else>
-                                <span class="tournament-bracket__number">{match.scorePlayer1}</span>
-                            </f:else>
-                        </f:if>
-                    </td>
-                </tr>
-                <tr class="tournament-bracket__team {f:if(condition: winner2, then: 'tournament-bracket__team--winner')} {f:if(condition: loser2, then: 'tournament-bracket__team--loser')}">
-                    <td class="tournament-bracket__country">
-                        <f:if condition="!{players.{match.player2_id}}">
-                        <f:then>
-                            <span class="tournament-bracket__code">TBD</span>
-                        </f:then>    
-                        <f:else>
-                            <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
-                        </f:else>
-                        </f:if>
-                    </td>
-                    <td class="tournament-bracket__score">
-                        <f:if condition="{match.scorePlayer2} == ''">
-                            <f:then>
-                                <span class="tournament-bracket__number">0</span>
-                            </f:then>
-                            <f:else>
-                                <span class="tournament-bracket__number">{match.scorePlayer2}</span>
-                            </f:else>
-                        </f:if>
-                    </td>
-                </tr>
+                    <f:if condition="{players.{match.player1_id}} == ''">
+                        <f:then><f:variable name="player1">false</f:variable></f:then>
+                        <f:else><f:variable name="player1">true</f:variable></f:else>
+                    </f:if>
+                    <tr class="tournament-bracket__team{f:if(condition: '{player1}', then: '', else: ' tbd')}{f:if(condition: winner1, then: ' tournament-bracket__team--winner')}{f:if(condition: loser1, then: ' tournament-bracket__team--loser')}">
+                        <td class="tournament-bracket__country">
+                            <f:if condition="{player1}">
+                                <f:then>
+                                    <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
+                                </f:then>    
+                                <f:else>
+                                    <span class="tournament-bracket__code code_tbd">TBD</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td class="tournament-bracket__score">
+                            <f:if condition="{match.scorePlayer1} == ''">
+                                <f:then>
+                                    <span class="tournament-bracket__number">0</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__number">{match.scorePlayer1}</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                    </tr>
+
+                    <f:if condition="{players.{match.player2_id}} == ''">
+                        <f:then><f:variable name="player2">false</f:variable></f:then>
+                        <f:else><f:variable name="player2">true</f:variable></f:else>
+                    </f:if>
+                    <tr class="tournament-bracket__team{f:if(condition: player2, then: '', else: ' tbd')}{f:if(condition: winner2, then: ' tournament-bracket__team--winner')}{f:if(condition: loser2, then: ' tournament-bracket__team--loser')}">
+                        <td class="tournament-bracket__country">
+                            <f:if condition="{player2}">
+                                <f:then>
+                                    <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
+                                </f:then>    
+                                <f:else>
+                                    <span class="tournament-bracket__code code_tbd">TBD</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td class="tournament-bracket__score">
+                            <f:if condition="{match.scorePlayer2} == ''">
+                                <f:then>
+                                    <span class="tournament-bracket__number">0</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__number">{match.scorePlayer2}</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

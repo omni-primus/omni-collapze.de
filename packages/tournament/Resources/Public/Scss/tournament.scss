@@ -199,6 +199,9 @@ $breakpoint-lg: 1200px;
       color: #DBB42C;
     }
   }
+  &.tbd {
+    border-left: 2px solid #5c5c5c;
+  }
   &.tournament-bracket__team--loser {
     border-left: 2px solid #212121;
     .tournament-bracket__code {
@@ -221,8 +224,11 @@ $breakpoint-lg: 1200px;
   text-transform: uppercase;
   border: 0;
   text-decoration: none;
-  cursor: help;
   transition: padding 0.2s ease-in-out;
+}
+
+.tournament-bracket__code.code_tbd {
+  color: #5c5c5c;
 }
 
 .tournament-bracket__score {
