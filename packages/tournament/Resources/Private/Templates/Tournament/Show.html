@@ -1,19 +1,16 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      xmlns:bu="http://typo3.org/ns/TYPO3/CMS/Beuser/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+    <f:layout name="Show" />
 
-<f:section name="content">
-    <h1>OMNI Tournament Overview</h1>
-    <f:for each="{tournamentArray}" as="tournament">
-        <h2>{tournament.name}</h2>
-    </f:for>
-    <f:debug>{matchesArray}</f:debug>
-    <f:for each="{matchesArray}" as="matches">
-        <f:for each="{matches}" as="match">
-            {match.id}
-        </f:for>
-    </f:for>
-</f:section>
+    <f:section name="headline">
+        <h1>Test</h1>
+    </f:section>
+
+    <f:section name="content">
+        <h2>Hello World</h2>
+    </f:section>
 </html>

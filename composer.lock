@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2d19e8d84b92f6448ca39e23394bc76",
+    "content-hash": "1acf81ca132d56979c40701623c2105b",
     "packages": [
         {
             "name": "b13/container",
@@ -1927,7 +1927,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/tournament",
-                "reference": "0138bac206425730f73011c06e4e33eb3cd3771d"
+                "reference": "db865f7073ba80b40166f601ca7a7ab4d7132e55"
             },
             "require": {
                 "typo3/cms-core": "^11.5"
@@ -7591,6 +7591,75 @@
                 "source": "https://github.com/typo3/typo3"
             },
             "time": "2022-03-08T07:46:38+00:00"
+        },
+        {
+            "name": "typo3/cms-styleguide",
+            "version": "11.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/styleguide.git",
+                "reference": "832b5258c6ba724db92014a9e54f05628804e34c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/styleguide/zipball/832b5258c6ba724db92014a9e54f05628804e34c",
+                "reference": "832b5258c6ba724db92014a9e54f05628804e34c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1",
+                "codeception/module-asserts": "^1.2",
+                "codeception/module-cli": "^1.1",
+                "codeception/module-webdriver": "^1.1",
+                "phpstan/phpstan": "^1.4.3",
+                "typo3/cms-core": "11.*.*@dev",
+                "typo3/cms-frontend": "11.*.*@dev",
+                "typo3/cms-install": "11.*.*@dev",
+                "typo3/coding-standards": "^0.5.0",
+                "typo3/tailor": "^1.2",
+                "typo3/testing-framework": "^6.14.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/Web",
+                    "extension-key": "styleguide"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Styleguide\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 CMS Core Team",
+                    "homepage": "https://forge.typo3.org/projects/typo3cms-core",
+                    "role": "Developer"
+                },
+                {
+                    "name": "The TYPO3 Community",
+                    "homepage": "https://typo3.org/community/",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "TYPO3 extension to showcase TYPO3 Backend capabilities",
+            "homepage": "https://github.com/TYPO3/styleguide",
+            "keywords": [
+                "style guide",
+                "typo3",
+                "typo3 backend"
+            ],
+            "support": {
+                "issues": "https://github.com/TYPO3/styleguide/issues",
+                "source": "https://github.com/TYPO3-CMS/styleguide/tree/11.5.4"
+            },
+            "time": "2022-02-23T12:46:24+00:00"
         },
         {
             "name": "typo3/cms-sys-note",

@@ -60,6 +60,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
             'TYPO3\\CMS\\Tstemplate\\' => 21,
             'TYPO3\\CMS\\T3editor\\' => 19,
             'TYPO3\\CMS\\SysNote\\' => 18,
+            'TYPO3\\CMS\\Styleguide\\' => 21,
             'TYPO3\\CMS\\Setup\\' => 16,
             'TYPO3\\CMS\\Seo\\' => 14,
             'TYPO3\\CMS\\Scheduler\\' => 20,
@@ -252,6 +253,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'TYPO3\\CMS\\SysNote\\' => 
         array (
             0 => __DIR__ . '/../..' . '/public/typo3/sysext/sys_note/Classes',
+        ),
+        'TYPO3\\CMS\\Styleguide\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/styleguide/Classes',
         ),
         'TYPO3\\CMS\\Setup\\' => 
         array (

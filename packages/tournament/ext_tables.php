@@ -8,7 +8,7 @@ defined('TYPO3') || die();
         'tournamentmodule',
         '',
         [
-            \Primus\Tournament\Controller\TournamentController::class => 'show'
+            \Primus\Tournament\Controller\TournamentController::class => 'show, edit'
         ],
         [
             'access' => 'user,group',

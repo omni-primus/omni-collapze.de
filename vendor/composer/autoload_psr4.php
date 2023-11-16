@@ -23,6 +23,7 @@ return array(
     'TYPO3\\CMS\\Tstemplate\\' => array($baseDir . '/public/typo3/sysext/tstemplate/Classes'),
     'TYPO3\\CMS\\T3editor\\' => array($baseDir . '/public/typo3/sysext/t3editor/Classes'),
     'TYPO3\\CMS\\SysNote\\' => array($baseDir . '/public/typo3/sysext/sys_note/Classes'),
+    'TYPO3\\CMS\\Styleguide\\' => array($baseDir . '/public/typo3conf/ext/styleguide/Classes'),
     'TYPO3\\CMS\\Setup\\' => array($baseDir . '/public/typo3/sysext/setup/Classes'),
     'TYPO3\\CMS\\Seo\\' => array($baseDir . '/public/typo3/sysext/seo/Classes'),
     'TYPO3\\CMS\\Scheduler\\' => array($baseDir . '/public/typo3/sysext/scheduler/Classes'),

@@ -7,7 +7,7 @@ defined('TYPO3') || die();
         'Tournamenttree',
         [
             \Primus\Tournament\Controller\TournamentTreeController::class => 'show',
-            \Primus\Tournament\Controller\TournamentController::class => 'show',
+            \Primus\Tournament\Controller\TournamentController::class => 'show, edit',
         ]
     );
 

@@ -5,7 +5,317 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-    <h1>OMNI Tournament Overview</h1>
-    <h2>{tournament.name}</h2>
+    <div class="top-bar">
+        <h1>OMNI Tournament Overview</h1>
+    </div>
+
+    <f:variable name="matchesCount"><f:count subject="{matchesArray}"></f:count></f:variable>
+    <f:for each="{matchesArray}" as="match" iteration="i">
+        <f:if condition="{i.cycle} == {matchesCount}">
+            <f:variable name="rounds">{match.match.round}</f:variable>
+        </f:if>
+    </f:for>
+
+    <f:if condition="{tournamentArray.tournament.tournament_type} == 'double elimination'">
+        <div class="upper-bracket">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:variable name="currentRoundCount"><f:count subject="{round}"></f:count></f:variable>
+                    <f:variable name="hund">{iterator.cycle - 1}</f:variable>
+                    <f:variable name="lastRoundCount"><f:count subject="{roundArray.{hund}}"></f:count></f:variable>
+                    <f:if condition="{round.0.match.round} > 0">
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                <f:if condition="{iterator.isLast}">
+                                    <f:then>Final</f:then>
+                                    <f:else>
+                                        <f:if condition="{iterator.cycle} == {rounds - 1}">
+                                            <f:then>Semifinal</f:then>
+                                            <f:else>Round {iterator.cycle}</f:else>
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch" iteration="counter">
+                                    <f:if condition="{iterator.cycle} == {iterator.total}">
+                                        <f:then>
+                                            <f:if condition="{counter.cycle} == {counter.total}">
+                                                <f:then>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:render section="bracket_match" arguments="{match:roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+                                            <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                    <f:if condition="{iterator.isLast}">
+                        <f:if condition="!{tournamentArray.tournament.grand_finals_modifier}">
+                            <div class="tournament-bracket__round">
+                                <h3 class="tournament-bracket__round-title">Grand Final</h3>
+                                <ul class="tournament-bracket__list">
+                                    <f:for each="{round}" as="roundMatch" iteration="counter">
+                                        <f:if condition="{counter.cycle} == {counter.total}">
+                                            <f:if condition="{roundMatch.match.state} != 'pending'">
+                                                <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastRoundCount, currentRound:currentRoundCount}"/>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                </ul>
+                            </div>
+                        </f:if>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+        <div class="loser-bracket">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:variable name="roundCount">0</f:variable>
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:if condition="{round.0.match.round} < 0">
+                        <f:variable name="currentLoserRoundCount"><f:count subject="{round}"></f:count></f:variable>
+                        <f:variable name="hundLoser">{iterator.cycle - 1}</f:variable>
+                        <f:variable name="lastLoserRoundCount"><f:count subject="{roundArray.{hundLoser}}"></f:count></f:variable>
+                        <f:variable name="roundCount">{roundCount + 1}</f:variable>
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                Loser Bracket Round {roundCount}
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch" iteration="counter">
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray, lastRound:lastLoserRoundCount, currentRound:currentLoserRoundCount}"/>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="{tournamentArray.tournament.tournament_type} == 'single elimination'">
+        <div class="container upper-bracket">
+            <div class="tournament-bracket tournament-bracket--rounded">
+                <f:for each="{roundArray}" as="round" iteration="iterator">
+                    <f:if condition="{round.0.match.round} > 0">
+                        <div class="tournament-bracket__round">
+                            <h3 class="tournament-bracket__round-title">
+                                <f:if condition="{iterator.isLast}">
+                                    <f:then>Final</f:then>
+                                    <f:else>
+                                        <f:if condition="{iterator.cycle} == {iterator.total - 1}">
+                                            <f:then>Semifinals</f:then>
+                                            <f:else>Round {iterator.cycle}</f:else>
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+
+                            </h3>
+                            <ul class="tournament-bracket__list">
+                                <f:for each="{round}" as="roundMatch">
+                                    <f:render section="bracket_match" arguments="{match: roundMatch.match, players:playerArray}"/>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+    <f:flashMessages />
+</f:section>
+<f:section name="bracket_match">
+    <f:if condition="{lastRound}">
+        <f:if condition="{currentRound}">
+            <f:if condition="{currentRound} == {lastRound}">
+                <f:variable name="straight"></f:variable>
+            </f:if>
+        </f:if>
+    </f:if>
+    <f:form action="edit" name="tournament" object="{tournament}">
+        <input type="hidden" name="matchId" value="{match.id}" />
+        <div class="match{match.id}" style="display:flex;align-items:center;">
+            <div class="tournament-bracket__match" tabindex="0">
+                <table class="table table-striped table-hover" style="width:200px;">
+                    <tbody class="tournament-bracket__content">
+                    <f:if condition="{match.winner_id}">
+                        <f:if condition="{match.player1_id} === {match.winner_id}">
+                            <f:variable name="winner1">winner1</f:variable>
+                            <f:variable name="loser2">loser2</f:variable>
+                        </f:if>
+                        <f:if condition="{match.player2_id} === {match.winner_id}">
+                            <f:variable name="winner2">winner2</f:variable>
+                            <f:variable name="loser1">loser1</f:variable>
+                        </f:if>
+                    </f:if>
+                    <f:if condition="{players.{match.player1_id}} == ''">
+                        <f:then><f:variable name="player1">false</f:variable></f:then>
+                        <f:else><f:variable name="player1">true</f:variable></f:else>
+                    </f:if>
+                    <tr class="active{f:if(condition: '{player1}', then: '', else: ' tbd')}{f:if(condition: winner1, then: ' success')}{f:if(condition: loser1, then: ' danger')}">
+                        <td class="tournament-bracket__country" style="width: 175px;">
+                            <f:if condition="{player1}">
+                                <f:then>
+                                    <span class="tournament-bracket__code">{players.{match.player1_id}}</span>
+                                    <input type="hidden" name="playerId1" value="{match.player1_id}"/>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__code code_tbd">TBD</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td class="tournament-bracket__score" style="width: 25px;">
+                            <f:if condition="{match.scorePlayer1} == ''">
+                                <f:then>
+                                    <span class="tournament-bracket__number">0</span>
+                                    <input class="tournament-bracket__input" min="0" name="scorePlayer1" type="number" style="width:35px;" value="0"/>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__number">{match.scorePlayer1}</span>
+                                    <input class="tournament-bracket__input" min="0" name="scorePlayer1" type="number" style="width:35px;" value="{match.scorePlayer1}"/>
+                                </f:else>
+                            </f:if>
+                        </td>
+                    </tr>
+
+                    <f:if condition="{players.{match.player2_id}} == ''">
+                        <f:then><f:variable name="player2">false</f:variable></f:then>
+                        <f:else><f:variable name="player2">true</f:variable></f:else>
+                    </f:if>
+                    <tr class="active{f:if(condition: player2, then: '', else: ' tbd')}{f:if(condition: winner2, then: ' success')}{f:if(condition: loser2, then: ' danger')}">
+                        <td class="tournament-bracket__country" style="width: 175px;">
+                            <f:if condition="{player2}">
+                                <f:then>
+                                    <span class="tournament-bracket__code">{players.{match.player2_id}}</span>
+                                    <input type="hidden" name="playerId2" value="{match.player2_id}"/>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__code code_tbd">TBD</span>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td class="tournament-bracket__score" style="width: 25px;">
+                            <f:if condition="{match.scorePlayer2} == ''">
+                                <f:then>
+                                    <span class="tournament-bracket__number">0</span>
+                                    <input class="tournament-bracket__input" min="0" name="scorePlayer2" type="number" style="width:35px;" value="0"/>
+                                </f:then>
+                                <f:else>
+                                    <span class="tournament-bracket__number">{match.scorePlayer2}</span>
+                                    <input class="tournament-bracket__input" min="0" name="scorePlayer2" type="number" style="width:35px;" value="{match.scorePlayer2}"/>
+                                </f:else>
+                            </f:if>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="display:flex;flex-direction:row;">
+                <input type="hidden" name="testVariable" value="match123">
+                <f:if condition="{player1}">
+                    <f:then>
+                        <f:if condition="{player2}">
+                            <f:then>
+                                <a href="#" onClick="makeMatchEditable({match.id})" class="btn btn-default edit-button">
+                                    <span class="t3js-icon icon icon-size-small icon-state-default icon-apps-filetree-folder-default" data-identifier="apps-filetree-folder-default">
+                                        <span class="icon-markup">
+                                            <svg class="icon-color">
+                                                <use xlink:href="/typo3/sysext/core/Resources/Public/Icons/T3Icons/sprites/actions.svg#actions-document-edit" />
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </a>
+                                <a href="#" onClick="cancelMatchEdit({match.id})" class="btn btn-default cancel-button">
+                                    <span class="t3js-icon icon icon-size-small icon-state-default icon-apps-filetree-folder-default" data-identifier="apps-filetree-folder-default">
+                                        <span class="icon-markup">
+                                            <svg class="icon-color">
+                                                <use xlink:href="/typo3/sysext/core/Resources/Public/Icons/T3Icons/sprites/actions.svg#actions-close" />
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn btn-default submit-button" type="submit">
+                                    <span class="t3js-icon icon icon-size-small icon-state-default icon-apps-filetree-folder-default" data-identifier="apps-filetree-folder-default">
+                                        <span class="icon-markup">
+                                            <svg class="icon-color">
+                                                <use xlink:href="/typo3/sysext/core/Resources/Public/Icons/T3Icons/sprites/actions.svg#actions-check" />
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </button>
+                            </f:then>
+                        </f:if>
+                    </f:then>
+                </f:if>
+            </div>
+        </div>
+    </f:form>
+
+    <script>
+        function makeMatchEditable(matchId) {
+            let selectorText = ".match" + matchId;
+            let match = document.querySelector(selectorText);
+            let player1Text = match.querySelector(".tournament-bracket__number");
+            let player2Text = match.querySelectorAll(".tournament-bracket__number")[1];
+            let player1Input = match.querySelector(".tournament-bracket__input");
+            let player2Input = match.querySelectorAll(".tournament-bracket__input")[1];
+            let editButton = match.querySelector(".edit-button");
+            let submitButton = match.querySelector(".submit-button");
+            let cancelButton = match.querySelector(".cancel-button");
+
+            player1Text.style.display = "none";
+            player2Text.style.display = "none";
+            editButton.style.display = "none";
+            player1Input.style.display = "block";
+            player2Input.style.display = "block";
+            submitButton.style.display = "block";
+            cancelButton.style.display = "block";
+            editButton.disabled = true;
+            submitButton.disabled = false;
+        }
+
+        function cancelMatchEdit(matchId) {
+            let selectorText = ".match" + matchId;
+            let match = document.querySelector(selectorText);
+            let player1Text = match.querySelector(".tournament-bracket__number");
+            let player2Text = match.querySelectorAll(".tournament-bracket__number")[1];
+            let player1Input = match.querySelector(".tournament-bracket__input");
+            let player2Input = match.querySelectorAll(".tournament-bracket__input")[1];
+            let editButton = match.querySelector(".edit-button");
+            let submitButton = match.querySelector(".submit-button");
+            let cancelButton = match.querySelector(".cancel-button");
+
+            player1Input.value = player1Text.innerHTML;
+            player2Input.value = player2Text.innerHTML;
+
+            player1Text.style.display = "block";
+            player2Text.style.display = "block";
+            player1Input.style.display = "none";
+            player2Input.style.display = "none";
+
+            editButton.disabled = false;
+            editButton.style.display = 'block';
+            submitButton.style.display = "none";
+            submitButton.disabled = true;
+            cancelButton.style.display = "none";
+            cancelButton.disabled = true;
+        }
+    </script>
+    <style>
+        .tournament-bracket__input {
+            display: none;
+        }
+        .submit-button, .cancel-button {
+            display: none;
+        }
+    </style>
 </f:section>
 </html>
