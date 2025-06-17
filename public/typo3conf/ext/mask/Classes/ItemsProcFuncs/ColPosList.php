@@ -29,10 +29,10 @@ class ColPosList
      * Render the allowed colPos for nested content elements
      * @param array $params
      */
-    public function itemsProcFunc(&$params): void
+    public function itemsProcFunc(&$params, $parentObj): void
     {
         // if this tt_content element is inline element of mask
-        if ((int)$params['row']['colPos'] === 999) {
+        if ((int)($params['row']['colPos'] ?? 0) === 999) {
             // only allow mask nested element column
             $params['items'] = [
                 [
@@ -42,14 +42,14 @@ class ColPosList
                     null,
                 ],
             ];
-        // if it is not inline tt_content element
-        // and if other itemsProcFunc from other extension was available (e.g. gridelements),
-        // then call it now and let it render the items
+            // if it is not inline tt_content element
+            // and if other itemsProcFunc from other extension was available (e.g. gridelements),
+            // then call it now and let it render the items
         } elseif (!empty($params['config']['m_itemsProcFunc'])) {
             GeneralUtility::callUserFunction(
                 $params['config']['m_itemsProcFunc'],
                 $params,
-                $this
+                $parentObj
             );
         }
     }

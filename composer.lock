@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1acf81ca132d56979c40701623c2105b",
+    "content-hash": "3bb778455b33a8bc6a922c784bb240a7",
     "packages": [
         {
             "name": "b13/container",
@@ -1091,22 +1091,22 @@
         },
         {
             "name": "friendsoftypo3/fontawesome-provider",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfTYPO3/fontawesome-provider.git",
-                "reference": "4b269a4c719d4d18e80340e5317c4959a83c7abc"
+                "reference": "e43c534b5184c614817692a4ed6b656fabd50d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfTYPO3/fontawesome-provider/zipball/4b269a4c719d4d18e80340e5317c4959a83c7abc",
-                "reference": "4b269a4c719d4d18e80340e5317c4959a83c7abc",
+                "url": "https://api.github.com/repos/FriendsOfTYPO3/fontawesome-provider/zipball/e43c534b5184c614817692a4ed6b656fabd50d04",
+                "reference": "e43c534b5184c614817692a4ed6b656fabd50d04",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
-                "typo3/cms-backend": "^11.5 || ^12.0 || 12.*.*@dev",
-                "typo3/cms-core": "^11.5 || ^12.0 || 12.*.*@dev"
+                "typo3/cms-backend": "^11.5 || ^12.0 || ^13.0 || 13.*.*@dev",
+                "typo3/cms-core": "^11.5 || ^12.0 || ^13.0 || 13.*.*@dev"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.14",
@@ -1116,18 +1116,18 @@
             },
             "type": "typo3-cms-extension",
             "extra": {
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
-                },
                 "typo3/cms": {
                     "Package": {
                         "serviceProvider": "FriendsOfTYPO3\\FontawesomeProvider\\ServiceProvider"
                     },
                     "app-dir": ".build",
-                    "extension-key": "fontawesome_provider",
-                    "web-dir": ".build/public"
+                    "web-dir": ".build/public",
+                    "extension-key": "fontawesome_provider"
+                },
+                "typo3/class-alias-loader": {
+                    "class-alias-maps": [
+                        "Migrations/Code/ClassAliasMap.php"
+                    ]
                 }
             },
             "autoload": {
@@ -1148,9 +1148,81 @@
             "description": "Integrates legacy FontawesomeIconProvider and FontAwesome 4.7",
             "support": {
                 "issues": "https://github.com/FriendsOfTYPO3/fontawesome-provider/issues",
-                "source": "https://github.com/FriendsOfTYPO3/fontawesome-provider/tree/v1.0.3"
+                "source": "https://github.com/FriendsOfTYPO3/fontawesome-provider/tree/v1.0.4"
             },
-            "time": "2023-04-25T06:35:56+00:00"
+            "time": "2025-05-12T11:16:44+00:00"
+        },
+        {
+            "name": "georgringer/numbered-pagination",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/numbered_pagination.git",
+                "reference": "bf72d0bf6bb43464254a43584e73b9331b73ff16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/numbered_pagination/zipball/bf72d0bf6bb43464254a43584e73b9331b73ff16",
+                "reference": "bf72d0bf6bb43464254a43584e73b9331b73ff16",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "typo3/cms-core": "^9 || ^10 || ^11 || ^12"
+            },
+            "replace": {
+                "typo3-ter/numbered-pagination": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "numbered_pagination"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\NumberedPagination\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Improved pagination for TYPO3",
+            "homepage": "https://github.com/georgringer/numbered_pagination",
+            "keywords": [
+                "pagination",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/georgringer/numbered_pagination/issues",
+                "source": "https://github.com/georgringer/numbered_pagination/tree/1.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/GeorgRinger/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.amazon.de/hz/wishlist/ls/8F573K08TSDG",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/georgringer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/georgringer",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2023-04-26T05:40:15+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1542,16 +1614,16 @@
         },
         {
             "name": "mask/mask",
-            "version": "v8.1.3",
+            "version": "v8.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gernott/mask.git",
-                "reference": "fb656084b48f0dd916f82363dbb007f7314994f3"
+                "reference": "1d0eab64e43d0522c9c3fa56026baf4afdb6bd59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gernott/mask/zipball/fb656084b48f0dd916f82363dbb007f7314994f3",
-                "reference": "fb656084b48f0dd916f82363dbb007f7314994f3",
+                "url": "https://api.github.com/repos/Gernott/mask/zipball/1d0eab64e43d0522c9c3fa56026baf4afdb6bd59",
+                "reference": "1d0eab64e43d0522c9c3fa56026baf4afdb6bd59",
                 "shasum": ""
             },
             "require": {
@@ -1583,8 +1655,8 @@
             "type": "typo3-cms-extension",
             "extra": {
                 "typo3/cms": {
-                    "extension-key": "mask",
-                    "web-dir": ".Build/Web"
+                    "web-dir": ".Build/Web",
+                    "extension-key": "mask"
                 }
             },
             "autoload": {
@@ -1634,7 +1706,7 @@
                     "type": "WEBprofil - Gernot Ploiner e.U. (Founder)"
                 }
             ],
-            "time": "2023-05-15T17:03:57+00:00"
+            "time": "2024-07-09T19:18:06+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -1704,6 +1776,59 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.7.5"
             },
             "time": "2021-07-01T14:25:37+00:00"
+        },
+        {
+            "name": "mehrwert/phpmyadmin",
+            "version": "6.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mehrwert/TYPO3-phpMyAdmin.git",
+                "reference": "10069143f63523307310cbf67f43bc40bab65378"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mehrwert/TYPO3-phpMyAdmin/zipball/10069143f63523307310cbf67f43bc40bab65378",
+                "reference": "10069143f63523307310cbf67f43bc40bab65378",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": ">=9.5.0,<12.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "phpmyadmin"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mehrwert\\Phpmyadmin\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Beutel",
+                    "email": "typo3@mehrwert.de",
+                    "homepage": "https://www.mehrwert.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Third party 'phpMyAdmin' administration module for TYPO3. Access to admin-users only.",
+            "homepage": "https://www.mehrwert.de",
+            "keywords": [
+                "extension",
+                "phpmyadmin",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/mehrwert/TYPO3-phpMyAdmin/issues",
+                "source": "https://github.com/mehrwert/TYPO3-phpMyAdmin/tree/6.1.0"
+            },
+            "time": "2023-08-03T18:58:43+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -1920,58 +2045,6 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.1"
             },
             "time": "2022-03-15T21:29:03+00:00"
-        },
-        {
-            "name": "primus/tournament",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/tournament",
-                "reference": "db865f7073ba80b40166f601ca7a7ab4d7132e55"
-            },
-            "require": {
-                "typo3/cms-core": "^11.5"
-            },
-            "replace": {
-                "typo3-ter/tournament": "self.version"
-            },
-            "require-dev": {
-                "typo3/testing-framework": "^6.9.0"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "web-dir": ".Build/public",
-                    "extension-key": "tournament"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Primus\\Tournament\\": "Classes"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Primus\\Tournament\\Tests\\": "Tests"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Primus",
-                    "role": "Developer"
-                }
-            ],
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "psr/cache",
@@ -6527,14 +6600,14 @@
             },
             "type": "typo3-cms-framework",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "11.5.x-dev"
-                },
                 "typo3/cms": {
                     "Package": {
                         "partOfFactoryDefault": true
                     },
                     "extension-key": "fluid_styled_content"
+                },
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
                 }
             },
             "autoload": {
@@ -8145,6 +8218,58 @@
             "time": "2021-11-12T10:06:45+00:00"
         },
         {
+            "name": "wapplersystems/a21glossary",
+            "version": "11.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WapplerSystems/a21glossary.git",
+                "reference": "9d9744f82df93a536355eb505399132616e4cf49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WapplerSystems/a21glossary/zipball/9d9744f82df93a536355eb505399132616e4cf49",
+                "reference": "9d9744f82df93a536355eb505399132616e4cf49",
+                "shasum": ""
+            },
+            "require": {
+                "georgringer/numbered-pagination": "^1.0.2",
+                "typo3/cms-core": "^11.5.0"
+            },
+            "replace": {
+                "svewap/a21glossary": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "a21glossary"
+                },
+                "branch-alias": {
+                    "dev-release/11.x": "11.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WapplerSystems\\A21glossary\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "automatic conversion of all abbreviations and acronyms in the special tags for accessibility issues",
+            "homepage": "https://github.com/WapplerSystems/a21glossary",
+            "keywords": [
+                "TYPO3 CMS",
+                "glossary",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/WapplerSystems/a21glossary/issues",
+                "source": "https://github.com/WapplerSystems/a21glossary/tree/11.0.4"
+            },
+            "time": "2022-07-23T10:21:20+00:00"
+        },
+        {
             "name": "wapplersystems/ws-scss",
             "version": "11.0.2",
             "source": {
@@ -8263,11 +8388,10 @@
             "dist": {
                 "type": "path",
                 "url": "packages/sitepackage",
-                "reference": "e0b683c2fe07e778155b06b958955b4a4a3e9397"
+                "reference": "d6c9d4f905338e3faef39e403cddc19695991248"
             },
             "require": {
-                "bk2k/bootstrap-package": "^12.0",
-                "mask/mask": "^8.1"
+                "bk2k/bootstrap-package": "^12.0"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -8292,16 +8416,77 @@
             }
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "jigal/t3adminer",
+            "version": "12.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/jigal/t3adminer.git",
+                "reference": "32f902f7deb41fffd6636c7447ddc8664b890cf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/jigal%2Ft3adminer/repository/archive.zip?sha=32f902f7deb41fffd6636c7447ddc8664b890cf6",
+                "reference": "32f902f7deb41fffd6636c7447ddc8664b890cf6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phar": "*",
+                "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+                "typo3/cms-core": "^11.5.0 || ^12.4.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "t3adminer"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jigal\\T3adminer\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jigal van Hemert",
+                    "email": "jigal.van.hemert@typo3.org",
+                    "homepage": "http://www.typo3coder.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adminer as BE module to work with the database",
+            "homepage": "https://forge.typo3.org/projects/extension-t3adminer",
+            "keywords": [
+                "adminer",
+                "database",
+                "dev",
+                "mariadb",
+                "mysql",
+                "phpmyadmin",
+                "postgresq",
+                "sqlite",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://forge.typo3.org/projects/extension-t3adminer/issues",
+                "source": "https://gitlab.com/jigal/t3adminer/-/tree/12.1.0"
+            },
+            "time": "2024-09-16T21:39:54+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "webneo-gmbh/sitepackage": 20,
-        "primus/tournament": 20
+        "webneo-gmbh/sitepackage": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

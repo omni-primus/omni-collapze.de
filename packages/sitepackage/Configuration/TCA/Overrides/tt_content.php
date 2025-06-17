@@ -77,3 +77,23 @@ $GLOBALS['TCA']['tt_content']['types']['game_slider'] = [
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
     '
 ];
+
+$GLOBALS['TCA']['tt_content']['columns']['background_color_class'] = [
+    'exclude' => true,
+    'displayCond' => 'FIELD:frame_class:!=:none',
+    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.background_color_class',
+    'config' => [
+        'type' => 'select',
+        'renderType' => 'selectSingle',
+        'items' => [
+            ['none', 'none'],
+            ['primary', 'primary'],
+            ['secondary', 'secondary'],
+            ['tertiary', 'tertiary'],
+            ['light', 'light'],
+            ['dark', 'dark'],
+            ['Dark Reverse', 'darkReverse']
+        ]
+    ],
+    'l10n_mode' => 'exclude',
+];

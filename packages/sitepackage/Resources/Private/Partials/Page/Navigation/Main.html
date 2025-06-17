@@ -1,0 +1,63 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:bk2k="http://typo3.org/ns/BK2K/BootstrapPackage/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<header id="omni-header" class="{headerClass}">
+    <f:if condition="{mainnavigation}">
+        <f:render section="MainNavigation" arguments="{menu: mainnavigation, theme: theme, rootPage: rootPage}" />
+        <f:render section="MobileMenu" arguments="{menu: mainnavigation, theme: theme, rootPage: rootPage}"/>
+    </f:if>
+</header>
+
+<f:section name="MainNavigation">
+    <f:if condition="{menu}">
+        <nav class="container px-4 py-3 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <f:link.page pageUid="{rootPage}">
+                    <f:render partial="Structure/Logo"/>
+                </f:link.page>
+            </div>
+
+            <div class="d-none d-md-flex align-items-center gap-2">
+                <a href="#about" class="nav-link text-white text-hover-purple-light">About</a>
+                <a href="#games" class="nav-link text-white text-hover-purple-light">Games</a>
+                <a href="#members" class="nav-link text-white text-hover-purple-light">Members</a>
+                <a href="#join" class="nav-link text-white text-hover-purple-light">Join Us</a>
+                <f:for each="{menu}" as="item">
+                    <f:if condition="{item.spacer}">
+                        <f:then>
+                        </f:then>
+                        <f:else>
+                            <a href="{item.link}" class="nav-link text-white text-hover-purple-light">{item.title}</a>
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </div>
+
+            <div class="d-md-none">
+                <button id="menu-btn" class="text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </f:if>
+</f:section>
+
+<f:section name="MobileMenu">
+    <div id="mobile-menu" class="d-none position-absolute w-100 bg-black">
+        <div class="d-flex flex-column align-items-center py-3 gap-3">
+            <a href="#about" class="text-white text-hover-purple-light">About</a>
+            <a href="#games" class="text-white text-hover-purple-light">Games</a>
+            <a href="#members" class="text-white text-hover-purple-light">Members</a>
+            <a href="#join" class="text-white text-hover-purple-light">Join Us</a>
+            <f:for each="{menu}" as="item">
+                <f:if condition="{item.spacer}">
+                    <f:then>
+                    </f:then>
+                    <f:else>
+                        <a href="{item.link}" class="nav-link text-white text-hover-purple-light">{item.title}</a>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </div>
+    </div>
+</f:section>
+</html>

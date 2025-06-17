@@ -1,0 +1,27 @@
+@include media-breakpoint-up(lg) {
+  .navbar-default-transition:not(.navbar-transition), .navbar-inverse-transition:not(.navbar-transition) {
+    .navbar-mainnavigation .navbar-nav>li>.nav-link:before {
+      background: #fff;
+    }
+  }
+}
+
+#omni-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #000;
+  box-shadow: 0 0 10px #8422d8,0 0 20px #8422d8;
+}
+
+#mobile-menu {
+  opacity: 0.9;
+  z-index: 50;
+  top: 72px;
+  right: 0;
+}
+
+#menu-btn {
+  background-color: unset;
+  border: none;
+}

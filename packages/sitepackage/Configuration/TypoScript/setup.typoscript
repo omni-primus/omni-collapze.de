@@ -10,13 +10,16 @@
 page {
     includeCSS {
         theme = EXT:sitepackage/Resources/Public/Scss/Theme/theme.scss
+        fa = EXT:sitepackage/Resources/Public/Css/FontAwesome.css
+        fonts = EXT:sitepackage/Resources/Public/Css/font.css
     }
 
     includeJSLibs {
     }
 
     includeJS {
-
+        js_main = EXT:sitepackage/Resources/Public/JavaScript/Src/main.js
+        js_header = EXT:sitepackage/Resources/Public/JavaScript/Src/header.js
     }
 
     includeJSFooterlibs {

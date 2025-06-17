@@ -46,6 +46,7 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
             'WebneoGmbh\\Sitepackage\\' => 23,
             'Webmozart\\Assert\\' => 17,
             'WapplerSystems\\WsScss\\' => 22,
+            'WapplerSystems\\A21glossary\\' => 27,
         ),
         'T' => 
         array (
@@ -140,19 +141,24 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
-            'Primus\\Tournament\\' => 18,
             'PhpParser\\' => 10,
         ),
         'M' => 
         array (
+            'Mehrwert\\Phpmyadmin\\' => 20,
             'Masterminds\\' => 12,
             'MASK\\Mask\\' => 10,
+        ),
+        'J' => 
+        array (
+            'Jigal\\T3adminer\\' => 16,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'GeorgRinger\\NumberedPagination\\' => 31,
         ),
         'F' => 
         array (
@@ -186,9 +192,9 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
     public static $prefixDirsPsr4 = array (
         'phpDocumentor\\Reflection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
         ),
         'enshrined\\svgSanitize\\' => 
         array (
@@ -209,6 +215,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'WapplerSystems\\WsScss\\' => 
         array (
             0 => __DIR__ . '/../..' . '/public/typo3conf/ext/ws_scss/Classes',
+        ),
+        'WapplerSystems\\A21glossary\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/a21glossary/Classes',
         ),
         'Typo3Contentblocks\\ContentblocksRegApi\\' => 
         array (
@@ -528,8 +538,8 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         ),
         'Psr\\Http\\Server\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
-            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+            0 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+            1 => __DIR__ . '/..' . '/psr/http-server-handler/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -552,13 +562,13 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'Primus\\Tournament\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/tournament/Classes',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Mehrwert\\Phpmyadmin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/phpmyadmin/Classes',
         ),
         'Masterminds\\' => 
         array (
@@ -567,6 +577,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'MASK\\Mask\\' => 
         array (
             0 => __DIR__ . '/../..' . '/public/typo3conf/ext/mask/Classes',
+        ),
+        'Jigal\\T3adminer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/t3adminer/Classes',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -579,6 +593,10 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'GeorgRinger\\NumberedPagination\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/numbered_pagination/Classes',
         ),
         'FriendsOfTYPO3\\FontawesomeProvider\\' => 
         array (

@@ -4,6 +4,122 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.3.11] - 2024-07-09
+
+### Fixed
+- Fix collection resolving for pages [#634](https://github.com/Gernott/mask/issues/634)
+- Fix TCA overrides for core file fields [#628](https://github.com/Gernott/mask/issues/628)
+
+## [8.3.10] - 2024-03-14
+
+### Fixed
+- Add default value for imageoverlayPalette [#626](https://github.com/Gernott/mask/issues/626)
+
+## [8.3.9] - 2024-02-29
+
+### Fixed
+- Avoid undefined array key warning "foreign_match_fields" [#616](https://github.com/Gernott/mask/issues/616)
+- Use f:uri.resource over image ViewHelper for static assets [#622](https://github.com/Gernott/mask/issues/622)
+- Show hidden inline child elements in backend preview [#620](https://github.com/Gernott/mask/issues/620)
+
+## [8.3.8] - 2024-01-18
+
+### Fixed
+- Undefined array key "colPos"
+
+## [8.3.7] - 2023-10-23
+
+### Fixed
+- Remove redundant information in json-split files [#601](https://github.com/Gernott/mask/issues/601)
+
+## [8.3.6] - 2023-10-16
+
+### Fixed
+- Avoid undefined array key warning in MaskFunctionsProvider [#599](https://github.com/Gernott/mask/issues/599)
+
+## [8.3.5] - 2023-09-13
+
+### Added
+- Required checkbox for richtext fields (Thanks to Sebastian Dernbach) [#589](https://github.com/Gernott/mask/pull/589)
+
+## [8.3.4] - 2023-09-11
+
+### Fixed
+- Properly detect core assets field as media type [#588](https://github.com/Gernott/mask/issues/588)
+
+## [8.3.3] - 2023-09-06
+
+### Fixed
+- Hand over parent caller object in itemsProcFunc [#585](https://github.com/Gernott/mask/issues/585)
+
+## [8.3.2] - 2023-08-31
+
+### Fixed
+- Fix error in restructuring json command [#584](https://github.com/Gernott/mask/issues/584)
+
+## [8.3.1] - 2023-08-21
+
+### Fixed
+- Apply file field appearance overrides [#582](https://github.com/Gernott/mask/issues/582)
+
+## [8.3.0] - 2023-08-09
+
+### Added
+- Add, Update and Delete PSR-14 Events for Mask Elements (thanks to Sebastian Dernbach)
+
+## [8.2.6] - 2023-07-25
+
+### Fixed
+- Fix compatibility with PHP 7.4 [#572](https://github.com/Gernott/mask/issues/572)
+
+## [8.2.5] - 2023-07-24
+
+### Fixed
+- Fix exception in UpgradeWizard "Migrate Content" [#570](https://github.com/Gernott/mask/issues/570)
+
+## [8.2.4] - 2023-07-24
+
+### Fixed
+- Hidden restrictions applied for relations in Frontend [#568](https://github.com/Gernott/mask/issues/568)
+- Workspace overlays applied for relations
+- Links to TCA option range fixed for TYPO3 v12
+
+## [8.2.3] - 2023-06-20
+
+### Fixed
+- Show correct field "l10n_parent" in language palette (thanks to Albrecht Köhnlein) [#563](https://github.com/Gernott/mask/pull/564)
+
+## [8.2.2] - 2023-06-16
+
+### Fixed
+- Undefined array key warning (thanks to Georg Ringer) [#563](https://github.com/Gernott/mask/pull/563)
+
+## [8.2.1] - 2023-06-14
+
+### Fixed
+- Fix error when saving bodytext field
+
+## [8.2.0] - 2023-06-12
+
+### Added
+- Mask supports now `columnsOverride`. This means you can use the same field with different configuration per element! (BIG thanks to Sebastian Dernbach) [#559](https://github.com/Gernott/mask/pull/559)
+
+## [8.1.6] - 2023-06-08
+
+### Fixed
+- Properly resolve nested IRRE elements of type content (Thanks to Alexander Schnitzler) [#561](https://github.com/Gernott/mask/issues/561)
+
+## [8.1.5] - 2023-05-31
+
+### Fixed
+- Page Layouts not disappearing if added before first CE [#539](https://github.com/Gernott/mask/issues/539)
+- Do not render content element header twice [#557](https://github.com/Gernott/mask/issues/539)
+
+## [8.1.4] - 2023-05-26
+
+### Fixed
+- Add softref "typolink" for link fields (thanks to Rémy DANIEL) [#555](https://github.com/Gernott/mask/issues/555)
+
 ## [8.1.3] - 2023-05-16
 
 ### Fixed

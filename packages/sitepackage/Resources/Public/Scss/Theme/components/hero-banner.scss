@@ -1,0 +1,11 @@
+.banner-arrow {
+  left: calc(50% - 6px);
+  bottom: 2.5rem;
+  > div {
+    border: 2px solid $primary;
+    border-radius: 9999px;
+    > i {
+      color: $primary;
+    }
+  }
+}

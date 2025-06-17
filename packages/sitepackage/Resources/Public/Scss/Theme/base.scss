@@ -1,0 +1,222 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+h2, .h2 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px $primary, 0 0 20px $primary;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.header-stripes {
+  color: $primary;
+}
+
+.element-subheader {
+  font-size: 1.25rem;
+  max-width: 48rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.header-bot-line {
+  width: 5rem;
+  height: .25rem;
+}
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-black {
+  background: $black;
+}
+
+.text-gray-400 {
+  color: #9CA3AF;
+}
+
+.border-grey-900 {
+  border-color: #111827;
+}
+
+.text-hover-purple-light:hover {
+  color: $primary-light;
+}
+
+.glow {
+  text-shadow: 0 0 10px $primary, 0 0 20px $primary;
+}
+
+.text-sm {
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+@include media-breakpoint-up(md) {
+  .text-md-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .text-md-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.py-6 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.transform {
+  transform: translate(-50%, 0) rotate(0) skewX(0) skewY(0) scaleX(0) scaleY(0);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: $primary;
+  color: #fff;
+  font-weigth: bold;
+  border-radius: 9999px;
+}
+
+.btn-outline {
+  font-weigth: bold;
+  color: #fff;
+  background: #000;
+  border-radius: 9999px;
+  border: 2px solid $primary;
+}
+
+.btn-glow {
+  box-shadow: 0 0 15px $primary;
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px $primary-light;
+  transform: translateY(-2px);
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(132, 34, 216, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(132, 34, 216, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(132, 34, 216, 0);
+  }
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, rgba(132, 34, 216, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@include media-breakpoint-up(sm) {
+  .grid-sm-cols-2 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .grid-md-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .grid-lg-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -430,7 +430,7 @@ return [
         'code' => 'range.lower',
         'documentation' => [
             11 => 'ColumnsConfig/Type/Input/Properties/Range.html#columns-input-properties-range',
-            12 => 'ColumnsConfig/Type/Input/Properties/Range.html#columns-input-properties-range',
+            12 => 'ColumnsConfig/Type/Datetime/Properties/Range.html',
         ],
     ],
     'config.range.upper' => [
@@ -439,7 +439,7 @@ return [
         'code' => 'range.upper',
         'documentation' => [
             11 => 'ColumnsConfig/Type/Input/Properties/Range.html#columns-input-properties-range',
-            12 => 'ColumnsConfig/Type/Input/Properties/Range.html#columns-input-properties-range',
+            12 => 'ColumnsConfig/Type/Datetime/Properties/Range.html',
         ],
     ],
     'config.slider.step' => [
@@ -858,8 +858,8 @@ return [
     ],
     'config.fileFolderConfig.folder' => [
         'type' => 'text',
-        'label' => 'tx_mask.field.select.file_folder_ext_list',
-        'description' => 'tx_mask.field.select.file_folder_ext_list.description',
+        'label' => 'tx_mask.field.select.file_folder',
+        'description' => 'tx_mask.field.select.file_folder.description',
         'code' => 'folder',
         'documentation' => [
             11 => 'ColumnsConfig/Type/Select/Properties/FileFolderConfig.html#columns-select-properties-filefolder',

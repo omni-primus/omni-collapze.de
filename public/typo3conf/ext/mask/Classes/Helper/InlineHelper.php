@@ -26,6 +26,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendGroupRestriction;
+use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction;
 use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
@@ -101,17 +102,16 @@ class InlineHelper
      */
     public function addIrreToData(array &$data, string $table = 'tt_content', string $cType = '', string $originalTable = 'tt_content'): void
     {
-        if ($cType === '') {
-            $cType = (string)($data['CType'] ?? '');
-        }
-        if ($cType === '') {
-            return;
-        }
         if (!$this->tableDefinitionCollection->hasTable($table)) {
             return;
         }
-
         if ($table === 'tt_content') {
+            if ($cType === '') {
+                $cType = (string)($data['CType'] ?? '');
+            }
+            if ($cType === '') {
+                return;
+            }
             $element = $this->tableDefinitionCollection->loadElement($table, AffixUtility::removeCTypePrefix($cType));
             $elementFields = $element->elementDefinition->columns ?? [];
         } elseif ($table === 'pages') {
@@ -144,7 +144,7 @@ class InlineHelper
             $fieldType = $this->tableDefinitionCollection->getFieldType($field, $table);
 
             if ($fieldType->equals(FieldType::PALETTE)) {
-                foreach ($this->tableDefinitionCollection->loadInlineFields($field, $elementKey) as $paletteField) {
+                foreach ($this->tableDefinitionCollection->loadInlineFields($field, $elementKey, $element->elementDefinition) as $paletteField) {
                     $fieldType = $this->tableDefinitionCollection->getFieldType($paletteField->fullKey, $table);
                     $this->fillInlineField($data, $fieldType, $paletteField->fullKey, $cType, $table, $originalTable);
                 }
@@ -164,12 +164,12 @@ class InlineHelper
         if ($fieldType->equals(FieldType::INLINE) && $this->tableDefinitionCollection->hasTable($field)) {
             $elements = $this->getInlineElements($data, $field, $cType, 'parentid', $table, null, $originalTable);
             $data[$field] = $elements;
-        // or if it is of type Content (Nested Content) and has to be filled
+            // or if it is of type Content (Nested Content) and has to be filled
         } elseif ($fieldType->equals(FieldType::CONTENT)) {
             $content = $this->getRelations((string)($data[$field] ?? ''), $tcaFieldConfig['config']['foreign_table'], '', (int)$data['uid'], $table, $tcaFieldConfig['config'] ?? []);
             foreach ($content as $key => $element) {
                 if ($element) {
-                    $this->addIrreToData($element, 'tt_content', $cType, $originalTable);
+                    $this->addIrreToData($element, 'tt_content', $element['CType'], $originalTable);
                     $this->addFilesToData($element);
                     $content[$key] = $element;
                 }
@@ -200,12 +200,24 @@ class InlineHelper
         $pageRepository = $this->getPageRepository();
         $relationHandler = GeneralUtility::makeInstance(RelationHandler::class);
         $relationHandler->start($uidList, $allowed, $mmTable, $uid, $table, $tcaFieldConf);
+        foreach (array_keys($relationHandler->tableArray) as $table) {
+            if (isset($GLOBALS['TCA'][$table])) {
+                $autoHiddenSelection = -1;
+                $ignoreWorkspaceFilter = ['pid' => true];
+                $relationHandler->additionalWhere[$table] = $pageRepository->enableFields($table, $autoHiddenSelection, $ignoreWorkspaceFilter);
+            }
+        }
         $relationHandler->getFromDB();
         $relations = $relationHandler->getResolvedItemArray();
         $records = [];
         foreach ($relations as $relation) {
             $tableName = $relation['table'];
-            $translatedRecord = $pageRepository->getLanguageOverlay($tableName, $relation['record']);
+            $record = $relation['record'];
+            $pageRepository->versionOL($tableName, $record);
+            if (!is_array($record)) {
+                continue;
+            }
+            $translatedRecord = $pageRepository->getLanguageOverlay($tableName, $record);
             if ($translatedRecord !== null) {
                 $records[] = $translatedRecord;
             }
@@ -259,6 +271,10 @@ class InlineHelper
         // Remove default restrictions for workspace preview in order to fetch the original record uids.
         if ($inWorkspacePreviewMode) {
             $queryBuilder->getRestrictions()->removeAll();
+        } elseif ($isFrontendRequest === false) {
+            // In backend context we want to display hidden records.
+            $restrictions = $queryBuilder->getRestrictions();
+            $restrictions->removeByType(HiddenRestriction::class);
         }
 
         if (BackendUtility::isTableWorkspaceEnabled($childTable)) {

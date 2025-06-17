@@ -44,11 +44,12 @@
         "webneo-gmbh/sitepackage": "@dev",
         "typo3-contentblocks/contentblocks-reg-api": "^3.0",
         "b13/container": "^2.2",
-        "mask/mask": "^8.1",
         "friendsoftypo3/extension-builder": "^11.0",
-        "primus/tournament": "@dev",
         "wapplersystems/ws-scss": "^11.0",
-        "typo3/cms-styleguide": "^11.5.4"
+        "typo3/cms-styleguide": "^11.5.4",
+        "wapplersystems/a21glossary": "^11.0.4",
+        "mehrwert/phpmyadmin": "^6.1",
+        "mask/mask": "^8.3"
     },
     "config": {
         "allow-plugins": {
@@ -56,5 +57,8 @@
             "typo3/cms-composer-installers": true,
             "typo3-contentblocks/composer-plugin": true
         }
+    },
+    "require-dev": {
+        "jigal/t3adminer": "^12.1"
     }
 }

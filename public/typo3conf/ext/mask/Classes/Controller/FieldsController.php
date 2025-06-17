@@ -134,11 +134,6 @@ class FieldsController
             $newField['icon'] = $this->iconFactory->getIcon('mask-fieldtype-' . $newField['name'])->getMarkup();
             $newField['tca'] = [];
 
-            if ($field['coreField'] ?? false) {
-                $nestedFields[] = $newField;
-                continue;
-            }
-
             if (!$fieldType->isGroupingField()) {
                 $tableDefinition = $this->tableDefinitionCollection->getTable($table);
                 if ($tableDefinition->sql->hasColumn($newField['key'])) {
@@ -165,7 +160,7 @@ class FieldsController
             }
 
             if ($fieldType->equals(FieldType::FILE)) {
-                $newField['tca']['imageoverlayPalette'] = $field['imageoverlayPalette'];
+                $newField['tca']['imageoverlayPalette'] = $field['imageoverlayPalette'] ?? 1;
             }
 
             if ($fieldType->isFileReference()) {
@@ -193,7 +188,11 @@ class FieldsController
             $newField['tca'] = $this->cleanUpConfig($newField['tca'], $fieldType);
 
             if ($fieldType->isParentField()) {
-                $inlineFields = $this->tableDefinitionCollection->loadInlineFields($newField['key'], $elementKey);
+                $elementTcaDefinition = $this->tableDefinitionCollection->loadElement($table, $elementKey);
+                $element = $elementTcaDefinition instanceof ElementTcaDefinition
+                    ? $elementTcaDefinition->elementDefinition
+                    : null;
+                $inlineFields = $this->tableDefinitionCollection->loadInlineFields($newField['key'], $elementKey, $element);
                 $inlineTable = $fieldType->equals(FieldType::INLINE) ? $newField['key'] : $table;
                 $newField['fields'] = $this->addFields(
                     $inlineFields->toArray(),

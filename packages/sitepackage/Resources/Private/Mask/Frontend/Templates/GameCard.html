@@ -1,0 +1,42 @@
+<f:if condition="{data.tx_mask_game_card_item}">
+    <div class="d-grid grid-cols-1 grid-sm-cols-2 grid-lg-cols-3 gap-4">
+        <f:for each="{data.tx_mask_game_card_item}" as="card">
+            <div class="game-card overflow-hidden">
+                <div class="game-card-image position-relative overflow-hidden">
+                    <f:if condition="{card.tx_mask_game_card_image.0}">
+                        <f:media file="{card.tx_mask_game_card_image.0}" alt="{card.tx_mask_game_card_image.0.title}" class="w-100 h-100" />
+                    </f:if>
+                </div>
+                <f:if condition="{data_item.tx_mask_game_card_title}">
+                    {data_item.tx_mask_game_card_title}
+                </f:if>
+            </div>
+        </f:for>
+    </div>
+                <f:if condition="{data_item.tx_mask_game_card_tags}">
+                    <ul>
+                        <f:for each="{data_item.tx_mask_game_card_tags}" as="data_item_item">
+                            <li>
+                                <f:if condition="{data_item_item.tx_mask_game_card_tag_title}">
+                                    {data_item_item.tx_mask_game_card_tag_title}
+                                </f:if>
+                                <f:for each="{data_item_item.tx_mask_game_card_tag_select_items}" as="data_item_item_item">
+                                    <div>{data_item_item_item}</div>
+                                </f:for>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:if>
+                <f:if condition="{data_item.tx_mask_game_card_text}">
+                    {data_item.tx_mask_game_card_text -> f:format.html()}
+                </f:if>
+                <f:if condition="{data_item.tx_mask_game_card_player_count}">
+                    {data_item.tx_mask_game_card_player_count}
+                </f:if>
+                <f:if condition="{data_item.tx_mask_game_card_link}">
+                    <f:link.typolink parameter="{data_item.tx_mask_game_card_link}"></f:link.typolink>
+                </f:if>
+                <f:if condition="{data_item.tx_mask_game_card_link_text}">
+                    {data_item.tx_mask_game_card_link_text}
+                </f:if>
+</f:if>

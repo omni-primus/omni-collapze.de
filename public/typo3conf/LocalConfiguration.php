@@ -83,9 +83,16 @@ return [
             'layouts' => 'EXT:webneo-gmbh/sitepackage/Resources/Private/Mask/Frontend/Layouts',
             'layouts_backend' => 'EXT:webneo-gmbh/sitepackage/Resources/Private/Mask/Backend/Layouts',
             'loader_identifier' => 'json',
+            'override_shared_fields' => '0',
             'partials' => 'EXT:webneo-gmbh/sitepackage/Resources/Private/Mask/Frontend/Partials',
             'partials_backend' => 'EXT:webneo-gmbh/sitepackage/Resources/Private/Mask/Backend/Partials',
             'preview' => 'EXT:webneo-gmbh/sitepackage/Resources/Public/Mask/',
+        ],
+        'phpmyadmin' => [
+            'allowedIps' => '',
+            'hideOtherDBs' => '1',
+            'uploadDir' => 'uploads/tx_phpmyadmin',
+            'useDevIpMask' => '0',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
@@ -132,6 +139,11 @@ return [
             'user_1' => '0',
             'wrap_1' => 'value',
             'wrap_2' => '',
+        ],
+        't3adminer' => [
+            'IPaccess' => '',
+            'applyDevIpMask' => '0',
+            'exportDirectory' => 'fileadmin',
         ],
     ],
     'FE' => [

@@ -1,8 +1,87 @@
 {
     "version": "8.1.0",
+    "restructuringDone": false,
     "tables": {
         "tt_content": {
             "elements": {
+                "3_cards": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "tx_mask_3cards_item"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "3_cards",
+                    "label": "3 Cards",
+                    "labels": [
+                        "3 Cards Item"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 2
+                },
+                "game_card": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "tx_mask_game_card_item"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "game_card",
+                    "label": "Game Card",
+                    "labels": [
+                        "Game Card Item"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 3
+                },
+                "hero_banner": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "header",
+                        "bodytext",
+                        "tx_mask_herobanner_media",
+                        "tx_mask_herobanner_btn1_text",
+                        "tx_mask_herobanner_btn1",
+                        "tx_mask_herobanner_btn2_text",
+                        "tx_mask_herobanner_btn2"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "hero_banner",
+                    "label": "Hero Banner",
+                    "labels": [
+                        "",
+                        "",
+                        "Media",
+                        "Button 1 Text",
+                        "Button 1 Link",
+                        "Button 2 Text",
+                        "Button 2 Link"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 1
+                },
                 "omni_gallery": {
                     "color": "#000000",
                     "colorOverlay": "#000000",
@@ -25,13 +104,92 @@
                 }
             },
             "sql": {
+                "tx_mask_3cards_item": {
+                    "tt_content": {
+                        "tx_mask_3cards_item": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
                 "tx_mask_gallery_element": {
                     "tt_content": {
                         "tx_mask_gallery_element": "int(11) unsigned DEFAULT '0' NOT NULL"
                     }
+                },
+                "tx_mask_game_card_item": {
+                    "tt_content": {
+                        "tx_mask_game_card_item": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_herobanner_btn1": {
+                    "tt_content": {
+                        "tx_mask_herobanner_btn1": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_herobanner_btn1_text": {
+                    "tt_content": {
+                        "tx_mask_herobanner_btn1_text": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_herobanner_btn2": {
+                    "tt_content": {
+                        "tx_mask_herobanner_btn2": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_herobanner_btn2_text": {
+                    "tt_content": {
+                        "tx_mask_herobanner_btn2_text": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_herobanner_media": {
+                    "tt_content": {
+                        "tx_mask_herobanner_media": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
                 }
             },
             "tca": {
+                "bodytext": {
+                    "bodytextTypeByElement": {
+                        "hero_banner": "richtext"
+                    },
+                    "coreField": 1,
+                    "fullKey": "bodytext",
+                    "key": "bodytext"
+                },
+                "header": {
+                    "coreField": 1,
+                    "fullKey": "header",
+                    "key": "header",
+                    "type": "string"
+                },
+                "tx_mask_3cards_item": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 1,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 1,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "maxitems": "3",
+                        "minitems": "1",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_3cards_item",
+                    "key": "3cards_item",
+                    "type": "inline"
+                },
                 "tx_mask_gallery_element": {
                     "config": {
                         "appearance": {
@@ -65,6 +223,149 @@
                     "fullKey": "tx_mask_gallery_element",
                     "key": "gallery_element",
                     "type": "inline"
+                },
+                "tx_mask_game_card_item": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 1,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 1,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "maxitems": "3",
+                        "minitems": "1",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_game_card_item",
+                    "key": "game_card_item",
+                    "type": "inline"
+                },
+                "tx_mask_herobanner_btn1": {
+                    "config": {
+                        "renderType": "inputLink",
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_herobanner_btn1",
+                    "key": "herobanner_btn1",
+                    "type": "link"
+                },
+                "tx_mask_herobanner_btn1_text": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_herobanner_btn1_text",
+                    "key": "herobanner_btn1_text",
+                    "type": "string"
+                },
+                "tx_mask_herobanner_btn2": {
+                    "config": {
+                        "renderType": "inputLink",
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_herobanner_btn2",
+                    "key": "herobanner_btn2",
+                    "type": "link"
+                },
+                "tx_mask_herobanner_btn2_text": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_herobanner_btn2_text",
+                    "key": "herobanner_btn2_text",
+                    "type": "string"
+                },
+                "tx_mask_herobanner_media": {
+                    "allowedFileExtensions": "png,jpg,jpeg,gif",
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileByUrlAllowed": 1,
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "maxitems": "1",
+                        "minitems": "0"
+                    },
+                    "fullKey": "tx_mask_herobanner_media",
+                    "key": "herobanner_media",
+                    "type": "media"
+                }
+            }
+        },
+        "tx_mask_3cards_item": {
+            "sql": {
+                "tx_mask_3cards_faicon": {
+                    "tx_mask_3cards_item": {
+                        "tx_mask_3cards_faicon": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_3cards_header": {
+                    "tx_mask_3cards_item": {
+                        "tx_mask_3cards_header": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_3cards_text": {
+                    "tx_mask_3cards_item": {
+                        "tx_mask_3cards_text": "mediumtext"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_3cards_faicon": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_3cards_faicon",
+                    "inlineParent": "tx_mask_3cards_item",
+                    "key": "3cards_faicon",
+                    "label": "Card Icon Class",
+                    "order": 1,
+                    "type": "string"
+                },
+                "tx_mask_3cards_header": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_3cards_header",
+                    "inlineParent": "tx_mask_3cards_item",
+                    "key": "3cards_header",
+                    "label": "Card Header",
+                    "order": 2,
+                    "type": "string"
+                },
+                "tx_mask_3cards_text": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_3cards_text",
+                    "inlineParent": "tx_mask_3cards_item",
+                    "key": "3cards_text",
+                    "label": "Card Text",
+                    "order": 3,
+                    "type": "richtext"
                 }
             }
         },
@@ -110,7 +411,8 @@
                             "fileUploadAllowed": 1,
                             "useSortable": 1
                         },
-                        "maxitems": "1"
+                        "maxitems": "1",
+                        "minitems": ""
                     },
                     "fullKey": "tx_mask_card_image",
                     "inlineParent": "tx_mask_gallery_element",
@@ -153,6 +455,258 @@
                     "inlineParent": "tx_mask_gallery_element",
                     "key": "player_name",
                     "label": "Player Name",
+                    "order": 1,
+                    "type": "string"
+                }
+            }
+        },
+        "tx_mask_game_card_item": {
+            "sql": {
+                "tx_mask_game_card_image": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_image": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_link": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_link": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_link_text": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_link_text": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_player_count": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_player_count": "int(11) DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_tags": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_tags": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_text": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_text": "mediumtext"
+                    }
+                },
+                "tx_mask_game_card_title": {
+                    "tx_mask_game_card_item": {
+                        "tx_mask_game_card_title": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_game_card_image": {
+                    "allowedFileExtensions": "png,jpg,jpeg,svg",
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileByUrlAllowed": 1,
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "maxitems": "1",
+                        "minitems": "1"
+                    },
+                    "fullKey": "tx_mask_game_card_image",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_image",
+                    "label": "Game Card Image",
+                    "order": 2,
+                    "type": "media"
+                },
+                "tx_mask_game_card_link": {
+                    "config": {
+                        "renderType": "inputLink",
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_game_card_link",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_link",
+                    "label": "Game Card Link",
+                    "order": 6,
+                    "type": "link"
+                },
+                "tx_mask_game_card_link_text": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_game_card_link_text",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_link_text",
+                    "label": "Game Cad Link Text",
+                    "order": 7,
+                    "type": "string"
+                },
+                "tx_mask_game_card_player_count": {
+                    "config": {
+                        "eval": "int",
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_game_card_player_count",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_player_count",
+                    "label": "Game Card Player Count",
+                    "order": 5,
+                    "type": "integer"
+                },
+                "tx_mask_game_card_tags": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 1,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 1,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_game_card_tags",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_tags",
+                    "label": "Game Card Tag",
+                    "order": 3,
+                    "type": "inline"
+                },
+                "tx_mask_game_card_text": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_game_card_text",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_text",
+                    "label": "Game Card Text",
+                    "order": 4,
+                    "type": "richtext"
+                },
+                "tx_mask_game_card_title": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_game_card_title",
+                    "inlineParent": "tx_mask_game_card_item",
+                    "key": "game_card_title",
+                    "label": "Game Card Title",
+                    "order": 1,
+                    "type": "string"
+                }
+            }
+        },
+        "tx_mask_game_card_tags": {
+            "sql": {
+                "tx_mask_game_card_tag_select": {
+                    "tx_mask_game_card_tags": {
+                        "tx_mask_game_card_tag_select": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_game_card_tag_title": {
+                    "tx_mask_game_card_tags": {
+                        "tx_mask_game_card_tag_title": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_game_card_tag_select": {
+                    "config": {
+                        "fieldWizard": {
+                            "selectIcons": {
+                                "disabled": 1
+                            }
+                        },
+                        "items": [
+                            [
+                                "default",
+                                "default",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "primary",
+                                "primary",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ]
+                        ],
+                        "renderType": "selectSingleBox",
+                        "type": "select"
+                    },
+                    "fullKey": "tx_mask_game_card_tag_select",
+                    "inlineParent": "tx_mask_game_card_tags",
+                    "key": "game_card_tag_select",
+                    "label": "Game Card Tag Select",
+                    "order": 2,
+                    "type": "select"
+                },
+                "tx_mask_game_card_tag_title": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_game_card_tag_title",
+                    "inlineParent": "tx_mask_game_card_tags",
+                    "key": "game_card_tag_title",
+                    "label": "Game Card Tag Title",
                     "order": 1,
                     "type": "string"
                 }

@@ -1,0 +1,32 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:spaceless>
+    <div id="top"></div>
+    <div class="omni-bg">
+
+        <f:render partial="DropIn/Page/PageBefore" arguments="{_all}" />
+        <f:render partial="Structure/CookieConsent" arguments="{_all}" />
+        <a class="visually-hidden-focusable" href="#page-content">
+            <span>{f:translate(key: 'skiptomaincontent', extensionName: 'bootstrap_package')}</span>
+        </a>
+        <f:render partial="Navigation/Main" arguments="{_all}" />
+        <f:render section="Border" optional="true" />
+        <f:render partial="Navigation/Breadcrumb" arguments="{_all}" />
+
+        <div id="page-content" class="bp-page-content main-section">
+            <f:render section="Main" />
+        </div>
+
+        <footer id="omni-footer" class="bg-black py-5 border-grey-900">
+            <div class="container mx-auto px-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <f:render partial="Structure/Logo" arguments="{mb: 'true'}" />
+                    <f:render partial="Structure/SocialLinks" arguments="{_all}"/>
+                    <f:render partial="Structure/Copyright" arguments="{_all}"/>
+                </div>
+            </div>
+        </footer>
+        <f:render partial="Structure/ScrollTop" arguments="{_all}" />
+        <f:render partial="DropIn/Page/PageAfter" arguments="{_all}" />
+    </div>
+</f:spaceless>
+</html>

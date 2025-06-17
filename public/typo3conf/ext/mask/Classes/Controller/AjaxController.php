@@ -28,9 +28,12 @@ use MASK\Mask\Domain\Repository\BackendLayoutRepository;
 use MASK\Mask\Domain\Repository\StorageRepository;
 use MASK\Mask\Enumeration\FieldType;
 use MASK\Mask\Enumeration\Tab;
+use MASK\Mask\Event\MaskAfterElementDeletedEvent;
+use MASK\Mask\Event\MaskAfterElementSavedEvent;
 use MASK\Mask\Event\MaskAllowedFieldsEvent;
 use MASK\Mask\Loader\LoaderInterface;
 use MASK\Mask\Utility\AffixUtility;
+use MASK\Mask\Utility\OverrideFieldsUtility;
 use MASK\Mask\Utility\TemplatePathUtility;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,6 +41,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayout;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Configuration\Features;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\JsonResponse;
@@ -75,6 +79,7 @@ class AjaxController
     protected TableDefinitionCollection $tableDefinitionCollection;
     protected LoaderInterface $loader;
     protected EventDispatcherInterface $eventDispatcher;
+    protected Features $features;
 
     /**
      * @var array<string, string>
@@ -106,6 +111,7 @@ class AjaxController
         TableDefinitionCollection $tableDefinitionCollection,
         LoaderInterface $loader,
         EventDispatcherInterface $eventDispatcher,
+        Features $features,
         array $maskExtensionConfiguration
     ) {
         $this->storageRepository = $storageRepository;
@@ -120,6 +126,7 @@ class AjaxController
         $this->maskExtensionConfiguration = $maskExtensionConfiguration;
         $this->loader = $loader;
         $this->eventDispatcher = $eventDispatcher;
+        $this->features = $features;
         $this->flashMessageQueue = new FlashMessageQueue('mask');
     }
 
@@ -287,6 +294,11 @@ class AjaxController
         } else {
             $this->addFlashMessage($this->translateLabel('tx_mask.content.updatedcontentelement'));
         }
+
+        $this->eventDispatcher->dispatch(
+            new MaskAfterElementSavedEvent($tableDefinitionCollection, $elementKey, $isNew)
+        );
+
         return new JsonResponse(['messages' => $this->flashMessageQueue->getAllMessagesAndFlush(), 'hasError' => 0]);
     }
 
@@ -302,6 +314,11 @@ class AjaxController
         $tableDefinitionCollection = $this->storageRepository->persist($this->storageRepository->remove('tt_content', $params['key']));
         $this->generateAction($tableDefinitionCollection);
         $this->addFlashMessage($this->translateLabel('tx_mask.content.deletedcontentelement'));
+
+        $this->eventDispatcher->dispatch(
+            new MaskAfterElementDeletedEvent($tableDefinitionCollection, $params['key'])
+        );
+
         return new JsonResponse($this->flashMessageQueue->getAllMessagesAndFlush());
     }
 
@@ -375,6 +392,7 @@ class AjaxController
                 'hidden' => $element->hidden ? 1 : 0,
                 'count' => $this->getElementCount($element->key),
                 'sorting' => $element->sorting,
+                'saveAndClose' => $element->saveAndClose ? 1 : 0,
             ];
         }
         $json['elements'] = $elements;
@@ -511,7 +529,7 @@ class AjaxController
 
             // Get fields in palette
             if ($field->getFieldType()->equals(FieldType::PALETTE)) {
-                foreach ($this->tableDefinitionCollection->loadInlineFields($field->fullKey, $elementKey) as $paletteField) {
+                foreach ($this->tableDefinitionCollection->loadInlineFields($field->fullKey, $elementKey, $element->elementDefinition) as $paletteField) {
                     if ($paletteField->isCoreField || !$paletteField->getFieldType()->canBeShared()) {
                         continue;
                     }
@@ -566,6 +584,27 @@ class AjaxController
     {
         try {
             $this->loader->write($this->tableDefinitionCollection);
+            return new JsonResponse(['status' => 'ok', 'title' => $this->translateLabel('tx_mask.update_complete.title'), 'message' => $this->translateLabel('tx_mask.update_complete.message')]);
+        } catch (\Throwable $e) {
+            return new JsonResponse(['status' => 'error', 'title' => $this->translateLabel('tx_mask.update_failed.title'), 'message' => $this->translateLabel('tx_mask.update_failed.message')]);
+        }
+    }
+
+    public function restructuringNeeded(ServerRequestInterface $request): JsonResponse
+    {
+        $overrideSharedFields = $this->features->isFeatureEnabled('overrideSharedFields');
+        if (!$overrideSharedFields) {
+            return new JsonResponse(['restructuringNeeded' => 0]);
+        }
+        $needsRestructure = $this->tableDefinitionCollection->isRestructuringNeeded();
+        return new JsonResponse(['restructuringNeeded' => (int)$needsRestructure]);
+    }
+
+    public function executeRestructuring(ServerRequestInterface $request): Response
+    {
+        $restructuredTableDefinitionCollection = OverrideFieldsUtility::restructureTcaDefinitions($this->tableDefinitionCollection);
+        try {
+            $this->loader->write($restructuredTableDefinitionCollection);
             return new JsonResponse(['status' => 'ok', 'title' => $this->translateLabel('tx_mask.update_complete.title'), 'message' => $this->translateLabel('tx_mask.update_complete.message')]);
         } catch (\Throwable $e) {
             return new JsonResponse(['status' => 'error', 'title' => $this->translateLabel('tx_mask.update_failed.title'), 'message' => $this->translateLabel('tx_mask.update_failed.message')]);
@@ -720,7 +759,7 @@ class AjaxController
             if ($table['ctrl']['hideTable'] ?? false) {
                 continue;
             }
-            $items[$tableKey] = $this->getLanguageService()->sL($table['ctrl']['title']);
+            $items[$tableKey] = $this->getLanguageService()->sL($table['ctrl']['title'] ?? $tableKey);
         }
 
         ksort($items);
@@ -888,10 +927,31 @@ class AjaxController
         $language['migrationsPerformedTitle'] = $this->translateLabel('tx_mask.migrations_performed.title');
         $language['migrationsPerformedMessage'] = $this->translateLabel('tx_mask.migrations_performed.message');
         $language['updateMaskDefinition'] = $this->translateLabel('tx_mask.update_mask_definition');
+        $language['restructuringNeededTitle'] = $this->translateLabel('tx_mask.restructuring_needed.title');
+        $language['restructuringNeededMessage'] = $this->translateLabel('tx_mask.restructuring_needed.message');
+        $language['executeRestructuring'] = $this->translateLabel('tx_mask.execute_restructuring');
         $language['selectedItems'] = $this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.selected');
         $language['availableItems'] = $this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.items');
+        $language['multiuseTitle'] = $this->translateLabel('tx_mask.content.multiuse');
+        $language['multiuseMessage'] = $this->translateLabel('tx_mask.content.multiuse.description');
 
         return new JsonResponse($language);
+    }
+
+    public function nonOverrideableOptions(ServerRequestInterface $request): Response
+    {
+        return new JsonResponse(TcaFieldDefinition::NON_OVERRIDEABLE_OPTIONS);
+    }
+
+    public function features(ServerRequestInterface $request): Response
+    {
+        $featuresList['overrideSharedFields'] = [
+            'title' => $this->translateLabel('tx_mask.features.overrideSharedFields'),
+            'state' => (int)$this->features->isFeatureEnabled('overrideSharedFields'),
+            'documentation' => 'https://docs.typo3.org/p/mask/mask/main/en-us/ChangeLog/8.2/Index.html',
+        ];
+
+        return new JsonResponse($featuresList);
     }
 
     public function richtextConfiguration(ServerRequestInterface $request): Response

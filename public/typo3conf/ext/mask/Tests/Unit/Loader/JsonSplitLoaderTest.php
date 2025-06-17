@@ -21,6 +21,7 @@ use MASK\Mask\Definition\TableDefinitionCollection;
 use MASK\Mask\Loader\JsonSplitLoader;
 use MASK\Mask\Migrations\MigrationManager;
 use MASK\Mask\Tests\Unit\PackageManagerTrait;
+use TYPO3\CMS\Core\Configuration\Features;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -46,7 +47,8 @@ class JsonSplitLoaderTest extends UnitTestCase
                 'content_elements_folder' => 'EXT:mask/Tests/Unit/Fixtures/Configuration/ContentElements',
                 'backend_layouts_folder' => 'EXT:mask/Tests/Unit/Fixtures/Configuration/BackendLayouts',
             ],
-            new MigrationManager([])
+            new MigrationManager([]),
+            new Features()
         );
 
         self::assertEquals($this->getExpectedConfigurationArray(), $jsonSplitLoader->load()->toArray(false));
@@ -65,7 +67,8 @@ class JsonSplitLoaderTest extends UnitTestCase
                 'content_elements_folder' => 'EXT:mask/var/ContentElements',
                 'backend_layouts_folder' => 'EXT:mask/var/BackendLayouts',
             ],
-            new MigrationManager([])
+            new MigrationManager([]),
+            new Features()
         );
 
         $jsonSplitLoader->write(TableDefinitionCollection::createFromArray($this->getExpectedConfigurationArray()));
@@ -110,14 +113,17 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'color' => '#000000',
                         'icon' => '',
                         'columns' => [
+                            'tx_mask_4e12de3d14bd6',
                             'tx_mask_a',
                             'tx_mask_repeat1',
                         ],
                         'labels' => [
+                            'Palette 1',
                             'A',
                             'Repeat1',
                         ],
                         'descriptions' => [
+                            '',
                             '',
                             'description for field tx_mask_repeat1',
                         ],
@@ -139,6 +145,30 @@ class JsonSplitLoaderTest extends UnitTestCase
                     ],
                 ],
                 'tca' => [
+                    'tx_mask_4e12de3d14bd6' => [
+                        'config' => [
+                            'type' => 'palette',
+                        ],
+                        'type' => 'palette',
+                        'key' => '4e12de3d14bd6',
+                        'fullKey' => 'tx_mask_4e12de3d14bd6',
+                    ],
+                    'header' => [
+                        'coreField' => 1,
+                        'type' => 'string',
+                        'key' => 'header',
+                        'fullKey' => 'header',
+                        'inPalette' => 1,
+                        'inlineParent' => [
+                            'a' => 'tx_mask_4e12de3d14bd6',
+                        ],
+                        'label' => [
+                            'a' => 'Header A',
+                        ],
+                        'order' => [
+                            'a' => 1,
+                        ],
+                    ],
                     'tx_mask_a' => [
                         'config' => [
                             'type' => 'input',
@@ -167,6 +197,13 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'type' => 'inline',
                         'key' => 'repeat1',
                         'fullKey' => 'tx_mask_repeat1',
+                    ],
+                ],
+                'palettes' => [
+                    'tx_mask_4e12de3d14bd6' => [
+                        'label' => 'Palette 1',
+                        'description' => '',
+                        'showitem' => ['header'],
                     ],
                 ],
             ],
@@ -281,12 +318,15 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'color' => '#000000',
                         'icon' => '',
                         'columns' => [
+                            'header',
                             'tx_mask_file',
                         ],
                         'labels' => [
+                            'Header',
                             'File',
                         ],
                         'descriptions' => [
+                            '',
                             'only images are allowed',
                         ],
                         'sorting' => 2,
@@ -302,6 +342,12 @@ class JsonSplitLoaderTest extends UnitTestCase
                     ],
                 ],
                 'tca' => [
+                    'header' => [
+                        'type' => 'string',
+                        'key' => 'header',
+                        'fullKey' => 'header',
+                        'coreField' => 1,
+                    ],
                     'tx_mask_file' => [
                         'config' => [
                             'appearance' => [
@@ -777,14 +823,17 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'color' => '#000000',
                         'icon' => '',
                         'columns' => [
+                            'tx_mask_4e12de3d14bd6',
                             'tx_mask_a',
                             'tx_mask_repeat1',
                         ],
                         'labels' => [
+                            'Palette 1',
                             'A',
                             'Repeat1',
                         ],
                         'descriptions' => [
+                            '',
                             '',
                             'description for field tx_mask_repeat1',
                         ],
@@ -826,12 +875,15 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'color' => '#000000',
                         'icon' => '',
                         'columns' => [
+                            'header',
                             'tx_mask_file',
                         ],
                         'labels' => [
+                            'Header',
                             'File',
                         ],
                         'descriptions' => [
+                            '',
                             'only images are allowed',
                         ],
                         'sorting' => 2,
@@ -981,6 +1033,14 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'type' => 'inline',
                         'key' => 'inline',
                     ],
+                    'tx_mask_4e12de3d14bd6' => [
+                        'config' => [
+                            'type' => 'palette',
+                        ],
+                        'type' => 'palette',
+                        'key' => '4e12de3d14bd6',
+                        'fullKey' => 'tx_mask_4e12de3d14bd6',
+                    ],
                     'tx_mask_4e12de3d14bd5' => [
                         'config' => [
                             'type' => 'palette',
@@ -996,12 +1056,15 @@ class JsonSplitLoaderTest extends UnitTestCase
                         'fullKey' => 'header',
                         'inPalette' => 1,
                         'inlineParent' => [
+                            'a' => 'tx_mask_4e12de3d14bd6',
                             'b' => 'tx_mask_4e12de3d14bd5',
                         ],
                         'label' => [
+                            'a' => 'Header A',
                             'b' => 'Header',
                         ],
                         'order' => [
+                            'a' => 1,
                             'b' => 1,
                         ],
                     ],
@@ -1027,6 +1090,11 @@ class JsonSplitLoaderTest extends UnitTestCase
                     ],
                 ],
                 'palettes' => [
+                    'tx_mask_4e12de3d14bd6' => [
+                        'label' => 'Palette 1',
+                        'description' => '',
+                        'showitem' => ['header'],
+                    ],
                     'tx_mask_4e12de3d14bd5' => [
                         'label' => 'Palette 1',
                         'description' => '',
@@ -1051,7 +1119,7 @@ class JsonSplitLoaderTest extends UnitTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionCode('Expected content_elements_folder to be a correct file system path. The value "" was given.');
         $this->expectExceptionCode(1639218892);
-        $jsonSplitLoader = new JsonSplitLoader(['content_elements_folder' => '../folder'], new MigrationManager([]));
+        $jsonSplitLoader = new JsonSplitLoader(['content_elements_folder' => '../folder'], new MigrationManager([]), new Features());
         $jsonSplitLoader->load();
     }
 }

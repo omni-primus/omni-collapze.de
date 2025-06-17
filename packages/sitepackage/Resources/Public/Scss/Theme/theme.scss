@@ -1,6 +1,4 @@
-//
 // Variables
-//
 @import "variables";
 
 //
@@ -8,10 +6,29 @@
 //
 @import "EXT:bootstrap_package/Resources/Public/Scss/bootstrap5/theme";
 
+//base theme classes
+@import "base";
+
 //import files
 
-@import "carousel";
-@import "footer";
-@import "header";
-@import "game_slider";
-@import "highlight-gallery";
+@import "components/all";
+@import "layout/all";
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: $primary;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}

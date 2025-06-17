@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace MASK\Mask\Loader;
 
+use MASK\Mask\Definition\ElementDefinition;
 use MASK\Mask\Definition\ElementDefinitionCollection;
 use MASK\Mask\Definition\PaletteDefinitionCollection;
 use MASK\Mask\Definition\SqlDefinition;
@@ -27,6 +28,7 @@ use MASK\Mask\Definition\TcaFieldDefinition;
 use MASK\Mask\Enumeration\FieldType;
 use MASK\Mask\Migrations\MigrationManager;
 use Symfony\Component\Finder\Finder;
+use TYPO3\CMS\Core\Configuration\Features;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -35,6 +37,7 @@ class JsonSplitLoader implements LoaderInterface
     protected ?TableDefinitionCollection $tableDefinitionCollection = null;
     protected array $maskExtensionConfiguration;
     protected MigrationManager $migrationManager;
+    protected Features $features;
 
     private const FOLDER_KEYS = [
         'tt_content' => 'content_elements_folder',
@@ -43,10 +46,12 @@ class JsonSplitLoader implements LoaderInterface
 
     public function __construct(
         array $maskExtensionConfiguration,
-        MigrationManager $migrationManager
+        MigrationManager $migrationManager,
+        Features $features
     ) {
         $this->maskExtensionConfiguration = $maskExtensionConfiguration;
         $this->migrationManager = $migrationManager;
+        $this->features = $features;
     }
 
     public function load(): TableDefinitionCollection
@@ -56,15 +61,12 @@ class JsonSplitLoader implements LoaderInterface
         }
 
         $this->tableDefinitionCollection = new TableDefinitionCollection();
-
-        // Early return, if the content elements folder does not exist.
-        $contentElementsFolder = $this->validateFolderPath('tt_content');
-        if (!file_exists($contentElementsFolder)) {
-            return clone $this->tableDefinitionCollection;
-        }
-
         $definitionArray = [];
-        $definitionArray = $this->mergeElementDefinitions($definitionArray, $contentElementsFolder);
+
+        $contentElementsFolder = $this->validateFolderPath('tt_content');
+        if (file_exists($contentElementsFolder)) {
+            $definitionArray = $this->mergeElementDefinitions($definitionArray, $contentElementsFolder);
+        }
 
         // If optional backendLayoutsFolder is not empty, validate the path.
         $backendLayoutsFolder = $this->getAbsolutePath('pages');
@@ -135,6 +137,7 @@ class JsonSplitLoader implements LoaderInterface
             return;
         }
 
+        $overrideSharedFields = $this->features->isFeatureEnabled('overrideSharedFields');
         $absolutePath = $this->validateFolderPath($table);
 
         if (!file_exists($absolutePath)) {
@@ -181,7 +184,9 @@ class JsonSplitLoader implements LoaderInterface
             $sorting += 1;
 
             foreach ($element->columns as $column) {
-                $field = $tableDefinition->tca->getField($column);
+                $field = clone $tableDefinition->tca->getField($column);
+                $field = $this->cleanParentPaletteInformation($field, $element);
+                $field->inPalette = false;
                 $newTcaDefinition->addField($field);
                 if ($tableDefinition->sql->hasColumn($field->fullKey)) {
                     $newSqlDefinition->addColumn($tableDefinition->sql->getColumn($field->fullKey));
@@ -194,7 +199,8 @@ class JsonSplitLoader implements LoaderInterface
                     $paletteDefinition = $tableDefinition->palettes->getPalette($field->fullKey);
                     $newPaletteDefinitionCollection->addPalette($paletteDefinition);
                     foreach ($paletteDefinition->showitem as $item) {
-                        $paletteField = $tableDefinition->tca->getField($item);
+                        $paletteField = clone $tableDefinition->tca->getField($item);
+                        $paletteField = $this->cleanParentPaletteInformation($paletteField, $element);
                         $newTcaDefinition->addField($paletteField);
                         if ($tableDefinition->sql->hasColumn($paletteField->fullKey)) {
                             $newSqlDefinition->addColumn($tableDefinition->sql->getColumn($paletteField->fullKey));
@@ -210,7 +216,9 @@ class JsonSplitLoader implements LoaderInterface
             $newTableDefinition->palettes = $newPaletteDefinitionCollection;
             $newTableDefinition->elements = $newElementsDefinitionCollection;
             $elementTableDefinitionCollection->addTable($newTableDefinition);
-
+            if ($overrideSharedFields) {
+                $elementTableDefinitionCollection->setRestructuringDone();
+            }
             $filePath = $absolutePath . '/' . $element->key . '.json';
             $result = GeneralUtility::writeFile($filePath, json_encode($elementTableDefinitionCollection->toArray(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT) . "\n");
 
@@ -232,5 +240,40 @@ class JsonSplitLoader implements LoaderInterface
                 $this->addInlineRecursive($inlineChild, $elementTableDefinitionCollection, $tableDefinitionCollection);
             }
         }
+    }
+
+    protected function cleanParentPaletteInformation(TcaFieldDefinition $field, ElementDefinition $element): TcaFieldDefinition
+    {
+        if (isset($field->inlineParentByElement[$element->key])) {
+            $inlineParent = $field->inlineParentByElement[$element->key];
+            $field->inlineParentByElement = [$element->key => $inlineParent];
+        } else {
+            $field->inlineParentByElement = [];
+        }
+        if (isset($field->labelByElement[$element->key])) {
+            $label = $field->labelByElement[$element->key];
+            $field->labelByElement = [$element->key => $label];
+        } else {
+            $field->labelByElement = [];
+        }
+        if (isset($field->descriptionByElement[$element->key])) {
+            $description = $field->descriptionByElement[$element->key];
+            $field->descriptionByElement = [$element->key => $description];
+        } else {
+            $field->descriptionByElement = [];
+        }
+        if (isset($field->bodytextTypeByElement[$element->key])) {
+            $bodyTextElement = $field->bodytextTypeByElement[$element->key];
+            $field->bodytextTypeByElement = [$element->key => $bodyTextElement];
+        } else {
+            $field->bodytextTypeByElement = [];
+        }
+        if (isset($field->orderByElement[$element->key])) {
+            $order = $field->orderByElement[$element->key];
+            $field->orderByElement = [$element->key => $order];
+        } else {
+            $field->orderByElement = [];
+        }
+        return $field;
     }
 }

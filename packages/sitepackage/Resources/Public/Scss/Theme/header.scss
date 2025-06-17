@@ -1,7 +1,0 @@
-@include media-breakpoint-up(lg) {
-  .navbar-default-transition:not(.navbar-transition), .navbar-inverse-transition:not(.navbar-transition) {
-    .navbar-mainnavigation .navbar-nav>li>.nav-link:before {
-      background: #fff;
-    }
-  }
-}
