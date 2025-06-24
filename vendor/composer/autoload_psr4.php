@@ -109,7 +109,6 @@ return array(
     'GeorgRinger\\NumberedPagination\\' => array($baseDir . '/public/typo3conf/ext/numbered_pagination/Classes'),
     'FriendsOfTYPO3\\FontawesomeProvider\\' => array($baseDir . '/public/typo3conf/ext/fontawesome_provider/Classes'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
-    'EBT\\ExtensionBuilder\\' => array($baseDir . '/public/typo3conf/ext/extension_builder/Classes'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\Deprecations\\' => array($vendorDir . '/doctrine/deprecations/lib/Doctrine/Deprecations'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL'),

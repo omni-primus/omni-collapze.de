@@ -13,7 +13,6 @@
         "typo3/cms-core": "^11.5",
         "typo3/cms-dashboard": "^11.5",
         "typo3/cms-extbase": "^11.5",
-        "typo3/cms-extensionmanager": "^11.5",
         "typo3/cms-felogin": "^11.5",
         "typo3/cms-filelist": "^11.5",
         "typo3/cms-filemetadata": "^11.5",
@@ -44,12 +43,12 @@
         "webneo-gmbh/sitepackage": "@dev",
         "typo3-contentblocks/contentblocks-reg-api": "^3.0",
         "b13/container": "^2.2",
-        "friendsoftypo3/extension-builder": "^11.0",
         "wapplersystems/ws-scss": "^11.0",
         "typo3/cms-styleguide": "^11.5.4",
         "wapplersystems/a21glossary": "^11.0.4",
         "mehrwert/phpmyadmin": "^6.1",
-        "mask/mask": "^8.3"
+        "mask/mask": "^8.3",
+        "typo3/cms-extensionmanager": "^11.5"
     },
     "config": {
         "allow-plugins": {

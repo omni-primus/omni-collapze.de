@@ -1,42 +1,48 @@
 <f:if condition="{data.tx_mask_game_card_item}">
     <div class="d-grid grid-cols-1 grid-sm-cols-2 grid-lg-cols-3 gap-4">
         <f:for each="{data.tx_mask_game_card_item}" as="card">
-            <div class="game-card overflow-hidden">
+            <div class="game-card overflow-hidden d-flex flex-column">
                 <div class="game-card-image position-relative overflow-hidden">
                     <f:if condition="{card.tx_mask_game_card_image.0}">
                         <f:media file="{card.tx_mask_game_card_image.0}" alt="{card.tx_mask_game_card_image.0.title}" class="w-100 h-100" />
                     </f:if>
+                    <div class="card-image-foreground position-absolute "></div>
+                    <div class="card-title-container position-absolute">
+                        <f:if condition="{card.tx_mask_game_card_title}">
+                            <h3 class="text-2xl font-weight-bold text-white">{card.tx_mask_game_card_title}</h3>
+                        </f:if>
+                        <div class="d-flex gap-1 mt-2">
+                            <f:if condition="{card.tx_mask_game_card_tags}">
+                                <f:for each="{card.tx_mask_game_card_tags}" as="card_tag">
+                                        <f:if condition="{card_tag.tx_mask_game_card_tag_title}">
+                                            <span class="px-2 py-1 bg-{card_tag.tx_mask_game_card_tag_select_items.0} text-xs text-white border-rounded">
+                                                {card_tag.tx_mask_game_card_tag_title}
+                                            </span>
+                                        </f:if>
+                                </f:for>
+                            </f:if>
+                        </div>
+                    </div>
                 </div>
-                <f:if condition="{data_item.tx_mask_game_card_title}">
-                    {data_item.tx_mask_game_card_title}
-                </f:if>
+                <div class="p-4 d-flex flex-column flex-grow-1 game-card-text-container">
+                    {card.tx_mask_game_card_text -> f:format.html()}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <f:if condition="{card.tx_mask_game_card_player_count}">
+                                <i class="fas fa-users text-primary"></i>
+                                <span class="text-white">{card.tx_mask_game_card_player_count} Active Players</span>
+                            </f:if>
+                        </div>
+                        <f:if condition="{card.tx_mask_game_card_link}">
+                            <f:link.typolink parameter="{card.tx_mask_game_card_link}">
+                                <f:if condition="{card.tx_mask_game_card_link_text}">
+                                    {card.tx_mask_game_card_link_text}
+                                </f:if>
+                            </f:link.typolink>
+                        </f:if>
+                    </div>
+                </div>
             </div>
         </f:for>
     </div>
-                <f:if condition="{data_item.tx_mask_game_card_tags}">
-                    <ul>
-                        <f:for each="{data_item.tx_mask_game_card_tags}" as="data_item_item">
-                            <li>
-                                <f:if condition="{data_item_item.tx_mask_game_card_tag_title}">
-                                    {data_item_item.tx_mask_game_card_tag_title}
-                                </f:if>
-                                <f:for each="{data_item_item.tx_mask_game_card_tag_select_items}" as="data_item_item_item">
-                                    <div>{data_item_item_item}</div>
-                                </f:for>
-                            </li>
-                        </f:for>
-                    </ul>
-                </f:if>
-                <f:if condition="{data_item.tx_mask_game_card_text}">
-                    {data_item.tx_mask_game_card_text -> f:format.html()}
-                </f:if>
-                <f:if condition="{data_item.tx_mask_game_card_player_count}">
-                    {data_item.tx_mask_game_card_player_count}
-                </f:if>
-                <f:if condition="{data_item.tx_mask_game_card_link}">
-                    <f:link.typolink parameter="{data_item.tx_mask_game_card_link}"></f:link.typolink>
-                </f:if>
-                <f:if condition="{data_item.tx_mask_game_card_link_text}">
-                    {data_item.tx_mask_game_card_link_text}
-                </f:if>
 </f:if>

@@ -1,0 +1,27 @@
+<div class="d-grid grid-cols-2 grid-sm-cols-3 grid-md-cols-4 grid-lg-cols-5 gap-4">
+    <f:if condition="{data.tx_mask_team_card}">
+        <f:for each="{data.tx_mask_team_card}" as="team_card">
+            <div class="team-card position-relative">
+                <div class="overflow-hidden border-rounded-lg glow">
+                    <f:if condition="{team_card.tx_mask_team_card_image.0}">
+                        <f:media class="w-100 object-cover team-card-image" file="{team_card.tx_mask_team_card_image.0}" />
+                    </f:if>
+                    <div class="position-absolute team-card-foreground"></div>
+                    <div class="team-card-text-container position-absolute p-3 w-100">
+                        <f:if condition="{team_card.tx_mask_team_card_name}">
+                            <h3 class="text-white font-weight-bold text-lg">{team_card.tx_mask_team_card_name}</h3>
+                        </f:if>
+                        <f:if condition="{team_card.tx_mask_team_card_role}">
+                            <p class="text-primary text-sm mb-0">{team_card.tx_mask_team_card_role}</p>
+                        </f:if>
+                    </div>
+                </div>
+                <f:if condition="{team_card.tx_mask_team_card_corner_note}">
+                    <div class="team-card-note position-absolute bg-primary d-flex align-items-center justify-content-center">
+                        <span class="text-white font-weight-bold">{team_card.tx_mask_team_card_corner_note}</span>
+                    </div>
+                </f:if>
+            </div>
+        </f:for>
+    </f:if>
+</div>

@@ -16,4 +16,18 @@
   img {
     object-fit:cover;
   }
+  .card-image-foreground {
+    background-image: linear-gradient(to top, #000, transparent);
+    inset: 0;
+  }
+  .card-title-container {
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+
+.game-card-text-container {
+  > p {
+    flex-grow: 1;
+  }
 }

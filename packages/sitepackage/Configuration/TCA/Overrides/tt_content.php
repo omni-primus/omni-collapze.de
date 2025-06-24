@@ -97,3 +97,26 @@ $GLOBALS['TCA']['tt_content']['columns']['background_color_class'] = [
     ],
     'l10n_mode' => 'exclude',
 ];
+
+$GLOBALS['TCA']['tt_content']['columns']['header_layout'] = [
+    'config' => [
+        'type' => 'select',
+        'renderType' => 'selectSingle',
+        'items' => [
+            ['Default', '0'],
+            ['H1', '1'],
+            ['H2', '2'],
+            ['H3', '3'],
+            ['H4', '4'],
+            ['H5', '5'],
+            ['Link', '10'],
+            ['hidden', '100']
+        ]
+    ]
+];
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'sitepackage',
+    'primeleague_plugin',
+    'Prime League'
+);

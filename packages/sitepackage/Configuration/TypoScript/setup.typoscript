@@ -28,8 +28,7 @@ page {
 
     includeJSFooter {
         sitepackage_scripts = EXT:sitepackage/Resources/Public/JavaScript/Dist/scripts.js
-        swiper = https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js
-        swiper.external = 1
+        swiper = EXT:sitepackage/Resources/Public/JavaScript/Dist/swiper-element-bundle.min.js
     }
 }
 
@@ -104,6 +103,14 @@ tt_content {
                 }
             }
         }
+    }
+}
+
+plugin.tx_sitepackage {
+    view {
+        templateRootPaths.0 = EXT:sitepackage/Resources/Private/Templates/PrimeLeague/
+        partialRootPaths.0 = EXT:sitepackage/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:sitepackage/Resources/Private/Layouts/
     }
 }
 

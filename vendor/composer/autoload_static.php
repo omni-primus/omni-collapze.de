@@ -167,7 +167,6 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
-            'EBT\\ExtensionBuilder\\' => 21,
         ),
         'D' => 
         array (
@@ -605,10 +604,6 @@ class ComposerStaticInit8564312395eeea7e3e1fedc43667410f
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
-        ),
-        'EBT\\ExtensionBuilder\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/public/typo3conf/ext/extension_builder/Classes',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

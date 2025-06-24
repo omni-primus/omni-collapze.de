@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bb778455b33a8bc6a922c784bb240a7",
+    "content-hash": "9f566fef4b3c0ee15135c2c9fd6db027",
     "packages": [
         {
             "name": "b13/container",
@@ -1013,81 +1013,6 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
-        },
-        {
-            "name": "friendsoftypo3/extension-builder",
-            "version": "v11.0.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfTYPO3/extension_builder.git",
-                "reference": "b9b7bc4a62edb580990f11695d405e09281daede"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfTYPO3/extension_builder/zipball/b9b7bc4a62edb580990f11695d405e09281daede",
-                "reference": "b9b7bc4a62edb580990f11695d405e09281daede",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nikic/php-parser": "^4.10.4",
-                "php": "^7.4 || ^8.0",
-                "typo3/cms-backend": "^11.4",
-                "typo3/cms-core": "^11.4"
-            },
-            "replace": {
-                "typo3-ter/extension-builder": "self.version"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
-                "roave/security-advisories": "dev-latest",
-                "sebastian/diff": "^3.0",
-                "typo3/cms-frontend": "^11.4",
-                "typo3/cms-install": "^11.4",
-                "typo3/coding-standards": "^0.3.0",
-                "typo3/testing-framework": "^6.11"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "extension_builder",
-                    "app-dir": ".Build",
-                    "ignore-as-root": false,
-                    "web-dir": ".Build/public"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "EBT\\ExtensionBuilder\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Nico de Haen",
-                    "role": "Developer"
-                },
-                {
-                    "name": "extension_builder Development Team",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Tool to kickstart and maintain TYPO3 extensions",
-            "homepage": "https://extensions.typo3.org/extension/extension_builder",
-            "keywords": [
-                "extension",
-                "extension_builder",
-                "typo3"
-            ],
-            "support": {
-                "docs": "https://docs.typo3.org/p/friendsoftypo3/extension-builder/main/en-us/",
-                "issues": "https://github.com/FriendsOfTYPO3/extension_builder/issues",
-                "source": "https://github.com/FriendsOfTYPO3/extension_builder"
-            },
-            "time": "2023-03-14T18:32:33+00:00"
         },
         {
             "name": "friendsoftypo3/fontawesome-provider",
@@ -6306,9 +6231,6 @@
             },
             "type": "typo3-cms-framework",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "11.5.x-dev"
-                },
                 "typo3/cms": {
                     "Package": {
                         "protected": true,
@@ -6316,6 +6238,9 @@
                         "partOfMinimalUsableSystem": true
                     },
                     "extension-key": "extensionmanager"
+                },
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
                 }
             },
             "autoload": {

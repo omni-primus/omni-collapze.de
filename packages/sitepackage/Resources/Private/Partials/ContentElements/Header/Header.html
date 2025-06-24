@@ -33,6 +33,13 @@
                 <f:link.typolink parameter="{link}"><span>{header}</span></f:link.typolink>
             </h6>
         </f:case>
+        <f:case value="10">
+            <div class="{class} {positionClass}">
+                <f:link.typolink class="px-5 py-3 btn-outline font-weight-bold text-uppercase btn-glow d-inline-block" parameter="{link}">
+                    <span>{header}</span>
+                </f:link.typolink>
+            </div>
+        </f:case>
         <f:case value="100">
             <f:comment> -- do not show header -- </f:comment>
         </f:case>

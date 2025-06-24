@@ -37,6 +37,10 @@ h2, .h2 {
   background: $black;
 }
 
+.bg-default {
+  background-color: #1F2937 !important;
+}
+
 .text-gray-400 {
   color: #9CA3AF;
 }
@@ -51,6 +55,11 @@ h2, .h2 {
 
 .glow {
   text-shadow: 0 0 10px $primary, 0 0 20px $primary;
+}
+
+.text-xs {
+  font-size: .75rem;
+  line-height: 1rem;
 }
 
 .text-sm {
@@ -148,6 +157,9 @@ a:hover {
   background: #000;
   border-radius: 9999px;
   border: 2px solid $primary;
+  &:hover {
+    color: #fff;
+  }
 }
 
 .btn-glow {
@@ -162,6 +174,14 @@ a:hover {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.border-rounded {
+  border-radius: .25rem;
+}
+
+.border-rounded-lg {
+  border-radius: .5rem;
 }
 
 @keyframes bounce {
@@ -203,8 +223,15 @@ a:hover {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @include media-breakpoint-up(sm) {
   .grid-sm-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-sm-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -213,10 +240,16 @@ a:hover {
   .grid-md-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .grid-md-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @include media-breakpoint-up(lg) {
   .grid-lg-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid-lg-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

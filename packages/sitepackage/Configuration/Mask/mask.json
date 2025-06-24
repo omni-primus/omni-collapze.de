@@ -101,6 +101,26 @@
                     ],
                     "shortLabel": "",
                     "sorting": 0
+                },
+                "team_card": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "tx_mask_team_card"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "team_card",
+                    "label": "Team Card",
+                    "labels": [
+                        "Team Card"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 4
                 }
             },
             "sql": {
@@ -142,6 +162,11 @@
                 "tx_mask_herobanner_media": {
                     "tt_content": {
                         "tx_mask_herobanner_media": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_team_card": {
+                    "tt_content": {
+                        "tx_mask_team_card": "int(11) unsigned DEFAULT '0' NOT NULL"
                     }
                 }
             },
@@ -311,6 +336,34 @@
                     "fullKey": "tx_mask_herobanner_media",
                     "key": "herobanner_media",
                     "type": "media"
+                },
+                "tx_mask_team_card": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 1,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 1,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_team_card",
+                    "key": "team_card",
+                    "type": "inline"
                 }
             }
         },
@@ -708,6 +761,96 @@
                     "key": "game_card_tag_title",
                     "label": "Game Card Tag Title",
                     "order": 1,
+                    "type": "string"
+                }
+            }
+        },
+        "tx_mask_team_card": {
+            "sql": {
+                "tx_mask_team_card_corner_note": {
+                    "tx_mask_team_card": {
+                        "tx_mask_team_card_corner_note": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_team_card_image": {
+                    "tx_mask_team_card": {
+                        "tx_mask_team_card_image": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_team_card_name": {
+                    "tx_mask_team_card": {
+                        "tx_mask_team_card_name": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_team_card_role": {
+                    "tx_mask_team_card": {
+                        "tx_mask_team_card_role": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_team_card_corner_note": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_team_card_corner_note",
+                    "inlineParent": "tx_mask_team_card",
+                    "key": "team_card_corner_note",
+                    "label": "Team Card Corner Note",
+                    "order": 3,
+                    "type": "string"
+                },
+                "tx_mask_team_card_image": {
+                    "allowedFileExtensions": "png,jpg,jpeg,svg",
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileByUrlAllowed": 1,
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "maxitems": "1",
+                        "minitems": "0"
+                    },
+                    "fullKey": "tx_mask_team_card_image",
+                    "inlineParent": "tx_mask_team_card",
+                    "key": "team_card_image",
+                    "label": "Team Card Image",
+                    "onlineMedia": [
+                        "youtube",
+                        "vimeo"
+                    ],
+                    "order": 4,
+                    "type": "media"
+                },
+                "tx_mask_team_card_name": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_team_card_name",
+                    "inlineParent": "tx_mask_team_card",
+                    "key": "team_card_name",
+                    "label": "Team Card Name",
+                    "order": 1,
+                    "type": "string"
+                },
+                "tx_mask_team_card_role": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_team_card_role",
+                    "inlineParent": "tx_mask_team_card",
+                    "key": "team_card_role",
+                    "label": "Team Card Role",
+                    "order": 2,
                     "type": "string"
                 }
             }

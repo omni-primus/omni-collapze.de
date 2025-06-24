@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '73399eaeee66ac0d3c646a3120f248f280eab439',
+        'reference' => '3931706cb69088ec0d1b9c5308aad0fae81a4ae2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '73399eaeee66ac0d3c646a3120f248f280eab439',
+            'reference' => '3931706cb69088ec0d1b9c5308aad0fae81a4ae2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -148,15 +148,6 @@
             'reference' => 'e50b83a2f1f296ca61394fe88fbfe3e896a84cf4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../enshrined/svg-sanitize',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'friendsoftypo3/extension-builder' => array(
-            'pretty_version' => 'v11.0.10',
-            'version' => '11.0.10.0',
-            'reference' => 'b9b7bc4a62edb580990f11695d405e09281daede',
-            'type' => 'typo3-cms-extension',
-            'install_path' => __DIR__ . '/../../public/typo3conf/ext/extension_builder',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -812,12 +803,6 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '2.2.1',
-            ),
-        ),
-        'typo3-ter/extension-builder' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v11.0.10',
             ),
         ),
         'typo3-ter/mask' => array(

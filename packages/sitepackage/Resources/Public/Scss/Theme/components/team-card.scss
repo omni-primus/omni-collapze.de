@@ -1,0 +1,33 @@
+.team-card {
+  &:hover {
+    .team-card-image {
+      transform: scale(1.05, 1.05);
+    }
+  }
+}
+
+.team-card-image {
+  object-fit: cover;
+  height: 16rem;
+  transition-duration: 300ms;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card-foreground {
+  background-image: linear-gradient(to top, #000, transparent);
+  inset: 0;
+  opacity: .7;
+}
+
+.team-card-text-container {
+  bottom: 0;
+  left: 0;
+}
+.team-card-note {
+  border-radius: 9999px;
+  height: 2.5rem;
+  top: -0.5rem;
+  right: -0.5rem;
+  padding: .5rem;
+}
