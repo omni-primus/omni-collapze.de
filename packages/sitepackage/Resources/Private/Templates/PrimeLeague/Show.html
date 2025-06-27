@@ -1,288 +1,59 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<table class="prime-league-table mx-auto w-100">
-    <tr>
-        <th>Rank</th>
-        <th>Team</th>
-        <th>Score</th>
-    </tr>
-    <f:for each="{primeLeagueTable}" as="team" iteration="i">
-        <tr>
-            <td>{team.rank}</td>
-            <td>{team.name}</td>
-            <td>{team.score}</td>
+<div class="prime-league-table-container overflow-x-auto mx-auto">
+    <table class="prime-league-table border-glow rounded-3 w-100">
+        <thead>
+        <tr class="prime-league-row-gradient rounded-top">
+            <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider w-10">Rank</th>
+            <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider">Team</th>
+            <th class="py-2 px-3 text-right text-sm font-weight-semibold text-uppercase tracking-wider">Score</th>
         </tr>
-    </f:for>
-</table>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esports Standings</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .glow-text {
-            text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 15px #a855f7;
-        }
-        .glow-border {
-            box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7 inset;
-        }
-        .rank-1 {
-            background: linear-gradient(135deg, #1a1a1a 0%, #3b0764 100%);
-        }
-        .rank-2 {
-            background: linear-gradient(135deg, #1a1a1a 0%, #4c1d95 100%);
-        }
-        .rank-3 {
-            background: linear-gradient(135deg, #1a1a1a 0%, #5b21b6 100%);
-        }
-        .team-row:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 15px #a855f7;
-        }
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-    </style>
-</head>
-<body class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4">
-<div class="max-w-4xl w-full">
-    <div class="text-center mb-8">
-        <h1 class="text-4xl md:text-5xl font-bold mb-2 glow-text">ESPORTS STANDINGS</h1>
-        <p class="text-purple-400 pulse">Current Season Rankings - Updated Live</p>
-    </div>
-
-    <div class="overflow-x-auto glow-border rounded-lg border border-purple-900">
-        <table class="w-full">
-            <thead>
-            <tr class="bg-gradient-to-r from-purple-900 to-black">
-                <th class="py-4 px-6 text-left text-sm font-semibold text-purple-300 uppercase tracking-wider">Rank</th>
-                <th class="py-4 px-6 text-left text-sm font-semibold text-purple-300 uppercase tracking-wider">Team</th>
-                <th class="py-4 px-6 text-right text-sm font-semibold text-purple-300 uppercase tracking-wider">Score</th>
-            </tr>
-            </thead>
-            <tbody class="divide-y divide-purple-900">
-            <tr class="team-row rank-1 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
-                            <span class="font-bold text-black">1</span>
+        </thead>
+        <tbody class="">
+        <f:for each="{primeLeagueTable}" as="team" iteration="i">
+            <f:if condition="{team.name} == 'OMNI Falcons'">
+                <f:then>
+                    <f:variable name="falcons">true</f:variable>
+                </f:then>
+                <f:else>
+                    <f:variable name="falcons"></f:variable>
+                </f:else>
+            </f:if>
+            <tr class="team-row transition-all duration-200{f:if(condition: falcons, then: ' falcons')}">
+                <td class="py-3 px-3 text-nowrap position-relative">
+                    <f:if condition="{i.cycle} == 1 || {i.cycle} == 2">
+                        <div class="placement-marker promotion"></div>
+                    </f:if>
+                    <f:if condition="{i.cycle} == 7 || {i.cycle} == 8">
+                        <div class="placement-marker relegation"></div>
+                    </f:if>
+                    <div class="text-center">
+                        <span class="font-weight-bold text-white">{team.rank}</span>
+                    </div>
+                </td>
+                <td class="py-3 px-3 text-nowrap">
+                    <div class="">
+                        <div class="">
+                            <span class="font-weight-bold text-white">{team.name}</span>
                         </div>
                     </div>
                 </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=T1" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">T1 Esports</div>
-                            <div class="text-sm text-purple-300">South Korea</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1850 <span class="text-yellow-400 ml-1"><i class="fas fa-trophy"></i></span>
+                <td class="py-3 px-3 text-nowrap text-right text-xl font-weight-bold">
+                    <span class="mx-2">{team.score}</span>
+                    <i class="fas fa-trophy"></i>
                 </td>
             </tr>
-
-            <tr class="team-row rank-2 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
-                            <span class="font-bold text-black">2</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=G2" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">G2 Esports</div>
-                            <div class="text-sm text-purple-300">Europe</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1780 <span class="text-gray-300 ml-1"><i class="fas fa-medal"></i></span>
-                </td>
-            </tr>
-
-            <tr class="team-row rank-3 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-amber-700 to-amber-900 flex items-center justify-center">
-                            <span class="font-bold text-white">3</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=TL" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">Team Liquid</div>
-                            <div class="text-sm text-purple-300">North America</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1725 <span class="text-amber-700 ml-1"><i class="fas fa-medal"></i></span>
-                </td>
-            </tr>
-
-            <tr class="team-row bg-gray-900 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
-                            <span class="font-bold text-gray-300">4</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=JDG" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">JD Gaming</div>
-                            <div class="text-sm text-purple-300">China</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1680
-                </td>
-            </tr>
-
-            <tr class="team-row bg-gray-900 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
-                            <span class="font-bold text-gray-300">5</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=FNC" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">Fnatic</div>
-                            <div class="text-sm text-purple-300">Europe</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1650
-                </td>
-            </tr>
-
-            <tr class="team-row bg-gray-900 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
-                            <span class="font-bold text-gray-300">6</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=DK" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">DWG KIA</div>
-                            <div class="text-sm text-purple-300">South Korea</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1620
-                </td>
-            </tr>
-
-            <tr class="team-row bg-gray-900 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
-                            <span class="font-bold text-gray-300">7</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=EG" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">Evil Geniuses</div>
-                            <div class="text-sm text-purple-300">North America</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1580
-                </td>
-            </tr>
-
-            <tr class="team-row bg-gray-900 transition-all duration-200">
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
-                            <span class="font-bold text-gray-300">8</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/7e22ce/ffffff?text=RNG" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-white">Royal Never Give Up</div>
-                            <div class="text-sm text-purple-300">China</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-4 px-6 whitespace-nowrap text-right text-xl font-bold text-purple-300">
-                    1550
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="mt-8 text-center text-sm text-purple-300">
-        <p>Rankings update every 30 minutes. Next update in <span class="font-bold">12:45</span></p>
-        <div class="mt-2 flex justify-center space-x-4">
-            <button class="px-4 py-2 bg-purple-900 hover:bg-purple-800 rounded-md transition-all duration-200 flex items-center">
-                <i class="fas fa-share-alt mr-2"></i> Share
-            </button>
-            <button class="px-4 py-2 bg-purple-900 hover:bg-purple-800 rounded-md transition-all duration-200 flex items-center">
-                <i class="fas fa-bell mr-2"></i> Notify Me
-            </button>
+        </f:for>
+        </tbody>
+    </table>
+    <div class="mt-2 d-flex gap-2">
+        <div class="promotion-text d-flex align-items-center">
+            <span class="marker-cube promotion"></span>
+            <span class="text-xs">Playoffs Div 4</span>
+        </div>
+        <div class="relegation-text d-flex align-items-center">
+            <span class="marker-cube relegation"></span>
+            <span class="text-xs">Relegation Div 6</span>
         </div>
     </div>
 </div>
-
-<div class="absolute bottom-4 right-4 text-purple-400 text-xs">
-    <p>© 2023 Esports Network</p>
-</div>
-</body>
 </html>

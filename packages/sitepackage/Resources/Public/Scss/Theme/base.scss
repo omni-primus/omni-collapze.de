@@ -57,6 +57,10 @@ h2, .h2 {
   text-shadow: 0 0 10px $primary, 0 0 20px $primary;
 }
 
+.border-glow {
+  box-shadow: 0 0 10px $primary, 0 0 20px $primary inset;
+}
+
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
@@ -103,12 +107,20 @@ h2, .h2 {
   }
 }
 
+.tracking-wider {
+  letter-spacing: .05em;
+}
+
 .h-8 {
   height: 2rem;
 }
 
 .h-10 {
   height: 2.5rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .w-8 {
@@ -182,6 +194,10 @@ a:hover {
 
 .border-rounded-lg {
   border-radius: .5rem;
+}
+
+.border-rounded-full {
+  border-radius: 9999px;
 }
 
 @keyframes bounce {

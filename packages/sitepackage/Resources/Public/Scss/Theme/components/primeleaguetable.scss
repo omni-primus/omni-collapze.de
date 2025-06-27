@@ -1,3 +1,67 @@
+.prime-league-table-container {
+  max-width: 320px;
+  overflow-x: auto;
+  @include media-breakpoint-up(sm) {
+    max-width: 500px;
+  }
+  @include media-breakpoint-up(md) {
+    max-width: 680px;
+    overflow-x: unset;
+  }
+  @include media-breakpoint-up(lg) {
+    max-width: 960px;
+  }
+}
+
 .prime-league-table {
-  max-width: 960px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid $primary;
+}
+
+.prime-league-row-gradient {
+  background-image: linear-gradient(to right, $primary, #000);
+}
+
+.team-row {
+  background-image: linear-gradient(to right, #262626, #000);
+
+  &.falcons {
+    background-image: linear-gradient(to right, #2B1A49, $primary);
+  }
+}
+
+.team-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px #a855f7;
+}
+
+.rounded-top {
+  border-radius: 9999px 9999px 0 0;
+}
+
+.rounded-bottom {
+  border-radius: 0 0 9999px 9999px;
+}
+
+.placement-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.marker-cube {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.promotion {
+  background: #00ff00;
+}
+.relegation {
+  background: #ff0000;
 }
