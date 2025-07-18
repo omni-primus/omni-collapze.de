@@ -1,5 +1,5 @@
 <f:if condition="{data.tx_mask_3cards_item}">
-    <div class="d-grid grid-cols-1 grid-md-cols-3 gap-5">
+    <div id="{f:if(condition: '{data.tx_mask_container_id}', then: '{data.tx_mask_container_id}')}" class="d-grid grid-cols-1 grid-md-cols-3 gap-5">
         <f:for each="{data.tx_mask_3cards_item}" as="card">
             <div class="three-card-item w-100 d-flex flex-column align-items-center justify-content-center p-4 mx-auto">
                 <f:if condition="{card.tx_mask_3cards_faicon}">

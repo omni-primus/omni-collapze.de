@@ -4,6 +4,15 @@ body {
   color: #fff;
 }
 
+h1, .h1 {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px $primary, 0 0 20px $primary;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
 h2, .h2 {
   font-size: 2.25rem;
   line-height: 2.5rem;
