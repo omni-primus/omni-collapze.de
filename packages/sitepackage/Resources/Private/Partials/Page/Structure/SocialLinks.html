@@ -3,7 +3,7 @@
         <div class="d-flex mb-4 mb-md-0 gap-4">
             <f:for each="{theme.socialmedia.channels}" key="channelKey" as="channelOptions">
                 <f:if condition="{channelOptions.url}">
-                    <a class="d-flex align-items-center text-gray-400 text-hover-purple-light" href="{channelOptions.url}" rel="noopener" target="_blank">
+                    <a class="d-flex text-decoration-none align-items-center text-gray-400 text-hover-purple-light" href="{channelOptions.url}" rel="noopener" target="_blank">
                         <i class="fab fa-{channelKey} text-2xl"></i>
                     </a>
                 </f:if>

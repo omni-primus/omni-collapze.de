@@ -269,6 +269,9 @@ a:hover {
   .grid-md-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .overflow-x-md-unset {
+    overflow-x: unset !important;
+  }
 }
 
 @include media-breakpoint-up(lg) {

@@ -6,7 +6,6 @@
   }
   @include media-breakpoint-up(md) {
     max-width: 680px;
-    overflow-x: unset;
   }
   @include media-breakpoint-up(lg) {
     max-width: 960px;
