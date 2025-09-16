@@ -20,14 +20,10 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['sitepackage'] = 'EXT:sitepackage/
     '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/Mod/Wizards/GameSlider.tsconfig">'
 );
 
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'sitepackage',
     'primeleague_plugin',
-    [
-        \WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => 'show',
-    ],
-    [
-        // Non-cached actions
-        \WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => '',
-    ],
+    [\WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => 'show'],
+    [\WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => '']
 );

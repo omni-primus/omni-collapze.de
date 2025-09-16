@@ -3,7 +3,6 @@
 namespace WebneoGmbh\Sitepackage\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use function Safe\ps_add_pdflink;
 
 class PrimeLeagueController extends ActionController {
     public function showAction()

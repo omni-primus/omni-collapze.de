@@ -1,8 +1,0 @@
-/.idea
-
-# composer
-/vendor/
-/composer.lock
-
-# CGL Fixer
-/.php_cs.cache
