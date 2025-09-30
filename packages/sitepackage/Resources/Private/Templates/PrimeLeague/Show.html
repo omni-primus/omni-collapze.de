@@ -1,59 +1,115 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<div class="prime-league-table-container overflow-x-auto overflow-x-md-unset mx-auto">
-    <table class="prime-league-table border-glow rounded-3 w-100">
-        <thead>
-        <tr class="prime-league-row-gradient rounded-top">
-            <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider w-10">Rank</th>
-            <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider">Team</th>
-            <th class="py-2 px-3 text-right text-sm font-weight-semibold text-uppercase tracking-wider">Score</th>
-        </tr>
-        </thead>
-        <tbody class="">
-        <f:for each="{primeLeagueTable}" as="team" iteration="i">
-            <f:if condition="{team.name} == 'OMNI Falcons'">
-                <f:then>
-                    <f:variable name="falcons">true</f:variable>
-                </f:then>
-                <f:else>
-                    <f:variable name="falcons"></f:variable>
-                </f:else>
-            </f:if>
-            <tr class="team-row transition-all duration-200{f:if(condition: falcons, then: ' falcons')}">
-                <td class="py-3 px-3 text-nowrap position-relative">
-                    <f:if condition="{i.cycle} == 1 || {i.cycle} == 2">
-                        <div class="placement-marker promotion"></div>
-                    </f:if>
-                    <f:if condition="{i.cycle} == 7 || {i.cycle} == 8">
-                        <div class="placement-marker relegation"></div>
-                    </f:if>
-                    <div class="text-center">
-                        <span class="font-weight-bold text-white">{team.rank}</span>
-                    </div>
-                </td>
-                <td class="py-3 px-3 text-nowrap">
-                    <div class="">
-                        <div class="">
-                            <span class="font-weight-bold text-white">{team.name}</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-3 px-3 text-nowrap text-right text-xl font-weight-bold">
-                    <span class="mx-2">{team.score}</span>
-                    <i class="fas fa-trophy"></i>
-                </td>
+<f:if condition="{settings.tableType} == 'group'">
+    <div class="prime-league-table-container overflow-x-auto overflow-x-md-unset mx-auto">
+        <table class="prime-league-table border-glow rounded-3 w-100">
+            <thead>
+            <tr class="prime-league-row-gradient rounded-top">
+                <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider w-10">Rank</th>
+                <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider">Team</th>
+                <th class="py-2 px-3 text-right text-sm font-weight-semibold text-uppercase tracking-wider">Score</th>
             </tr>
-        </f:for>
-        </tbody>
-    </table>
-    <div class="mt-2 d-flex gap-2">
-        <div class="promotion-text d-flex align-items-center">
-            <span class="marker-cube promotion"></span>
-            <span class="text-xs">Playoffs Div 4</span>
-        </div>
-        <div class="relegation-text d-flex align-items-center">
-            <span class="marker-cube relegation"></span>
-            <span class="text-xs">Relegation Div 6</span>
+            </thead>
+            <tbody class="">
+                <f:for each="{primeLeagueResult}" as="team" iteration="i">
+                    <f:if condition="{team.name} == 'OMNI Falcons'">
+                        <f:then>
+                            <f:variable name="falcons">true</f:variable>
+                        </f:then>
+                        <f:else>
+                            <f:variable name="falcons"></f:variable>
+                        </f:else>
+                    </f:if>
+                    <tr class="team-row transition-all duration-200{f:if(condition: falcons, then: ' falcons')}">
+                        <td class="py-3 px-3 text-nowrap position-relative">
+                            <f:if condition="{i.cycle} == 1 || {i.cycle} == 2">
+                                <div class="placement-marker promotion"></div>
+                            </f:if>
+                            <f:if condition="{i.cycle} == 7 || {i.cycle} == 8">
+                                <div class="placement-marker relegation"></div>
+                            </f:if>
+                            <div class="text-center">
+                                <span class="font-weight-bold text-white">{team.rank}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-3 text-nowrap">
+                            <div class="">
+                                <div class="">
+                                    <span class="font-weight-bold text-white">{team.name}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3 px-3 text-nowrap text-right text-xl font-weight-bold">
+                            <span class="mx-2">{team.score}</span>
+                            <i class="fas fa-trophy"></i>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
+        <div class="mt-2 d-flex gap-2">
+            <div class="promotion-text d-flex align-items-center">
+                <span class="marker-cube promotion"></span>
+                <f:if condition="{settings.division} > 5">
+                    <f:then>
+                        <span class="text-xs">Aufstieg Div {settings.division - 1}</span>
+                    </f:then>
+                <f:else>
+                    <span class="text-xs">Playoffs Div {settings.division - 1}/{settings.division}</span>
+                </f:else>
+                </f:if>
+            </div>
+            <div class="relegation-text d-flex align-items-center">
+                <span class="marker-cube relegation"></span>
+                <f:if condition="{settings.division} > 4">
+                    <f:then>
+                        <span class="text-xs">Abstieg Div {settings.division + 1}</span>
+                    </f:then>
+                <f:else>
+                    <span class="text-xs">Playoffs Div {settings.division}/{settings.division + 1}</span>
+                </f:else>
+                </f:if>
+            </div>
         </div>
     </div>
-</div>
+</f:if>
+<f:if condition="{settings.tableType} == playoff">
+    <div class="prime-league-table-container overflow-x-auto overflow-x-md-unset mx-auto">
+        <table class="prime-league-table playoffs-table border-glow rounded-3 w-100">
+            <thead>
+            <tr class="prime-league-row-gradient rounded-top">
+                <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider">Team 1</th>
+                <th class="py-2 px-3 text-center text-sm font-weight-semibold text-uppercase tracking-wider">Score</th>
+                <th class="py-2 px-3 text-right text-sm font-weight-semibold text-uppercase tracking-wider">Team 2</th>
+            </tr>
+            </thead>
+            <tbody class="">
+            <f:for each="{primeLeagueResult}" as="match" iteration="i">
+                <f:if condition="{match.team1} == 'OMNI' || {match.team2} == 'OMNI'">
+                    <f:if condition="{match.team1} == 'OMNI'">
+                        <f:then>
+                            <f:variable name="fTeam1">true</f:variable>
+                            <f:variable name="fTeam2"></f:variable>
+                        </f:then>
+                        <f:else>
+                            <f:variable name="fTeam1"></f:variable>
+                            <f:variable name="fTeam2">true</f:variable>
+                        </f:else>
+                    </f:if>
+                    <tr class="team-row transition-all duration-200{f:if(condition: fTeam1, then:' falcons-left', else:' falcons-right')}">
+                        <td class="py-3 px-3 text-nowrap position-relative">
+                            {match.team1}
+                        </td>
+                        <td class="py-3 px-3 text-nowrap text-center">
+                            {match.score}
+                        </td>
+                        <td class="py-3 px-3 text-nowrap text-right position-relative">
+                            {match.team2}
+                        </td>
+                    </tr>
+                </f:if>
+            </f:for>
+            </tbody>
+        </table>
+    </div>
+</f:if>
 </html>

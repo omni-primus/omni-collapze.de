@@ -115,8 +115,15 @@ $GLOBALS['TCA']['tt_content']['columns']['header_layout'] = [
     ]
 ];
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+$pluginSignature = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'sitepackage',
     'primeleague_plugin',
     'Prime League'
+);
+
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    $pluginSignature,
+    'FILE:EXT:sitepackage/Configuration/FlexForms/PluginPrimeLeague.xml'
 );

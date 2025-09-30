@@ -6,6 +6,14 @@ TCEFORM {
 
     }
     tt_content {
-
+        frame_class {
+            addItems.small = small
+        }
+        space_before_class {
+            addItems.none = none
+        }
+        space_after_class {
+            addItems.none = none
+        }
     }
 }

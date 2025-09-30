@@ -1,0 +1,70 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>
+                    Prime League Plugin
+                </sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.primeLeagueUrl>
+                        <TCEforms>
+                            <label>URL</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                                <placeholder>https://example.com</placeholder>
+                            </config>
+                        </TCEforms>
+                    </settings.primeLeagueUrl>
+                    <settings.tableType>
+                        <TCEforms>
+                            <label>Prime League Stage</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex type="array" index="0">
+                                        <numIndex index="0">Groups</numIndex>
+                                        <numIndex index="1">group</numIndex>
+                                    </numIndex>
+                                    <numIndex type="array" index="1">
+                                        <numIndex index="0">Playoffs</numIndex>
+                                        <numIndex index="1">playoff</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.tableType>
+                    <settings.division>
+                        <TCEforms>
+                            <label>Prime League Division</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex type="array" index="0">
+                                        <numIndex index="0">4</numIndex>
+                                        <numIndex index="1">4</numIndex>
+                                    </numIndex>
+                                    <numIndex type="array" index="1">
+                                        <numIndex index="0">5</numIndex>
+                                        <numIndex index="1">5</numIndex>
+                                    </numIndex>
+                                    <numIndex type="array" index="2">
+                                        <numIndex index="0">6</numIndex>
+                                        <numIndex index="1">6</numIndex>
+                                    </numIndex>
+                                    <numIndex type="array" index="3">
+                                        <numIndex index="0">7</numIndex>
+                                        <numIndex index="1">7</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.division>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

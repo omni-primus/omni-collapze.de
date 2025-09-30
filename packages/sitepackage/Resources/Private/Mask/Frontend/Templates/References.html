@@ -1,0 +1,14 @@
+<div class="d-grid grid-cols-1 grid-md-cols-2 grid-lg-cols-4 gap-4">
+    <f:for each="{data.tx_mask_reference_item}" as="item">
+        <a href="{item.link}" class="social-card block card-bg-{item.color} rounded-xl p-4 text-white shadow-lg overflow-hidden position-relative">
+            <div class="position-absolute inset-0"></div>
+            <div class="position-relative z-10 d-flex flex-column align-items-center justify-content-center h-100">
+                <div class="social-icon mb-2">
+                    <i data-feather="youtube" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-xl font-weight-semibold mb-2">{item.headline}</h3>
+                <p class="text-center"><f:format.html>{item.description}</f:format.html></p>
+            </div>
+        </a>
+    </f:for>
+</div>

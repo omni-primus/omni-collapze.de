@@ -12,7 +12,9 @@
                 <span class="header-stripes">// </span>
                 <f:link.typolink parameter="{link}"><span>{header}</span></f:link.typolink>
             </h2>
-            <div class="header-bot-line bg-primary mx-auto mb-4"></div>
+            <f:if condition="{positionClass} == 'text-center'">
+                <div class="header-bot-line bg-primary mx-auto mb-4"></div>
+            </f:if>
         </f:case>
         <f:case value="3">
             <h3 class="{class} {positionClass}">

@@ -20,6 +20,12 @@
   margin-bottom: 5rem;
 }
 
+.frame-small {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (min-width: 1600px) {
   .frame-container-default {
     max-width: 1520px;
@@ -27,4 +33,40 @@
   .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
     max-width: 1520px;
   }
+}
+
+.space-before-none, .space-before-default {
+  margin-top: 0;
+}
+
+.space-before-extra-small {
+  margin-top: 1em;
+}
+.space-before-small {
+  margin-top: 2em;
+}
+.space-before-medium {
+  margin-top: 3em;
+}
+.space-before-large {
+  margin-top: 4em;
+}
+.space-before-extra-large {
+  margin-top: 5em;
+}
+
+.space-after-extra-small {
+  margin-bottom: 1em;
+}
+.space-after-small {
+  margin-bottom: 2em;
+}
+.space-after-medium {
+  margin-bottom: 3em;
+}
+.space-after-large {
+  margin-bottom: 4em;
+}
+.space-after-extra-large {
+  margin-bottom: 5em;
 }

@@ -12,6 +12,18 @@
   }
 }
 
+.playoffs-table {
+  .team-row {
+    background-image: none;
+  }
+  .falcons-left {
+    background-image: linear-gradient(to right,#8422d8,#000 33%);
+  }
+  .falcons-right {
+    background-image: linear-gradient(to right,#000 66%,#8422d8);
+  }
+}
+
 .prime-league-table {
   border-collapse: separate;
   border-spacing: 0;
@@ -33,14 +45,6 @@
 .team-row:hover {
   transform: scale(1.01);
   box-shadow: 0 0 15px #a855f7;
-}
-
-.rounded-top {
-  border-radius: 9999px 9999px 0 0;
-}
-
-.rounded-bottom {
-  border-radius: 0 0 9999px 9999px;
 }
 
 .placement-marker {
