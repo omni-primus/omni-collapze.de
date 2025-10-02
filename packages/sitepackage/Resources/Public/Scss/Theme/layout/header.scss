@@ -19,6 +19,14 @@
   z-index: 50;
   top: 72px;
   right: 0;
+  box-shadow: 0 0 10px #8422d8,0 0 20px #8422d8;
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #fff;
+    }
+  }
 }
 
 #menu-btn {

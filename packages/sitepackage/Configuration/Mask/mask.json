@@ -8,10 +8,12 @@
                     "color": "#000000",
                     "colorOverlay": "#000000",
                     "columns": [
+                        "tx_mask_container_id",
                         "tx_mask_3cards_item"
                     ],
                     "description": "",
                     "descriptions": [
+                        "",
                         ""
                     ],
                     "icon": "",
@@ -19,6 +21,7 @@
                     "key": "3_cards",
                     "label": "3 Cards",
                     "labels": [
+                        "Container ID",
                         "3 Cards Item"
                     ],
                     "shortLabel": "",
@@ -102,6 +105,29 @@
                     "shortLabel": "",
                     "sorting": 0
                 },
+                "references": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "tx_mask_reference_container_id",
+                        "tx_mask_reference_item"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        "",
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "references",
+                    "label": "references",
+                    "labels": [
+                        "Container Id",
+                        "Reference Item"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 5
+                },
                 "team_card": {
                     "color": "#000000",
                     "colorOverlay": "#000000",
@@ -127,6 +153,11 @@
                 "tx_mask_3cards_item": {
                     "tt_content": {
                         "tx_mask_3cards_item": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_container_id": {
+                    "tt_content": {
+                        "tx_mask_container_id": "varchar(255) DEFAULT '' NOT NULL"
                     }
                 },
                 "tx_mask_gallery_element": {
@@ -162,6 +193,16 @@
                 "tx_mask_herobanner_media": {
                     "tt_content": {
                         "tx_mask_herobanner_media": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_reference_container_id": {
+                    "tt_content": {
+                        "tx_mask_reference_container_id": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_reference_item": {
+                    "tt_content": {
+                        "tx_mask_reference_item": "int(11) unsigned DEFAULT '0' NOT NULL"
                     }
                 },
                 "tx_mask_team_card": {
@@ -214,6 +255,14 @@
                     "fullKey": "tx_mask_3cards_item",
                     "key": "3cards_item",
                     "type": "inline"
+                },
+                "tx_mask_container_id": {
+                    "config": {
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_container_id",
+                    "key": "container_id",
+                    "type": "string"
                 },
                 "tx_mask_gallery_element": {
                     "config": {
@@ -281,8 +330,7 @@
                 },
                 "tx_mask_herobanner_btn1": {
                     "config": {
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link"
                     },
                     "fullKey": "tx_mask_herobanner_btn1",
                     "key": "herobanner_btn1",
@@ -298,8 +346,7 @@
                 },
                 "tx_mask_herobanner_btn2": {
                     "config": {
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link"
                     },
                     "fullKey": "tx_mask_herobanner_btn2",
                     "key": "herobanner_btn2",
@@ -336,6 +383,45 @@
                     "fullKey": "tx_mask_herobanner_media",
                     "key": "herobanner_media",
                     "type": "media"
+                },
+                "tx_mask_reference_container_id": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_reference_container_id",
+                    "key": "reference_container_id",
+                    "type": "string"
+                },
+                "tx_mask_reference_item": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 1,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 1,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "maxitems": "4",
+                        "minitems": "0",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_reference_item",
+                    "key": "reference_item",
+                    "type": "inline"
                 },
                 "tx_mask_team_card": {
                     "config": {
@@ -500,8 +586,8 @@
                 },
                 "tx_mask_player_name": {
                     "config": {
-                        "eval": "required",
                         "placeholder": "Player Name",
+                        "required": 1,
                         "type": "input"
                     },
                     "fullKey": "tx_mask_player_name",
@@ -581,8 +667,7 @@
                 },
                 "tx_mask_game_card_link": {
                     "config": {
-                        "renderType": "inputLink",
-                        "type": "input"
+                        "type": "link"
                     },
                     "fullKey": "tx_mask_game_card_link",
                     "inlineParent": "tx_mask_game_card_item",
@@ -604,7 +689,6 @@
                 },
                 "tx_mask_game_card_player_count": {
                     "config": {
-                        "eval": "int",
                         "type": "input"
                     },
                     "fullKey": "tx_mask_game_card_player_count",
@@ -692,55 +776,55 @@
                             }
                         },
                         "items": [
-                            [
-                                "default",
-                                "default",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "primary",
-                                "primary",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ]
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "default",
+                                "value": "default"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "primary",
+                                "value": "primary"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "",
+                                "value": ""
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "",
+                                "value": ""
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "",
+                                "value": ""
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "",
+                                "value": ""
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "",
+                                "value": ""
+                            }
                         ],
                         "renderType": "selectSingleBox",
                         "type": "select"
@@ -762,6 +846,161 @@
                     "label": "Game Card Tag Title",
                     "order": 1,
                     "type": "string"
+                }
+            }
+        },
+        "tx_mask_reference_item": {
+            "sql": {
+                "tx_mask_reference_item_color": {
+                    "tx_mask_reference_item": {
+                        "tx_mask_reference_item_color": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_reference_item_description": {
+                    "tx_mask_reference_item": {
+                        "tx_mask_reference_item_description": "mediumtext"
+                    }
+                },
+                "tx_mask_reference_item_header": {
+                    "tx_mask_reference_item": {
+                        "tx_mask_reference_item_header": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_reference_item_icon": {
+                    "tx_mask_reference_item": {
+                        "tx_mask_reference_item_icon": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_reference_item_link": {
+                    "tx_mask_reference_item": {
+                        "tx_mask_reference_item_link": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_reference_item_color": {
+                    "config": {
+                        "fieldWizard": {
+                            "selectIcons": {
+                                "disabled": 1
+                            }
+                        },
+                        "items": [
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "Defaullt",
+                                "value": "default"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "red",
+                                "value": "red"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "black",
+                                "value": "black"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "blue",
+                                "value": "blue"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "purple",
+                                "value": "purple"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "light-blue",
+                                "value": "light-blue"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "green",
+                                "value": "green"
+                            },
+                            {
+                                "description": "",
+                                "group": "",
+                                "icon": "",
+                                "label": "cyan",
+                                "value": "cyan"
+                            }
+                        ],
+                        "renderType": "selectSingle",
+                        "type": "select"
+                    },
+                    "fullKey": "tx_mask_reference_item_color",
+                    "inlineParent": "tx_mask_reference_item",
+                    "key": "reference_item_color",
+                    "label": "Color",
+                    "order": 1,
+                    "type": "select"
+                },
+                "tx_mask_reference_item_description": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "text",
+                        "wrap": "virtual"
+                    },
+                    "fullKey": "tx_mask_reference_item_description",
+                    "inlineParent": "tx_mask_reference_item",
+                    "key": "reference_item_description",
+                    "label": "Description",
+                    "order": 5,
+                    "type": "text"
+                },
+                "tx_mask_reference_item_header": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_reference_item_header",
+                    "inlineParent": "tx_mask_reference_item",
+                    "key": "reference_item_header",
+                    "label": "Headline",
+                    "order": 4,
+                    "type": "string"
+                },
+                "tx_mask_reference_item_icon": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "input"
+                    },
+                    "fullKey": "tx_mask_reference_item_icon",
+                    "inlineParent": "tx_mask_reference_item",
+                    "key": "reference_item_icon",
+                    "label": "Icon",
+                    "order": 3,
+                    "type": "string"
+                },
+                "tx_mask_reference_item_link": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "link"
+                    },
+                    "fullKey": "tx_mask_reference_item_link",
+                    "inlineParent": "tx_mask_reference_item",
+                    "key": "reference_item_link",
+                    "label": "Link",
+                    "order": 2,
+                    "type": "link"
                 }
             }
         },
