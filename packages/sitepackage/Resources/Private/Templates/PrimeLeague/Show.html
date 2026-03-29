@@ -51,7 +51,7 @@
                 <span class="marker-cube promotion"></span>
                 <f:if condition="{settings.division} > 5">
                     <f:then>
-                        <span class="text-xs">Aufstieg Div {settings.division - 1}</span>
+                        <span class="text-xs">Promote to Div {settings.division - 1}</span>
                     </f:then>
                 <f:else>
                     <span class="text-xs">Playoffs Div {settings.division - 1}/{settings.division}</span>
@@ -62,7 +62,7 @@
                 <span class="marker-cube relegation"></span>
                 <f:if condition="{settings.division} > 4">
                     <f:then>
-                        <span class="text-xs">Abstieg Div {settings.division + 1}</span>
+                        <span class="text-xs">Demote to Div {settings.division + 1}</span>
                     </f:then>
                 <f:else>
                     <span class="text-xs">Playoffs Div {settings.division}/{settings.division + 1}</span>
@@ -73,43 +73,211 @@
     </div>
 </f:if>
 <f:if condition="{settings.tableType} == playoff">
-    <div class="prime-league-table-container overflow-x-auto overflow-x-md-unset mx-auto">
-        <table class="prime-league-table playoffs-table border-glow rounded-3 w-100">
-            <thead>
-            <tr class="prime-league-row-gradient rounded-top">
-                <th class="py-2 px-3 text-left text-sm font-weight-semibold text-uppercase tracking-wider">Team 1</th>
-                <th class="py-2 px-3 text-center text-sm font-weight-semibold text-uppercase tracking-wider">Score</th>
-                <th class="py-2 px-3 text-right text-sm font-weight-semibold text-uppercase tracking-wider">Team 2</th>
-            </tr>
-            </thead>
-            <tbody class="">
-            <f:for each="{primeLeagueResult}" as="match" iteration="i">
-                <f:if condition="{match.team1} == 'OMNI' || {match.team2} == 'OMNI'">
-                    <f:if condition="{match.team1} == 'OMNI'">
-                        <f:then>
-                            <f:variable name="fTeam1">true</f:variable>
-                            <f:variable name="fTeam2"></f:variable>
-                        </f:then>
-                        <f:else>
-                            <f:variable name="fTeam1"></f:variable>
-                            <f:variable name="fTeam2">true</f:variable>
-                        </f:else>
-                    </f:if>
-                    <tr class="team-row transition-all duration-200{f:if(condition: fTeam1, then:' falcons-left', else:' falcons-right')}">
-                        <td class="py-3 px-3 text-nowrap position-relative">
-                            {match.team1}
-                        </td>
-                        <td class="py-3 px-3 text-nowrap text-center">
-                            {match.score}
-                        </td>
-                        <td class="py-3 px-3 text-nowrap text-right position-relative">
-                            {match.team2}
-                        </td>
-                    </tr>
+    <div class="prime-league-table-container mx-auto">
+        <div class="d-flex flex-column gap-4">
+            <div class="text-xs text-uppercase tracking-wider text-white-50">Double Elimination Bracket</div>
+
+            <f:for each="{primeLeagueTree}" as="bracket" key="bracketKey">
+                <f:if condition="{bracket.rounds -> f:count()}">
+                    <div class="prime-league-row-gradient rounded-3 px-3 py-2">
+                        <span class="text-sm font-weight-semibold text-uppercase tracking-wider">{bracket.label}</span>
+                    </div>
+
+                    <div class="match-slider">
+                        <div class="match-slider-track">
+                        <f:for each="{bracket.rounds}" as="roundData">
+                            <div class="d-flex flex-column gap-3 match-slider-column" style="min-width: 100px;">
+                                <div class="text-xs text-uppercase tracking-wider text-white-50 px-1">
+                                    {roundData.roundName}
+                                </div>
+
+                                <f:for each="{roundData.matches}" as="match">
+                                    <f:if condition="{match.team1} == 'OMNI'">
+                                        <f:then>
+                                            <f:variable name="matchClass"> falcons-left</f:variable>
+                                        </f:then>
+                                        <f:else>
+                                            <f:if condition="{match.team2} == 'OMNI'">
+                                                <f:then>
+                                                    <f:variable name="matchClass"> falcons-right</f:variable>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:variable name="matchClass"></f:variable>
+                                                </f:else>
+                                            </f:if>
+                                        </f:else>
+                                    </f:if>
+
+                                    <f:variable name="omniResultClass"></f:variable>
+                                    <f:if condition="{match.team1} == 'OMNI' || {match.team2} == 'OMNI'">
+                                        <f:if condition="{match.team1} == 'OMNI' && {match.score_team1} > {match.score_team2}">
+                                            <f:then>
+                                                <f:variable name="omniResultClass"> border-left border-4 border-success</f:variable>
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{match.team2} == 'OMNI' && {match.score_team2} > {match.score_team1}">
+                                                    <f:then>
+                                                        <f:variable name="omniResultClass"> border-left border-4 border-success</f:variable>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:variable name="omniResultClass"> border-left border-4 border-danger</f:variable>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </f:if>
+
+                                    <div class="team-row border-left-solid transition-all duration-200{matchClass}{omniResultClass} rounded-3 p-3">
+                                        <div class="d-flex align-items-center justify-content-between text-xs text-white-50 mb-2">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span>Best of {match.bestof}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex flex-column gap-2">
+                                                 <div class="d-flex align-items-center">
+                                                    <span class="font-weight-bold text-white">{match.team1}</span>
+                                                </div>
+                                                <div class="text-xl font-weight-bold text-white">
+                                                    {match.score}
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="font-weight-bold text-white">{match.team2}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </f:for>
+                        </div>
+                    </div>
                 </f:if>
             </f:for>
-            </tbody>
-        </table>
+        </div>
+
+        <f:if condition="{hasSpecialPlayoffResult}">
+            <div class="text-xs mt-2">*Match was not played and result was given</div>
+        </f:if>
     </div>
 </f:if>
+<f:if condition="{settings.tableType} == history">
+    <div class="prime-league-table-container mx-auto">
+        <div class="match-slider">
+            <div class="match-slider-track">
+            <f:for each="{primeLeagueResult}" as="match" iteration="i">
+                <f:variable name="matchClass"></f:variable>
+                <f:if condition="{match.team1} == 'OMNI'">
+                    <f:then>
+                        <f:variable name="matchClass"> falcons-left</f:variable>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{match.team2} == 'OMNI'">
+                            <f:then>
+                                <f:variable name="matchClass"> falcons-right</f:variable>
+                            </f:then>
+                            <f:else>
+                                <f:variable name="matchClass"></f:variable>
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+
+                <f:variable name="omniResultClass"></f:variable>
+                <f:if condition="{match.team1} == 'OMNI' || {match.team2} == 'OMNI'">
+                    <f:if condition="{match.score_team1} == {match.score_team2}">
+                        <f:then>
+                            <f:variable name="omniResultClass"> border-left border-4 border-warning</f:variable>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{match.team1} == 'OMNI' && {match.score_team1} > {match.score_team2}">
+                                <f:then>
+                                    <f:variable name="omniResultClass"> border-left border-4 border-success</f:variable>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{match.team2} == 'OMNI' && {match.score_team2} > {match.score_team1}">
+                                        <f:then>
+                                            <f:variable name="omniResultClass"> border-left border-4 border-success</f:variable>
+                                        </f:then>
+                                        <f:else>
+                                            <f:variable name="omniResultClass"> border-left border-4 border-danger</f:variable>
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:if>
+
+                <div class="team-row border-left-solid transition-all duration-200{matchClass}{omniResultClass} rounded-3 p-3 match-slider-card" style="min-width: 220px;">
+                    <div class="d-flex justify-content-between text-xs text-white-50 mb-2">
+                        <span>Best of {match.bestof}</span>
+                        <span>{match.date}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex align-items-center">
+                                <span class="font-weight-bold text-white">{match.team1}</span>
+                            </div>
+                            <div class="text-xl font-weight-bold text-white">
+                                {match.score}
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="font-weight-bold text-white">{match.team2}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end">
+                            <span class="text-xs text-white-50">{match.stage}</span>
+                        </div>                            
+                    </div>
+                </div>
+            </f:for>
+            </div>
+        </div>
+
+        <f:if condition="{hasSpecialHistoryResult}">
+            <div class="text-xs mt-2">*Match was not played and result was given</div>
+        </f:if>
+    </div>
+</f:if>
+<script>
+  (function () {
+    var sliders = document.querySelectorAll('.match-slider');
+
+    sliders.forEach(function (slider) {
+      var isDown = false;
+      var startX = 0;
+      var scrollLeft = 0;
+
+      slider.addEventListener('mousedown', function (event) {
+        isDown = true;
+        startX = event.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.classList.add('is-dragging');
+      });
+
+      slider.addEventListener('mouseleave', function () {
+        isDown = false;
+        slider.classList.remove('is-dragging');
+      });
+
+      slider.addEventListener('mouseup', function () {
+        isDown = false;
+        slider.classList.remove('is-dragging');
+      });
+
+      slider.addEventListener('mousemove', function (event) {
+        if (!isDown) {
+          return;
+        }
+
+        event.preventDefault();
+        var x = event.pageX - slider.offsetLeft;
+        var walk = (x - startX) * 1.2;
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    });
+  })();
+</script>
 </html>

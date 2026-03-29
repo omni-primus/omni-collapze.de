@@ -2,11 +2,11 @@
 
 <div class="d-grid grid-cols-1 grid-sm-cols-2 grid-lg-cols-5 gap-4 frame {frameClasses}">
     <f:if condition="{data.tx_mask_team_card}">
-        <f:if condition="{data.tx_mask_team_card -> f:count()} == 1 || {data.tx_mask_team_card -> f:count()} == 3">
+        <f:if condition="{data.tx_mask_team_card -> f:count()} == 1">
             <div class=""></div>
             <div class=""></div>
         </f:if>
-        <f:if condition="{data.tx_mask_team_card -> f:count()} == 2">
+        <f:if condition="{data.tx_mask_team_card -> f:count()} == 2 || {data.tx_mask_team_card -> f:count()} == 3">
             <div class=""></div>
         </f:if>
         <f:for each="{data.tx_mask_team_card}" as="team_card">

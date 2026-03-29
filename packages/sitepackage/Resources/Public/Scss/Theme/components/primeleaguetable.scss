@@ -1,15 +1,42 @@
 .prime-league-table-container {
-  max-width: 320px;
+  max-width: calc(100vw - 40px);
+}
+
+.match-slider {
   overflow-x: auto;
-  @include media-breakpoint-up(sm) {
-    max-width: 500px;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  padding: 8px 8px 8px 0;
+  cursor: grab;
+  user-select: none;
+  max-width: 1280px;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
-  @include media-breakpoint-up(md) {
-    max-width: 680px;
+
+  &.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
   }
-  @include media-breakpoint-up(lg) {
-    max-width: 960px;
+}
+
+.match-slider-track {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  width: max-content;
+  > div:first-child {
+    margin-left:8px;
   }
+}
+
+.match-slider-card,
+.match-slider-column {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .playoffs-table {
@@ -32,6 +59,10 @@
 
 .prime-league-row-gradient {
   background-image: linear-gradient(to right, $primary, #000);
+}
+
+.border-left-solid {
+  border-left-style: solid;
 }
 
 .team-row {
