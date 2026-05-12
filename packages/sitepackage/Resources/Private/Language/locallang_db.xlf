@@ -24,6 +24,9 @@
             <trans-unit id="tx_sitepackage_domain_model_scrimseries.games">
                 <source>Games</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.series_players">
+                <source>Series roster</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimgame">
                 <source>Scrim Game</source>
             </trans-unit>
@@ -45,11 +48,23 @@
             <trans-unit id="tx_sitepackage_domain_model_scrimgame.players">
                 <source>Players</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseriesplayer">
+                <source>Series Player</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseriesplayer.player_name">
+                <source>Player name</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseriesplayer.team">
+                <source>Team</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseriesplayer.position">
+                <source>Position</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer">
                 <source>Scrim Player</source>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.player_name">
-                <source>Player name</source>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.series_player">
+                <source>Series player</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer.team_side">
                 <source>Team side</source>

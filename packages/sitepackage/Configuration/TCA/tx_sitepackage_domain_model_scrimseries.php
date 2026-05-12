@@ -28,6 +28,8 @@ return [
                 number_of_games,
                 opponent_team_name,
                 opponent_team_information,
+                --div--;Series Roster,
+                series_players,
                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimseries.games,
                 games,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
@@ -150,6 +152,28 @@ return [
                     'showSynchronizationLink' => true,
                     'showPossibleLocalizationRecords' => true,
                     'showAllLocalizationLink' => true,
+                    'enabledControls' => [
+                        'info' => true,
+                        'new' => true,
+                        'dragdrop' => true,
+                        'sort' => true,
+                        'hide' => true,
+                        'delete' => true,
+                    ],
+                ],
+            ],
+        ],
+        'series_players' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimseries.series_players',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_sitepackage_domain_model_scrimseriesplayer',
+                'foreign_field' => 'series',
+                'appearance' => [
+                    'collapseAll' => false,
+                    'expandSingle' => true,
+                    'useSortable' => true,
                     'enabledControls' => [
                         'info' => true,
                         'new' => true,

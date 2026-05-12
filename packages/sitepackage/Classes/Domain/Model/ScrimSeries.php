@@ -20,9 +20,15 @@ class ScrimSeries extends AbstractEntity
      */
     protected ObjectStorage $games;
 
+    /**
+     * @var ObjectStorage<ScrimSeriesPlayer>
+     */
+    protected ObjectStorage $seriesPlayers;
+
     public function __construct()
     {
         $this->games = new ObjectStorage();
+        $this->seriesPlayers = new ObjectStorage();
     }
 
     public function getScrimDate(): ?\DateTime
@@ -79,6 +85,22 @@ class ScrimSeries extends AbstractEntity
     public function setGames(ObjectStorage $games): void
     {
         $this->games = $games;
+    }
+
+    /**
+     * @return ObjectStorage<ScrimSeriesPlayer>
+     */
+    public function getSeriesPlayers(): ObjectStorage
+    {
+        return $this->seriesPlayers;
+    }
+
+    /**
+     * @param ObjectStorage<ScrimSeriesPlayer> $seriesPlayers
+     */
+    public function setSeriesPlayers(ObjectStorage $seriesPlayers): void
+    {
+        $this->seriesPlayers = $seriesPlayers;
     }
 
     public function getOwnTeamName(): string

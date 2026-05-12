@@ -8,11 +8,7 @@ class ScrimPlayer extends AbstractEntity
 {
     protected ?ScrimGame $game = null;
 
-    protected string $playerName = '';
-
-    protected string $teamSide = '';
-
-    protected string $position = '';
+    protected ?ScrimSeriesPlayer $seriesPlayer = null;
 
     protected string $championName = '';
 
@@ -36,34 +32,29 @@ class ScrimPlayer extends AbstractEntity
         $this->game = $game;
     }
 
+    public function getSeriesPlayer(): ?ScrimSeriesPlayer
+    {
+        return $this->seriesPlayer;
+    }
+
+    public function setSeriesPlayer(?ScrimSeriesPlayer $seriesPlayer): void
+    {
+        $this->seriesPlayer = $seriesPlayer;
+    }
+
     public function getPlayerName(): string
     {
-        return $this->playerName;
-    }
-
-    public function setPlayerName(string $playerName): void
-    {
-        $this->playerName = $playerName;
-    }
-
-    public function getTeamSide(): string
-    {
-        return $this->teamSide;
-    }
-
-    public function setTeamSide(string $teamSide): void
-    {
-        $this->teamSide = $teamSide;
+        return $this->seriesPlayer ? $this->seriesPlayer->getPlayerName() : '';
     }
 
     public function getPosition(): string
     {
-        return $this->position;
+        return $this->seriesPlayer ? $this->seriesPlayer->getPosition() : '';
     }
 
-    public function setPosition(string $position): void
+    public function getTeam(): string
     {
-        $this->position = $position;
+        return $this->seriesPlayer ? $this->seriesPlayer->getTeam() : '';
     }
 
     public function getChampionName(): string
@@ -128,17 +119,29 @@ class ScrimPlayer extends AbstractEntity
 
     public function getTeamSideLabel(): string
     {
-        return $this->teamSide === 'red' ? 'Red Side' : 'Blue Side';
+        if (!$this->game || !$this->seriesPlayer) {
+            return '';
+        }
+
+        $team = $this->seriesPlayer->getTeam();
+        if ($team === $this->game->getBlueSideTeam()) {
+            return 'Blue Side';
+        }
+
+        if ($team === $this->game->getRedSideTeam()) {
+            return 'Red Side';
+        }
+
+        return '';
     }
 
     public function getPositionLabel(): string
     {
-        return match ($this->position) {
-            'jungle' => 'Jungle',
-            'mid' => 'Mid',
-            'bot' => 'Bot',
-            'support' => 'Support',
-            default => 'Top',
-        };
+        return $this->seriesPlayer ? $this->seriesPlayer->getPositionLabel() : '';
+    }
+
+    public function getTeamName(): string
+    {
+        return $this->seriesPlayer ? $this->seriesPlayer->getTeamName() : '';
     }
 }

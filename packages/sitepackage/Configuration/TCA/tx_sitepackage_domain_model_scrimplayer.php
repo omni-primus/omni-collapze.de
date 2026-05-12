@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer',
-        'label' => 'player_name',
+        'label' => 'series_player',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'sortby' => 'sorting',
@@ -12,16 +12,14 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'team_side,position,champion_name',
+        'searchFields' => 'champion_name',
         'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/Extension.svg',
     ],
     'types' => [
         '1' => [
             'showitem' => '
                 hidden,
-                player_name,
-                team_side,
-                position,
+                series_player,
                 champion_name,
                 kills,
                 deaths,
@@ -44,42 +42,15 @@ return [
                 'type' => 'passthrough',
             ],
         ],
-        'player_name' => [
+        'series_player' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.player_name',
-            'config' => [
-                'type' => 'input',
-                'size' => 40,
-                'eval' => 'trim,required',
-            ],
-        ],
-        'team_side' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.team_side',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.series_player',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:side.blue', 'blue'],
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:side.red', 'red'],
-                ],
-                'default' => 'blue',
-            ],
-        ],
-        'position' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.position',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:position.top', 'top'],
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:position.jungle', 'jungle'],
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:position.mid', 'mid'],
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:position.bot', 'bot'],
-                    ['LLL:EXT:sitepackage/Resources/Private/Language/locallang_scrim.xlf:position.support', 'support'],
-                ],
-                'default' => 'top',
+                'itemsProcFunc' => \WebneoGmbh\Sitepackage\Backend\ScrimSeriesPlayerItemsProvider::class . '->addSeriesPlayerItems',
+                'default' => 0,
+                'required' => true,
             ],
         ],
         'champion_name' => [

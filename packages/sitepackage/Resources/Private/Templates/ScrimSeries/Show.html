@@ -40,6 +40,7 @@
                             <thead>
                                 <tr>
                                     <th>Player</th>
+                                    <th>Team</th>
                                     <th>Side</th>
                                     <th>Position</th>
                                     <th>Champion</th>
@@ -54,6 +55,7 @@
                                 <f:for each="{game.players}" as="player">
                                     <tr>
                                         <td>{player.playerName}</td>
+                                        <td>{player.teamName}</td>
                                         <td>{player.teamSideLabel}</td>
                                         <td>{player.positionLabel}</td>
                                         <td>{player.championName}</td>
