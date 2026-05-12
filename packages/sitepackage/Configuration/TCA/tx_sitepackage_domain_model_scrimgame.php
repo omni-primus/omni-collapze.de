@@ -8,9 +8,6 @@ return [
         'crdate' => 'crdate',
         'sortby' => 'sorting',
         'versioningWS' => true,
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
@@ -34,21 +31,6 @@ return [
         ],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_parent' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
