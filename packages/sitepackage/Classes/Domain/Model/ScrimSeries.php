@@ -79,7 +79,7 @@ class ScrimSeries extends AbstractEntity
         $games = $this->games->toArray();
 
         usort($games, static function (ScrimGame $first, ScrimGame $second): int {
-            return $first->getSorting() <=> $second->getSorting();
+            return $first->getSortingForeign() <=> $second->getSortingForeign();
         });
 
         return $games;

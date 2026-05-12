@@ -145,6 +145,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_sitepackage_domain_model_scrimgame',
                 'foreign_field' => 'series',
+                'foreign_sortby' => 'sorting_foreign',
                 'appearance' => [
                     'collapseAll' => false,
                     'expandSingle' => true,
@@ -170,6 +171,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_sitepackage_domain_model_scrimseriesplayer',
                 'foreign_field' => 'series',
+                'foreign_sortby' => 'sorting_foreign',
                 'appearance' => [
                     'collapseAll' => false,
                     'expandSingle' => true,

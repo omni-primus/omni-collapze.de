@@ -110,6 +110,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_sitepackage_domain_model_scrimplayer',
                 'foreign_field' => 'game',
+                'foreign_sortby' => 'sorting_foreign',
                 'appearance' => [
                     'collapseAll' => false,
                     'expandSingle' => false,
