@@ -26,19 +26,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <f:if condition="{seriesList -> f:count()}">
+                    <f:if condition="{seriesRows -> f:count()}">
                         <f:then>
-                            <f:for each="{seriesList}" as="series">
+                            <f:for each="{seriesRows}" as="row">
                                 <tr>
-                                    <td><f:format.date format="d.m.Y">{series.scrimDate}</f:format.date></td>
-                                    <td>{series.opponentTeamName}</td>
-                                    <td>{series.numberOfGames}</td>
+                                    <td><f:format.date format="d.m.Y">{row.series.scrimDate}</f:format.date></td>
+                                    <td>{row.series.opponentTeamName}</td>
+                                    <td>{row.series.numberOfGames}</td>
                                     <td>
-                                        <a href="{f:be.uri.editRecord(uid: series.uid, table: 'tx_sitepackage_domain_model_scrimseries', returnUrl: returnUrl)}">
+                                        <a href="{row.editUrl}">
                                             {labels.edit}
                                         </a>
                                         |
-                                        <a href="{f:be.uri.editRecord(uid: series.uid, table: 'tx_sitepackage_domain_model_scrimseries', returnUrl: returnUrl)}">
+                                        <a href="{row.editUrl}">
                                             {labels.manage}
                                         </a>
                                     </td>

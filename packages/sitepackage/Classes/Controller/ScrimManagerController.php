@@ -2,23 +2,27 @@
 
 namespace WebneoGmbh\Sitepackage\Controller;
 
-use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WebneoGmbh\Sitepackage\Domain\Repository\ScrimSeriesRepository;
 
 class ScrimManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     protected ScrimSeriesRepository $scrimSeriesRepository;
 
-    public function __construct(ScrimSeriesRepository $scrimSeriesRepository)
-    {
+    protected UriBuilder $backendUriBuilder;
+
+    public function __construct(
+        ScrimSeriesRepository $scrimSeriesRepository,
+        UriBuilder $backendUriBuilder
+    ) {
         $this->scrimSeriesRepository = $scrimSeriesRepository;
+        $this->backendUriBuilder = $backendUriBuilder;
     }
 
     public function indexAction(): \Psr\Http\Message\ResponseInterface
     {
-        $pageId = (int)GeneralUtility::_GP('id');
+        $pageId = (int)($this->request->getQueryParams()['id'] ?? 0);
 
         $this->view->assignMultiple([
             'pageId' => $pageId,
@@ -39,9 +43,30 @@ class ScrimManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         ]);
 
         if ($pageId > 0) {
-            $returnUrl = BackendUtility::getModuleUrl('web_scrimmanager', ['id' => $pageId]);
+            $returnUrl = (string)$this->backendUriBuilder->buildUriFromRoute('web_scrimmanager', [
+                'id' => $pageId,
+            ]);
+            $seriesList = $this->scrimSeriesRepository->findByPid($pageId);
+            $seriesRows = [];
+
+            foreach ($seriesList as $series) {
+                $editUrl = (string)$this->backendUriBuilder->buildUriFromRoute('record_edit', [
+                    'edit' => [
+                        'tx_sitepackage_domain_model_scrimseries' => [
+                            $series->getUid() => 'edit',
+                        ],
+                    ],
+                    'returnUrl' => $returnUrl,
+                ]);
+
+                $seriesRows[] = [
+                    'series' => $series,
+                    'editUrl' => $editUrl,
+                ];
+            }
+
             $this->view->assignMultiple([
-                'createSeriesUrl' => BackendUtility::getModuleUrl('record_edit', [
+                'createSeriesUrl' => (string)$this->backendUriBuilder->buildUriFromRoute('record_edit', [
                     'edit' => [
                         'tx_sitepackage_domain_model_scrimseries' => [
                             $pageId => 'new',
@@ -49,9 +74,11 @@ class ScrimManagerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
                     ],
                     'returnUrl' => $returnUrl,
                 ]),
-                'listModuleUrl' => BackendUtility::getModuleUrl('web_list', ['id' => $pageId]),
+                'listModuleUrl' => (string)$this->backendUriBuilder->buildUriFromRoute('web_list', [
+                    'id' => $pageId,
+                ]),
                 'returnUrl' => $returnUrl,
-                'seriesList' => $this->scrimSeriesRepository->findByPid($pageId),
+                'seriesRows' => $seriesRows,
             ]);
         }
 
