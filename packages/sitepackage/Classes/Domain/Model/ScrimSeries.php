@@ -74,9 +74,15 @@ class ScrimSeries extends AbstractEntity
     /**
      * @return ObjectStorage<ScrimGame>
      */
-    public function getGames(): ObjectStorage
+    public function getGames(): iterable
     {
-        return $this->games;
+        $games = $this->games->toArray();
+
+        usort($games, static function (ScrimGame $first, ScrimGame $second): int {
+            return $first->getSorting() <=> $second->getSorting();
+        });
+
+        return $games;
     }
 
     /**
