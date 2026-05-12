@@ -8,6 +8,8 @@ class ScrimPlayer extends AbstractEntity
 {
     protected ?ScrimGame $game = null;
 
+    protected string $playerName = '';
+
     protected string $teamSide = '';
 
     protected string $position = '';
@@ -32,6 +34,16 @@ class ScrimPlayer extends AbstractEntity
     public function setGame(?ScrimGame $game): void
     {
         $this->game = $game;
+    }
+
+    public function getPlayerName(): string
+    {
+        return $this->playerName;
+    }
+
+    public function setPlayerName(string $playerName): void
+    {
+        $this->playerName = $playerName;
     }
 
     public function getTeamSide(): string

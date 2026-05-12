@@ -20,7 +20,12 @@
 
                 <f:for each="{series.games}" as="game" iteration="gameIteration">
                     <section class="scrim-game">
-                        <h3>Spiel {gameIteration.cycle}</h3>
+                        <h3>
+                            <f:if condition="{game.title}">
+                                <f:then>{game.title}</f:then>
+                                <f:else>Spiel {gameIteration.cycle}</f:else>
+                            </f:if>
+                        </h3>
                         <p>
                             <strong>Dauer:</strong> {game.duration}
                             |
@@ -34,6 +39,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Player</th>
                                     <th>Side</th>
                                     <th>Position</th>
                                     <th>Champion</th>
@@ -47,6 +53,7 @@
                             <tbody>
                                 <f:for each="{game.players}" as="player">
                                     <tr>
+                                        <td>{player.playerName}</td>
                                         <td>{player.teamSideLabel}</td>
                                         <td>{player.positionLabel}</td>
                                         <td>{player.championName}</td>

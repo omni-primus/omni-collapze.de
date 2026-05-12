@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimgame',
-        'label' => 'duration',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'sortby' => 'sorting',
@@ -21,6 +21,7 @@ return [
         '1' => [
             'showitem' => '
                 hidden,
+                title,
                 duration,
                 blue_side_team,
                 red_side_team,
@@ -51,6 +52,15 @@ return [
         'series' => [
             'config' => [
                 'type' => 'passthrough',
+            ],
+        ],
+        'title' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimgame.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 40,
+                'eval' => 'trim,required',
             ],
         ],
         'duration' => [

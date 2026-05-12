@@ -9,6 +9,8 @@ class ScrimGame extends AbstractEntity
 {
     protected ?ScrimSeries $series = null;
 
+    protected string $title = '';
+
     protected string $duration = '';
 
     protected string $blueSideTeam = '';
@@ -35,6 +37,16 @@ class ScrimGame extends AbstractEntity
     public function setSeries(?ScrimSeries $series): void
     {
         $this->series = $series;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
     }
 
     public function getDuration(): string

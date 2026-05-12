@@ -27,6 +27,9 @@
             <trans-unit id="tx_sitepackage_domain_model_scrimgame">
                 <source>Scrim Game</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.title">
+                <source>Title</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimgame.duration">
                 <source>Duration</source>
             </trans-unit>
@@ -44,6 +47,9 @@
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer">
                 <source>Scrim Player</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.player_name">
+                <source>Player name</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer.team_side">
                 <source>Team side</source>

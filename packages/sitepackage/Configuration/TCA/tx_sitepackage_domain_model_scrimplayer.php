@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer',
-        'label' => 'champion_name',
+        'label' => 'player_name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'sortby' => 'sorting',
@@ -19,6 +19,7 @@ return [
         '1' => [
             'showitem' => '
                 hidden,
+                player_name,
                 team_side,
                 position,
                 champion_name,
@@ -41,6 +42,15 @@ return [
         'game' => [
             'config' => [
                 'type' => 'passthrough',
+            ],
+        ],
+        'player_name' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.player_name',
+            'config' => [
+                'type' => 'input',
+                'size' => 40,
+                'eval' => 'trim,required',
             ],
         ],
         'team_side' => [
