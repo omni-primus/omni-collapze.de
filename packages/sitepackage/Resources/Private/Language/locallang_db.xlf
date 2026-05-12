@@ -6,6 +6,69 @@
             <authorEmail>paul.krampe@webneo.de</authorEmail>
         </header>
         <body>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries">
+                <source>Scrim Series</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.scrim_date">
+                <source>Date</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.number_of_games">
+                <source>Number of games</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.opponent_team_name">
+                <source>Opponent team name</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.opponent_team_information">
+                <source>Opponent team information</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimseries.games">
+                <source>Games</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame">
+                <source>Scrim Game</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.duration">
+                <source>Duration</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_side_team">
+                <source>Blue side team</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_side_team">
+                <source>Red side team</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.winner">
+                <source>Winner</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.players">
+                <source>Players</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer">
+                <source>Scrim Player</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.team_side">
+                <source>Team side</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.position">
+                <source>Position</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.champion_name">
+                <source>Champion name</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.kills">
+                <source>Kills</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.deaths">
+                <source>Deaths</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.assists">
+                <source>Assists</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.gold">
+                <source>Gold</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.minions">
+                <source>Minions</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

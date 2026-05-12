@@ -29,6 +29,12 @@
             <trans-unit id="game_slider_description">
                 <source>Displays a Slider with an image and a text</source>
             </trans-unit>
+            <trans-unit id="scrimseries_title">
+                <source>Scrim Series</source>
+            </trans-unit>
+            <trans-unit id="scrimseries_description">
+                <source>Displays League of Legends scrim series with games and player stats.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

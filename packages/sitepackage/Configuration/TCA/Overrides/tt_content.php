@@ -127,3 +127,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
     $pluginSignature,
     'FILE:EXT:sitepackage/Configuration/FlexForms/PluginPrimeLeague.xml'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'sitepackage',
+    'ScrimSeries',
+    'Scrim Series'
+);

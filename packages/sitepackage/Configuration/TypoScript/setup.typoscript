@@ -114,4 +114,12 @@ plugin.tx_sitepackage {
     }
 }
 
+plugin.tx_sitepackage_scrimseries {
+    view {
+        templateRootPaths.0 = EXT:sitepackage/Resources/Private/Templates/ScrimSeries/
+        partialRootPaths.0 = EXT:sitepackage/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:sitepackage/Resources/Private/Layouts/
+    }
+}
+
 config.contentObjectExceptionHandler = 0

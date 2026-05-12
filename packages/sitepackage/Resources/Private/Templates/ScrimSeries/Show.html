@@ -1,0 +1,67 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+    <div class="scrim-series-list">
+        <f:for each="{seriesList}" as="series">
+            <article class="scrim-series">
+                <header>
+                    <h2>OMNI Falcons vs. {series.opponentTeamName}</h2>
+                    <p>
+                        <strong>Datum:</strong>
+                        <f:format.date format="d.m.Y">{series.scrimDate}</f:format.date>
+                        |
+                        <strong>Spiele:</strong> {series.numberOfGames}
+                    </p>
+                    <f:if condition="{series.opponentTeamInformation}">
+                        <p>{series.opponentTeamInformation}</p>
+                    </f:if>
+                </header>
+
+                <f:for each="{series.games}" as="game" iteration="gameIteration">
+                    <section class="scrim-game">
+                        <h3>Spiel {gameIteration.cycle}</h3>
+                        <p>
+                            <strong>Dauer:</strong> {game.duration}
+                            |
+                            <strong>Blue Side:</strong> {game.blueSideTeamName}
+                            |
+                            <strong>Red Side:</strong> {game.redSideTeamName}
+                            |
+                            <strong>Sieger:</strong> {game.winnerName}
+                        </p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Side</th>
+                                    <th>Position</th>
+                                    <th>Champion</th>
+                                    <th>K</th>
+                                    <th>D</th>
+                                    <th>A</th>
+                                    <th>Gold</th>
+                                    <th>CS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <f:for each="{game.players}" as="player">
+                                    <tr>
+                                        <td>{player.teamSideLabel}</td>
+                                        <td>{player.positionLabel}</td>
+                                        <td>{player.championName}</td>
+                                        <td>{player.kills}</td>
+                                        <td>{player.deaths}</td>
+                                        <td>{player.assists}</td>
+                                        <td>{player.gold}</td>
+                                        <td>{player.minions}</td>
+                                    </tr>
+                                </f:for>
+                            </tbody>
+                        </table>
+                    </section>
+                </f:for>
+            </article>
+        </f:for>
+    </div>
+</html>

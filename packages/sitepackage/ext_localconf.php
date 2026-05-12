@@ -27,3 +27,10 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['sitepackage'] = 'EXT:sitepackage/
     [\WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => 'show'],
     [\WebneoGmbh\Sitepackage\Controller\PrimeLeagueController::class => '']
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'sitepackage',
+    'ScrimSeries',
+    [\WebneoGmbh\Sitepackage\Controller\ScrimSeriesController::class => 'show'],
+    []
+);
