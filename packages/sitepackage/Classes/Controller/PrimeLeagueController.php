@@ -64,7 +64,8 @@ class PrimeLeagueController extends ActionController {
                 $teamdata = [
                     'rank' => trim((string) ($entry['rank'] ?? $entry['place'] ?? '')),
                     'name' => trim((string) ($entry['name'] ?? $entry['teamName'] ?? '')),
-                    'score' => trim((string) ($entry['score'] ?? '')),
+                    'score' => trim((string) ($entry['score'] ?? '0-0')),
+                    'points' => trim((string) ($entry['points'] ?? 0))
                 ];
 
                 if ($teamdata['rank'] === '' && $teamdata['name'] === '' && $teamdata['score'] === '') {
@@ -88,7 +89,8 @@ class PrimeLeagueController extends ActionController {
                     'roundName' => trim((string) ($entry['roundName'] ?? '')),
                     'team1' => trim((string) ($entry['team1'] ?? '')),
                     'team2' => trim((string) ($entry['team2'] ?? '')),
-                    'score' => trim((string) ($entry['score'] ?? ''))
+                    'score' => trim((string) ($entry['score'] ?? '0-0')),
+                    'points' => trim((string) ($entry['points'] ?? 0))
                 ];
 
                 if (!empty($match['score']) && strpos($match['score'], ':') !== false) {
@@ -104,7 +106,8 @@ class PrimeLeagueController extends ActionController {
                     $match['round'] === 0 &&
                     $match['team1'] === '' &&
                     $match['team2'] === '' &&
-                    $match['score'] === ''
+                    $match['score'] === '0-0' &&
+                    $match['points'] === 0
                 ) {
                     continue;
                 }
