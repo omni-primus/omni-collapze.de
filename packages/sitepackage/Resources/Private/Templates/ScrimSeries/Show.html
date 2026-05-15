@@ -2,8 +2,223 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     data-namespace-typo3-fluid="true"
 >
+    <section class="scrim-header position-relative overflow-hidden">
+        <div class="position-absolute top-0 start-0 w-100 h-100 header-gradient"></div>
+        <div class="container-xl px-2 pt-4 pb-3 position-relative">
+            <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-3">
+                <f:image
+                    class="rounded-4 border border-2 shadow-lg bg-secondary bg-gradient"
+                    alt="Team Logo"
+                    style="width:200px;height:200px;"
+                    src="EXT:sitepackage/Resources/Public/Images/falcon-logo-transparent.png"/>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-3 mb-1 flex-wrap">
+                        <h2 class="fs-2 fw-black mb-0">
+                            OMNI Falcons
+                        </h2>
+                    </div>
+                    <p class="small mb-3">
+                        Complete match history of the team. Scrims and official matches.
+                    </p>
+                    <div class="d-flex flex-wrap gap-4 small">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold text-success" id="totalWins">0</span>
+                            <span class="">Wins</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold text-danger" id="totalLosses">0</span>
+                            <span class="">Losses</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold text-info" id="winRate">0%</span>
+                            <span class="">Win Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="scrim-series-list">
         <f:for each="{seriesList}" as="series">
+            <f:variable name="omniScore" value="0" />
+            <f:variable name="opponentScore" value="0" />
+
+            <f:for each="{series.games}" as="game">
+                <f:if condition="{game.winner} == 'omni'">
+                    <f:then>
+                        <f:variable name="omniScore" value="{omniScore + 1}" />
+                    </f:then>
+
+                    <f:else>
+                        <f:if condition="{game.winner} == 'opponent'">
+                            <f:variable name="opponentScore" value="{opponentScore + 1}" />
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:for>
+            <f:variable name="seriesResult" value="draw" />
+            <f:variable name="resultClasses" value="text-secondary border border-secondary bg-secondary bg-opacity-10"/>
+            <f:if condition="{omniScore} > {opponentScore}">
+                <f:then>
+                    <f:variable name="seriesResult" value="win"/>
+                    <f:variable
+                            name="resultClasses"
+                            value="text-success border border-success bg-success bg-opacity-10" />
+                </f:then>
+            </f:if>
+            <f:if condition="{omniScore} < {opponentScore}">
+                <f:then>
+                    <f:variable name="seriesResult" value="lose"/>
+                    <f:variable
+                            name="resultClasses"
+                            value="text-danger border border-danger bg-danger bg-opacity-10" />
+                </f:then>
+            </f:if>
+
+            <div class="series-card rounded-4 overflow-hidden">
+                <div class="cursor-pointer user-select-none" data-series-id="1">
+                    <!-- Series Header -->
+                    <div class="p-4 p-sm-5">
+                        <div class="d-flex align-items-start justify-content-between mb-3">
+                            <div class="d-flex align-items-center gap-2 flex-wrap">
+                                <span class="badge rounded text-uppercase px-2 py-1 {resultClasses}">
+                                    {seriesResult}
+                                </span>
+                                <span class="badge rounded text-secondary-emphasis bg-dark-subtle px-2 py-1">
+                                    {series.numberOfGames} Games
+                                </span>
+                                <span class="text-xs">
+                                    <f:format.date format="d.m.Y">{series.scrimDate}</f:format.date>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 gap-sm-4">
+                            <!-- Team -->
+                            <div class="d-flex align-items-center gap-2 gap-sm-3 flex-grow-1">
+                                <f:image
+                                        src="EXT:sitepackage/Resources/Public/Images/falcon-logo-transparent.png"
+                                        alt="OMNI Falcons Logo"
+                                        class="rounded border flex-shrink-0 bg-secondary"
+                                        style="width:40px;height:40px;"
+                                />
+                                <div class="text-truncate">
+                                    <p class="fw-bold mb-0 text-white">
+                                        OMNI Falcons
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Score -->
+                            <div class="d-flex align-items-center gap-2 gap-sm-3 flex-shrink-0">
+                                <span class="display-6 fw-black text-success">
+                                    {omniScore}
+                                </span>
+                                <span class="text-white">
+                                    :
+                                </span>
+                                <span class="display-6 fw-black text-danger">
+                                    {opponentScore}
+                                </span>
+                            </div>
+                            <!-- Opponent -->
+                            <div class="d-flex align-items-center gap-2 gap-sm-3 flex-grow-1 justify-content-end">
+                                <div class="text-end text-truncate">
+                                    <p class="fw-bold mb-0 text-white">
+                                        {series.opponentTeamName}
+                                    </p>
+                                    <span class="text-xs">{series.opponentTeamInformation}</span>
+                                </div>
+                                <div class="rounded border flex-shrink-0" style="width:40px;height:40px;" ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Expandable Matches -->
+                    <div class="series-matches" data-matches="1">
+                        <f:for each="{series.games}" as="game" iteration="gameIteration">
+                            <f:variable name="gameResult" value="lose"></f:variable>
+                            <f:variable name="resultClass" value="danger"></f:variable>
+                            <f:if condition="{game.winner} == omni">
+                                <f:variable name="gameResult" value="win"></f:variable>
+                                <f:variable name="resultClass" value="success"></f:variable>
+                            </f:if>
+                            <div class="border-top">
+                                <div class="border-start border-4 border-{resultClass}">
+                                    <div class="match-header px-4 px-sm-5 py-3 d-flex align-items-center justify-content-between cursor-pointer">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <span class="text-{resultClass} fw-bold text-uppercase small">
+                                                {gameResult}
+                                            </span>
+                                            <span class="text-xs">
+                                                {game.duration}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="match-item">
+                                        <div class="px-4 px-sm-5 pb-4">
+                                            <div class="rounded-4 p-4 bg-dark">
+                                                <!-- MVP -->
+                                                <div class="d-flex align-items-center gap-2 mb-4">
+                                                    <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary bg-opacity-25"
+                                                         style="width:28px;height:28px;">
+                                                        ★
+                                                    </div>
+                                                    <div>
+                                                    <span class="small text-secondary text-uppercase fw-semibold">
+                                                        MVP
+                                                    </span>
+                                                        <p class="fw-bold text-white mb-0">
+                                                            Tenz
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Stats -->
+                                                <div class="row g-3 text-center">
+                                                    <div class="col-3">
+                                                        <div class="rounded p-2 bg-secondary bg-opacity-10">
+                                                            <p class="fs-5 fw-bold text-white mb-0">28</p>
+                                                            <p class="small text-secondary mb-0">Kills</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="rounded p-2 bg-secondary bg-opacity-10">
+                                                            <p class="fs-5 fw-bold text-white mb-0">14</p>
+                                                            <p class="small text-secondary mb-0">Deaths</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="rounded p-2 bg-secondary bg-opacity-10">
+                                                            <p class="fs-5 fw-bold text-white mb-0">6</p>
+                                                            <p class="small text-secondary mb-0">Assists</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="rounded p-2 bg-secondary bg-opacity-10">
+                                                            <p class="fs-5 fw-bold text-info mb-0">312</p>
+                                                            <p class="small text-secondary mb-0">ACS</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Progress -->
+                                                <div class="mt-3">
+                                                    <div class="d-flex justify-content-between small text-secondary mb-1">
+                                                        <span>KDA Ratio</span>
+                                                        <span class="text-white fw-semibold">2.43</span>
+                                                    </div>
+                                                    <div class="progress" style="height:8px;">
+                                                        <div class="progress-bar bg-success"
+                                                             style="width:80.95%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:for>
+                    </div>
+                </div>
+            </div>
             <article class="scrim-series">
                 <header>
                     <h2>OMNI Falcons vs. {series.opponentTeamName}</h2>

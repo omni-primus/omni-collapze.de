@@ -1,0 +1,10 @@
+.header-gradient {
+  background-image: linear-gradient(to bottom, $primary, #000);
+}
+.series-card {
+  background: rgba($primary, .2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba($primary, .15);
+  margin-top: 15px;
+}
