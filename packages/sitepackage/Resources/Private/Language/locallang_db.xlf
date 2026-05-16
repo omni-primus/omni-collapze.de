@@ -45,6 +45,81 @@
             <trans-unit id="tx_sitepackage_domain_model_scrimgame.winner">
                 <source>Winner</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.draft">
+                <source>Draft</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.phase_bans_1">
+                <source>First ban phase</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.phase_picks_1">
+                <source>First pick phase</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.phase_bans_2">
+                <source>Second ban phase</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.phase_picks_2">
+                <source>Final pick phase</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_ban_1">
+                <source>Blue ban 1</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_ban_2">
+                <source>Blue ban 2</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_ban_3">
+                <source>Blue ban 3</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_ban_1">
+                <source>Red ban 1</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_ban_2">
+                <source>Red ban 2</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_ban_3">
+                <source>Red ban 3</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_pick_1">
+                <source>Blue pick 1</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_pick_2">
+                <source>Blue pick 2</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_pick_3">
+                <source>Blue pick 3</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_pick_1">
+                <source>Red pick 1</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_pick_2">
+                <source>Red pick 2</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_pick_3">
+                <source>Red pick 3</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_ban_4">
+                <source>Blue ban 4</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_ban_5">
+                <source>Blue ban 5</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_ban_4">
+                <source>Red ban 4</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_ban_5">
+                <source>Red ban 5</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_pick_4">
+                <source>Blue pick 4</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.blue_pick_5">
+                <source>Blue pick 5</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_pick_4">
+                <source>Red pick 4</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimgame.red_pick_5">
+                <source>Red pick 5</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimgame.players">
                 <source>Players</source>
             </trans-unit>
