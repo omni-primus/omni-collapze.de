@@ -24,8 +24,10 @@ return [
                 kills,
                 deaths,
                 assists,
+                minions,
                 gold,
-                minions
+                damage_dealt,
+                damage_taken
             ',
         ],
     ],
@@ -57,9 +59,11 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.champion_name',
             'config' => [
-                'type' => 'input',
-                'size' => 40,
-                'eval' => 'trim,required',
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'itemsProcFunc' => \WebneoGmbh\Sitepackage\Backend\ChampionItemsProvider::class . '->addChampionItems',
+                'default' => '',
+                'required' => true,
             ],
         ],
         'kills' => [
@@ -92,6 +96,16 @@ return [
                 'range' => ['lower' => 0],
             ],
         ],
+        'minions' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.minions',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int',
+                'default' => 0,
+                'range' => ['lower' => 0],
+            ],
+        ],
         'gold' => [
             'exclude' => true,
             'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.gold',
@@ -102,9 +116,19 @@ return [
                 'range' => ['lower' => 0],
             ],
         ],
-        'minions' => [
+        'damage_dealt' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.minions',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.damage_dealt',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int',
+                'default' => 0,
+                'range' => ['lower' => 0],
+            ],
+        ],
+        'damage_taken' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_scrimplayer.damage_taken',
             'config' => [
                 'type' => 'input',
                 'eval' => 'int',

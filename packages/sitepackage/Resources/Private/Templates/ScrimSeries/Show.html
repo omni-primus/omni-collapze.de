@@ -204,6 +204,14 @@
                                                               style="width:60px;">
                                                             Gold
                                                         </span>
+                                                        <span class="text-xs text-gray-400 opacity-50 text-uppercase fw-semibold text-end flex-shrink-0 d-none d-lg-block"
+                                                              style="width:90px;">
+                                                            Dmg
+                                                        </span>
+                                                        <span class="text-xs text-gray-400 opacity-50 text-uppercase fw-semibold text-end flex-shrink-0 d-none d-lg-block"
+                                                              style="width:90px;">
+                                                            Taken
+                                                        </span>
                                                     </div>
 
                                                     <f:for each="{game.players}" as="player">
@@ -268,6 +276,14 @@
                                                                           style="width:60px;">
                                                                     {player.gold}g
                                                                 </span>
+                                                                <span class="text-xs text-end flex-shrink-0 d-none d-lg-block"
+                                                                      style="width:90px;">
+                                                                    {player.damageDealt}
+                                                                </span>
+                                                                <span class="text-xs text-end flex-shrink-0 d-none d-lg-block"
+                                                                      style="width:90px;">
+                                                                    {player.damageTaken}
+                                                                </span>
                                                             </div>
                                                         </f:if>
                                                     </f:for>
@@ -319,6 +335,14 @@
                                                         <span class="text-xs text-gray-400 opacity-50 text-uppercase fw-semibold text-end flex-shrink-0"
                                                               style="width:60px;">
                                                             Gold
+                                                        </span>
+                                                        <span class="text-xs text-gray-400 opacity-50 text-uppercase fw-semibold text-end flex-shrink-0 d-none d-lg-block"
+                                                              style="width:90px;">
+                                                            Dmg
+                                                        </span>
+                                                        <span class="text-xs text-gray-400 opacity-50 text-uppercase fw-semibold text-end flex-shrink-0 d-none d-lg-block"
+                                                              style="width:90px;">
+                                                            Taken
                                                         </span>
                                                     </div>
                                                     <f:for each="{game.players}" as="player">
@@ -382,6 +406,14 @@
                                                                     <span class="text-warning text-xs fw-semibold text-end flex-shrink-0"
                                                                           style="width:60px;">
                                                                     {player.gold}g
+                                                                </span>
+                                                                <span class="text-xs text-end flex-shrink-0 d-none d-lg-block"
+                                                                      style="width:90px;">
+                                                                    {player.damageDealt}
+                                                                </span>
+                                                                <span class="text-xs text-end flex-shrink-0 d-none d-lg-block"
+                                                                      style="width:90px;">
+                                                                    {player.damageTaken}
                                                                 </span>
                                                             </div>
                                                         </f:if>

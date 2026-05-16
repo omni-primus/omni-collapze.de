@@ -101,8 +101,10 @@ CREATE TABLE tx_sitepackage_domain_model_scrimplayer (
     kills int(11) unsigned DEFAULT '0' NOT NULL,
     deaths int(11) unsigned DEFAULT '0' NOT NULL,
     assists int(11) unsigned DEFAULT '0' NOT NULL,
-    gold int(11) unsigned DEFAULT '0' NOT NULL,
     minions int(11) unsigned DEFAULT '0' NOT NULL,
+    gold int(11) unsigned DEFAULT '0' NOT NULL,
+    damage_dealt int(11) unsigned DEFAULT '0' NOT NULL,
+    damage_taken int(11) unsigned DEFAULT '0' NOT NULL,
     PRIMARY KEY (uid),
     KEY parent (pid),
     KEY game (game)

@@ -87,6 +87,12 @@
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer.gold">
                 <source>Gold</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.damage_dealt">
+                <source>Damage dealt</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_scrimplayer.damage_taken">
+                <source>Damage taken</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_scrimplayer.minions">
                 <source>Minions</source>
             </trans-unit>

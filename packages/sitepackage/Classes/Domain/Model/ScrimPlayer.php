@@ -18,9 +18,13 @@ class ScrimPlayer extends AbstractEntity
 
     protected int $assists = 0;
 
+    protected int $minions = 0;
+
     protected int $gold = 0;
 
-    protected int $minions = 0;
+    protected int $damageDealt = 0;
+
+    protected int $damageTaken = 0;
 
     public function getGame(): ?ScrimGame
     {
@@ -97,6 +101,16 @@ class ScrimPlayer extends AbstractEntity
         $this->assists = $assists;
     }
 
+    public function getMinions(): int
+    {
+        return $this->minions;
+    }
+
+    public function setMinions(int $minions): void
+    {
+        $this->minions = $minions;
+    }
+
     public function getGold(): int
     {
         return $this->gold;
@@ -107,14 +121,24 @@ class ScrimPlayer extends AbstractEntity
         $this->gold = $gold;
     }
 
-    public function getMinions(): int
+    public function getDamageDealt(): int
     {
-        return $this->minions;
+        return $this->damageDealt;
     }
 
-    public function setMinions(int $minions): void
+    public function setDamageDealt(int $damageDealt): void
     {
-        $this->minions = $minions;
+        $this->damageDealt = $damageDealt;
+    }
+
+    public function getDamageTaken(): int
+    {
+        return $this->damageTaken;
+    }
+
+    public function setDamageTaken(int $damageTaken): void
+    {
+        $this->damageTaken = $damageTaken;
     }
 
     public function getTeamSideLabel(): string
